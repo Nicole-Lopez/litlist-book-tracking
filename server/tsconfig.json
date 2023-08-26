@@ -1,0 +1,24 @@
+{
+	"compilerOptions": {
+		"rootDirs": ["src"],
+		"outDir": "dist",
+		"lib": ["es2020"],
+		"target": "es2020",
+		"module": "esnext",
+		"moduleResolution": "node",
+		"esModuleInterop": true,
+		"strictNullChecks": true,
+		"types": ["node"],
+		"baseUrl": "./src",
+		"paths": {
+			"@gqlTypes": ["__generated__/resolvers.generated.js"],
+			"@dataSources/*": ["schema/dataSources/*"],
+			"@resolvers/*": ["schema/resolvers/*"],
+			"@queries/*": ["schema/resolvers/queries/*"],
+			"@models/*": ["models/*"],
+			"@utilities/*": ["utilities/*"],
+			"@constants/*": ["constants/*"],
+			"@adapters/*": ["adapters/*"]
+		}
+	}
+}
