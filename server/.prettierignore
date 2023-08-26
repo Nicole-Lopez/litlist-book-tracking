@@ -2,3 +2,4 @@ dist
 pnpm-lock.yaml
 node_modules
 codegen.yml
+resolvers.generated.ts

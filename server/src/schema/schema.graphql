@@ -1,0 +1,98 @@
+enum BestSellersListsAvailable {
+	HARDCOVER_FICTION
+	HARDCOVER_NONFICTION
+	PRINT_AND_EBOOK_FICTION
+	PRINT_AND_EBOOK_NONFICTION
+	PAPERBACK_NONFICTION
+	PAPERBACK_FICTION
+	YOUNG_ADULT_HARDCOVER
+	MIDDLE_GRADE_HARDCOVER
+	GRAPHIC_BOOKS_AND_MANGA
+}
+
+enum CategoriesAvailable {
+	FICTION
+	NON_FICTION
+	ROMANCE
+	YOUNG_ADULT_FICTION
+	ACTION
+	FANTASY
+	HORROR
+	MYSTERY
+	THRILLER
+	SUSPENSE
+	SCIENCE_FICTION
+	ART
+	PHILOSOPHY
+	RELIGION
+	TRAVEL
+	CHILDRENS
+	COMICS
+	WEREWOLVES
+	VAMPIRES
+}
+
+type BookSummary {
+	id: ID!
+	isGoogleID: Boolean!
+	title: String!
+	authors: [String!]!
+	cover: String!
+}
+
+type BookPreview {
+	id: ID!
+	isGoogleID: Boolean!
+	title: String!
+	authors: [String!]!
+	cover: String!
+	publishedYear: Int
+	pageCount: Int
+	categories: [String!]
+	isbn: [String!]
+}
+
+type BookDetail {
+	title: String!
+	authors: [String!]!
+	cover: String!
+	subtitle: String
+	description: String
+	additionalInfo: BookAdditionalInfo!
+	categories: BookCategoriesDetail
+}
+
+type BookAdditionalInfo {
+	pageCount: Int
+	publishedDate: String
+	language: String
+	publisher: String
+}
+
+type BookCategoriesDetail {
+	subject: [String]
+	place: [String]
+	person: [String]
+}
+
+type SearchLimitedBooks {
+	length: Int!
+	books: [BookSummary!]!
+}
+
+type BestSellersList {
+	id: ID!
+	listName: BestSellersListsAvailable!
+	last_modified: String!
+	books: [BookSummary!]!
+}
+
+type Query {
+	allBestSellersLists: [BestSellersList!]
+	booksByCategory(subject: CategoriesAvailable!): [BookPreview!]
+	booksByAuthor(author: String!): [BookSummary!]
+	searchBooks(term: String!): [BookPreview!]
+	searchLimitedBooks(term: String!): SearchLimitedBooks
+	bookDetail(id: ID!): BookDetail
+	findBookId(title: String!, author: String!): ID
+}
