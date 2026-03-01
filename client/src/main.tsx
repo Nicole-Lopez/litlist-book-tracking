@@ -1,13 +1,9 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import './globalStyles/reset.scss'
-import './globalStyles/global.scss'
-import './services/i18n'
+import { createRoot } from 'react-dom/client'
+import RouterProvider from '@router/RouterProvider'
+import type { ReactNode } from 'react'
 
+function App(): ReactNode {
+	return <RouterProvider />
+}
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-	<React.StrictMode>
-		<App />
-	</React.StrictMode>,
-)
+createRoot(document.getElementById('root')!).render(<App />)
