@@ -2,6 +2,6 @@
 export default {
     extends: ['stylelint-config-standard-scss'],
     rules: {
-        'no-descending-specificity': false,
+        'no-descending-specificity': null,
     },
 }
