@@ -1,32 +1,73 @@
+/**
+|--------------------------------------------------
+| Base - Background
+|--------------------------------------------------
+*/
 $color-bg-default: #181818;
 $color-bg-surface: #282828;
 $color-border-default: #adadad;
 $color-hover-default: #3e3e3e;
 $color-placeholder: #606060;
+
+/**
+|--------------------------------------------------
+| Base - Text
+|--------------------------------------------------
+*/
 $color-text-primary: #fff;
 $color-text-primary-inverse: #000;
 $color-text-secondary: #aaa;
 $color-text-link: #90caf9;
 $color-text-inline-error: #ffa48e;
 $color-text-inline-success: #0be911;
+
+/**
+|--------------------------------------------------
+| Alerts
+|--------------------------------------------------
+*/
 $color-alert-error-bg: #c00;
 $color-alert-success-bg: #388e3c;
 $color-alert-warning-bg: #f57c00;
 $color-alert-info-bg: #0288d1;
+
+/**
+|--------------------------------------------------
+| Inputs
+|--------------------------------------------------
+*/
 $color-input-bg: #2d2d2d;
 $color-input-bg-hover: #474747;
 $color-input-border: rgb(255 255 255 / 45%);
 $color-input-border-hover: #fff;
 $color-input-border-focus: #08a6f0;
 $color-input-checked: #99c8ff;
+
+/**
+|--------------------------------------------------
+| Dropdown
+|--------------------------------------------------
+*/
 $color-dropdown-bg-primary: #424242;
 $color-dropdown-bg-primary-hover: #585858;
+
+/**
+|--------------------------------------------------
+| Actions
+|--------------------------------------------------
+*/
 $color-action-primary: #4970a8;
 $color-action-primary-hover: #5281ba;
 $color-action-secondary: #6d6e75;
 $color-action-secondary-hover: #797980;
 $color-action-tertiary: #65672a;
 $color-action-tertiary-hover: #747630;
+
+/**
+|--------------------------------------------------
+| Library
+|--------------------------------------------------
+*/
 $color-library-primary: #bb5154;
 $color-library-primary-hover: #c26366;
 $color-library-progress-bar-bg: #b7b7b7;
