@@ -17,7 +17,15 @@ export default defineConfig([
 
     ...tseslint.configs.recommended,
     pluginReact.configs.flat.recommended,
-    reactHooks.configs.recommended,
+    {
+        settings: {
+            react: {
+                version: 'detect',
+            },
+        },
+    },
+
+    reactHooks.configs.flat.recommended,
 
     {
         rules: {
