@@ -7,43 +7,44 @@ import prettierConfig from 'eslint-config-prettier'
 import { defineConfig } from 'eslint/config'
 
 export default defineConfig([
-    {
-        files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-        plugins: { js },
-        extends: ['js/recommended'],
-        languageOptions: { globals: globals.browser },
-        ignores: ['dist', 'pnpm-lock.yaml'],
-    },
+	{
+		files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+		plugins: { js },
+		extends: ['js/recommended'],
+		languageOptions: { globals: globals.browser },
+		ignores: ['dist', 'pnpm-lock.yaml'],
+	},
 
-    ...tseslint.configs.recommended,
-    pluginReact.configs.flat.recommended,
-    {
-        settings: {
-            react: {
-                version: 'detect',
-            },
-        },
-    },
+	...tseslint.configs.recommended,
+	pluginReact.configs.flat.recommended,
+	{
+		settings: {
+			react: {
+				version: 'detect',
+			},
+		},
+	},
 
-    reactHooks.configs.flat.recommended,
+	reactHooks.configs.flat.recommended,
 
-    {
-        rules: {
-            'react/prop-types': 'off',
-            'react/react-in-jsx-scope': 'off',
-            'react/display-name': 'off',
-            '@typescript-eslint/consistent-type-definitions': 'off',
-            '@typescript-eslint/promise-function-async': 'off',
-            '@typescript-eslint/no-non-null-assertion': 'off',
-            '@typescript-eslint/consistent-type-assertions': 'off',
-            '@typescript-eslint/explicit-function-return-type': [
-                'error',
-                {
-                    allowExpressions: true,
-                },
-            ],
-        },
-    },
+	{
+		rules: {
+			'react/prop-types': 'off',
+			'react/react-in-jsx-scope': 'off',
+			'react/display-name': 'off',
+			'@typescript-eslint/consistent-type-definitions': 'off',
+			'@typescript-eslint/promise-function-async': 'off',
+			'@typescript-eslint/no-non-null-assertion': 'off',
+			'@typescript-eslint/consistent-type-assertions': 'off',
+			'@typescript-eslint/explicit-function-return-type': [
+				'error',
+				{
+					allowExpressions: true,
+				},
+			],
+			'@typescript-eslint/consistent-type-imports': 'error',
+		},
+	},
 
-    prettierConfig,
+	prettierConfig,
 ])
