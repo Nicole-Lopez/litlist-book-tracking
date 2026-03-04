@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import MainLoader from '@assets/loaders/MainLoader/MainLoader'
 import ThemeProvider from '@contexts/ThemeContext/ThemeProvider'
 import RouterProvider from '@router/RouterProvider'
+import '@services/internationalization'
 import '@styles/global.scss'
 import type { ReactNode } from 'react'
 
