@@ -1,0 +1,118 @@
+@use '@styles/variables/paletteLightTheme.var' as paletteLightTheme;
+
+.light-theme {
+	.book-shelf-loader {
+		&__book {
+			path {
+				&:first-child {
+					fill: paletteLightTheme.$color-library-primary;
+				}
+
+				&:last-child {
+					fill: #9e6770;
+				}
+			}
+		}
+
+		&__shelf {
+			path {
+				&:first-child {
+					fill: #ae8280;
+				}
+
+				&:last-child {
+					fill: #855f6d;
+				}
+			}
+		}
+	}
+}
+
+.dark-theme {
+	.book-shelf-loader {
+		&__book {
+			path {
+				&:first-child {
+					fill: #777374;
+				}
+
+				&:last-child {
+					fill: #474243;
+				}
+			}
+		}
+
+		&__shelf {
+			path {
+				&:first-child {
+					fill: #918d8e;
+				}
+
+				&:last-child {
+					fill: #5f5a5b;
+				}
+			}
+		}
+	}
+}
+
+.book-shelf-loader {
+	&__book {
+		animation: book-bounce 800ms infinite;
+
+		&--two {
+			animation-delay: 40ms;
+		}
+
+		&--three {
+			animation-delay: 80ms;
+		}
+	}
+
+	&__shelf {
+		path:first-child {
+			animation: shelf-lift 800ms infinite;
+			transform-origin: 50% 50%;
+		}
+	}
+}
+
+@keyframes book-bounce {
+	0% {
+		transform: translateY(0);
+	}
+
+	40% {
+		transform: translateY(-10px);
+	}
+
+	80% {
+		transform: translateY(0);
+	}
+
+	100% {
+		transform: translateY(0);
+	}
+}
+
+@keyframes shelf-lift {
+	0% {
+		transform: translateY(0) rotate(0);
+	}
+
+	20% {
+		transform: translateY(-4px) rotate(10deg);
+	}
+
+	40% {
+		transform: translateY(-4px) rotate(-10deg);
+	}
+
+	80% {
+		transform: translateY(0);
+	}
+
+	100% {
+		transform: translateY(0);
+	}
+}

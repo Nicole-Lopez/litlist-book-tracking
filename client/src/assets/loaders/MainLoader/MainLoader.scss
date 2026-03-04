@@ -1,0 +1,24 @@
+.light-theme {
+	.main-loader {
+		background-color: #f9f4ef;
+	}
+}
+
+.dark-theme {
+	.main-loader {
+		background-color: #282828;
+	}
+}
+
+.main-loader {
+	position: absolute;
+	inset: 0;
+	z-index: 999;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	&__book-shelf-icon {
+		height: 230px;
+	}
+}
