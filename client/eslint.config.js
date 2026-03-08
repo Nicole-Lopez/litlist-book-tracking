@@ -32,6 +32,7 @@ export default defineConfig([
 			'react/prop-types': 'off',
 			'react/react-in-jsx-scope': 'off',
 			'react/display-name': 'off',
+			'react-hooks/set-state-in-effect': 'off',
 			'@typescript-eslint/consistent-type-definitions': 'off',
 			'@typescript-eslint/promise-function-async': 'off',
 			'@typescript-eslint/no-non-null-assertion': 'off',
