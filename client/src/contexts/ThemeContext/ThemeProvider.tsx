@@ -1,4 +1,4 @@
-import { useEffectEvent, useLayoutEffect } from 'react'
+import { useLayoutEffect } from 'react'
 import { useLocalStorage } from '@hooks/useLocalStorage'
 import { ThemeContext } from './themeContext'
 import {
@@ -25,8 +25,8 @@ export default function ThemeProvider({ children }: PropsOnlyChildren): ReactNod
 		setCurrentTheme(isDarkTheme() ? THEMES.light : THEMES.dark)
 	}
 
-	const onThemeChange = useEffectEvent(() => {
-		if (isDarkTheme()) {
+	useLayoutEffect(() => {
+		if (currentTheme === THEMES.dark) {
 			document.body.classList.add(DARK_THEME_CLASSNAME)
 			document.body.classList.remove(LIGHT_THEME_CLASSNAME)
 
@@ -35,10 +35,6 @@ export default function ThemeProvider({ children }: PropsOnlyChildren): ReactNod
 
 		document.body.classList.add(LIGHT_THEME_CLASSNAME)
 		document.body.classList.remove(DARK_THEME_CLASSNAME)
-	})
-
-	useLayoutEffect(() => {
-		onThemeChange()
 	}, [currentTheme])
 
 	const value: ThemeContextValue = {
