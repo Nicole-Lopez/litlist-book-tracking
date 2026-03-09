@@ -1,0 +1,61 @@
+@use '@styles/variables/paletteDarkTheme.var' as paletteDarkTheme;
+@use '@styles/mixins/hover.mixins' as hoverMixins;
+
+@mixin hover-bg-default($not: null) {
+	@include hoverMixins.hover-bg(
+		$bg-hover: paletteDarkTheme.$color-hover-default,
+		$not: $not
+	);
+}
+
+@mixin btn-action-secondary($not: null) {
+	background-color: paletteDarkTheme.$color-action-secondary;
+
+	@include hoverMixins.hover-not-disabled($not: $not) {
+		background-color: paletteDarkTheme.$color-action-secondary-hover;
+	}
+}
+
+@mixin btn-action-tertiary($not: null) {
+	background-color: paletteDarkTheme.$color-action-tertiary;
+
+	@include hoverMixins.hover-not-disabled($not: $not) {
+		background-color: paletteDarkTheme.$color-action-tertiary-hover;
+	}
+}
+
+@mixin btn-library-action($not: null) {
+	background-color: paletteDarkTheme.$color-library-primary;
+
+	@include hoverMixins.hover-not-disabled($not: $not) {
+		background-color: paletteDarkTheme.$color-library-primary-hover;
+	}
+}
+
+@mixin custom-scrollbar() {
+	$thumb-color: #686868;
+	$track-color: #424242;
+
+	scrollbar-width: thin;
+	scrollbar-color: $thumb-color $track-color;
+
+	&::-webkit-scrollbar {
+		width: 8px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background-color: $track-color;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: $thumb-color;
+		border-radius: 6px;
+		border: 1px solid transparent;
+		background-clip: padding-box;
+	}
+
+	&::-webkit-scrollbar-thumb:hover {
+		background-color: #999;
+		border: 0 solid transparent;
+	}
+}

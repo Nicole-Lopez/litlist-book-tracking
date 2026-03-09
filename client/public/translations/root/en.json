@@ -1,0 +1,9 @@
+{
+	"header": {
+		"nav_links": {
+			"home": "Explore",
+			"categories": "Categories",
+			"contact": "Contact"
+		}
+	}
+}

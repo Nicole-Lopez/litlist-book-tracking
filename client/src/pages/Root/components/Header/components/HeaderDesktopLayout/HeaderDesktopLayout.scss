@@ -1,0 +1,29 @@
+@use '@styles/variables/rootLayout.var' as rootLayout;
+
+.root-header-desktop-layout {
+	height: rootLayout.$header-desktop-height;
+	padding: 0 3rem;
+	gap: 15px;
+
+	&__logo {
+		height: 3.5rem;
+	}
+
+	&__navigation-actions {
+		display: flex;
+		align-items: center;
+		gap: 20px;
+	}
+
+	&__settings {
+		display: flex;
+		gap: 15px;
+		margin-left: auto;
+	}
+
+	&__nav > ul {
+		display: flex;
+		align-items: center;
+		gap: 20px;
+	}
+}

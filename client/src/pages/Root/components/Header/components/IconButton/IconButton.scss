@@ -1,0 +1,27 @@
+@use '@styles/mixins/hover.mixins' as hoverMixins;
+
+.light-theme {
+	.root-header-icon-btn {
+		@include hoverMixins.lighten-hover-bg($bg: #857367);
+
+		color: #fff;
+	}
+}
+
+.dark-theme {
+	.root-header-icon-btn {
+		@include hoverMixins.lighten-hover-bg($bg: #646464);
+	}
+}
+
+.root-header-icon-btn {
+	width: 4rem;
+	height: 4rem;
+	padding: 7px;
+	border-radius: 50%;
+
+	svg {
+		width: 100%;
+		height: 100%;
+	}
+}

@@ -1,0 +1,22 @@
+{
+	"fiction": "Fiction",
+	"non_fiction": "Non-fiction",
+	"romance": "Romance",
+	"young_adult_fiction": "Young adult",
+	"action": "Action",
+	"fantasy": "Fantasy",
+	"horror": "Horror",
+	"mystery": "Mystery",
+	"thriller": "Thriller",
+	"suspense": "Suspense",
+	"science_fiction": "Science Fiction",
+	"art": "Art",
+	"philosophy": "Philosophy",
+	"religion": "Religion",
+	"childrens": "Children's",
+	"business": "Business",
+	"classics": "Classics",
+	"poetry": "Poetry",
+	"werewolves": "Werewolves",
+	"vampires": "Vampires"
+}

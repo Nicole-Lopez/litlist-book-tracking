@@ -1,0 +1,28 @@
+.main-nav-sub-menu-desktop {
+	position: relative;
+
+	&__sub-menu {
+		position: absolute;
+		top: 103%;
+		z-index: 2;
+		pointer-events: none;
+		opacity: 0;
+		box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
+		transition: opacity 150ms;
+		border-radius: 3px;
+
+		ul {
+			display: grid;
+			grid-template-columns: repeat(4, 15rem);
+			padding: 1rem 1.5rem;
+		}
+	}
+
+	&:focus-within,
+	&:hover {
+		.main-nav-sub-menu-desktop__sub-menu {
+			opacity: 1;
+			pointer-events: auto;
+		}
+	}
+}

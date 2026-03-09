@@ -1,0 +1,93 @@
+@use '@styles/variables/rootLayout.var' as rootLayout;
+@use '@styles/variables/paletteDarkTheme.var' as paletteDarkTheme;
+
+.light-theme {
+	.root-header-mobile-layout-menu {
+		background-color: #f2e7dc;
+	}
+}
+
+.dark-theme {
+	.root-header-mobile-layout-menu {
+		background-color: paletteDarkTheme.$color-bg-surface;
+	}
+}
+
+.root-header-mobile-layout-menu {
+	$vertical-padding: 10px;
+
+	position: fixed;
+	bottom: 0;
+	z-index: 3;
+	padding: $vertical-padding 35px;
+	width: 170px;
+	height: calc(100% - rootLayout.$header-mobile-height - ($vertical-padding * 2));
+	transform: translateX(-100%);
+	transition: transform 500ms ease;
+	overflow: hidden auto;
+
+	&--open {
+		transform: translateX(0);
+	}
+
+	&__toggle-btn {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		width: 2.4rem;
+		height: 3rem;
+		gap: 0.65rem;
+
+		span,
+		&::before,
+		&::after {
+			background-color: currentcolor;
+			height: 0.2rem;
+			width: 100%;
+			border-radius: 5px;
+			transform-origin: left;
+		}
+
+		&::before,
+		&::after {
+			content: '';
+			transition: transform 400ms ease-out;
+		}
+
+		span {
+			transition:
+				opacity 150ms ease-out,
+				transform 300ms ease-out;
+		}
+
+		&--open {
+			span {
+				opacity: 0;
+				transform: translateX(-100%);
+			}
+
+			&::before {
+				transform: rotate(45deg);
+			}
+
+			&::after {
+				transform: rotate(-45deg);
+			}
+		}
+	}
+
+	&__nav > ul {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	&__settings {
+		display: flex;
+		justify-content: center;
+		gap: 25px;
+		padding-top: 15px;
+		margin-top: 25px;
+		border-top: 1px solid;
+	}
+}

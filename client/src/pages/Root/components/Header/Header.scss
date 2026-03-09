@@ -1,0 +1,41 @@
+@use '@styles/mixins/hover.mixins' as hoverMixins;
+
+.light-theme {
+	.root-header {
+		$bg: #f9f4ef;
+
+		background-color: $bg;
+
+		&-search-bar__toggle {
+			@include hoverMixins.darken-hover-bg($bg: $bg);
+		}
+	}
+}
+
+.dark-theme {
+	.root-header {
+		$bg: #282828;
+
+		background-color: $bg;
+
+		&-search-bar__toggle {
+			@include hoverMixins.lighten-hover-bg($bg: $bg);
+		}
+	}
+}
+
+.root-header {
+	z-index: 5;
+	position: sticky;
+	top: 0;
+	display: flex;
+	align-items: center;
+	box-shadow:
+		0 3px 6px 0 rgb(0 0 0 / 16%),
+		0 0 0 rgb(0 0 0 / 0%);
+
+	&__dropdown-menu {
+		right: 0;
+		top: 110%;
+	}
+}

@@ -1,0 +1,24 @@
+.main-nav-sub-menu-mobile {
+	position: fixed;
+	inset: 0;
+	padding: 15px 35px;
+	z-index: 4;
+	overflow: auto;
+	transform: translateX(100%);
+	transition: transform 500ms ease;
+
+	&--open {
+		transform: translateX(0);
+	}
+
+	&__back-btn {
+		font:
+			700 1.75rem 'Source Sans 3',
+			sans-serif;
+		text-align: start;
+		border-bottom: 1px solid;
+		padding-bottom: 6px;
+		margin-bottom: 5px;
+		width: 100%;
+	}
+}

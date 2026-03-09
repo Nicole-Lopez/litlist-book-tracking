@@ -1,0 +1,39 @@
+@use 'sass:color';
+
+@mixin hover-not-disabled($not: null) {
+	$selector: if(
+		sass($not): ':disabled, #{$not}' ; else: ':disabled',
+	);
+
+	&:not(#{$selector}):hover {
+		@content;
+	}
+}
+
+@mixin hover-bg($bg: null, $bg-hover, $not: null) {
+	@if $bg {
+		background-color: $bg;
+	}
+
+	@if $not {
+		&:not(#{$not}):hover {
+			background-color: $bg-hover;
+		}
+	} @else {
+		&:hover {
+			background-color: $bg-hover;
+		}
+	}
+}
+
+@mixin darken-hover-bg($bg, $not: null) {
+	@include hover-bg(
+		$bg: $bg,
+		$bg-hover: color.scale($bg, $lightness: -8.5%),
+		$not: $not
+	);
+}
+
+@mixin lighten-hover-bg($bg, $not: null) {
+	@include hover-bg($bg: $bg, $bg-hover: color.scale($bg, $lightness: 9%), $not: $not);
+}

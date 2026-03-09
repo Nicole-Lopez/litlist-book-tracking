@@ -1,0 +1,20 @@
+@use '@styles/variables/rootLayout.var' as rootLayout;
+
+.root-header-mobile-layout {
+	justify-content: space-between;
+	height: rootLayout.$header-mobile-height;
+	padding: 0 1rem;
+
+	&__logo-link {
+		position: absolute;
+		inset: auto 0;
+		height: 2.75rem;
+		width: fit-content;
+		margin: 0 auto;
+	}
+
+	&__quick-actions {
+		display: flex;
+		gap: 8px;
+	}
+}

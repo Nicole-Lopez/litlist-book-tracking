@@ -1,0 +1,65 @@
+.light-theme {
+	.main-nav {
+		&__nav-link {
+			color: #382110;
+		}
+
+		&__sub-menu {
+			background-color: #e1c9b2;
+		}
+
+		&__submenu-navlink {
+			&:hover,
+			&--active {
+				color: #fff;
+				background-color: #382110;
+			}
+		}
+	}
+}
+
+.dark-theme {
+	.main-nav {
+		&__sub-menu {
+			background-color: #3f3f3f;
+		}
+	}
+}
+
+.main-nav {
+	&__nav-link {
+		position: relative;
+		display: block;
+		cursor: pointer;
+		font:
+			700 1.85rem/2 'Merriweather Sans',
+			sans-serif;
+		width: fit-content;
+
+		&::before {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			width: 0;
+			height: 5px;
+			background-color: currentcolor;
+			transition-property: width, left;
+			transition-duration: 0.2s;
+		}
+
+		&:hover,
+		&--active {
+			&::before {
+				width: 100%;
+				left: 0;
+			}
+		}
+	}
+
+	&__sub-menu {
+		.main-nav__nav-link {
+			font-size: 1.65rem;
+		}
+	}
+}
