@@ -5,5 +5,17 @@
 			"categories": "Categorías",
 			"contact": "Contacto"
 		}
+	},
+	"footer": {
+		"categories_section": {
+			"label": "Categorías"
+		},
+		"customer_section": {
+			"label": "Atención al cliente",
+			"links": {
+				"contact_us": "Contáctanos"
+			}
+		},
+		"copyright": "Todos los derechos reservados"
 	}
 }
