@@ -21,7 +21,7 @@
 	z-index: 3;
 	padding: $vertical-padding 35px;
 	width: 170px;
-	height: calc(100% - rootLayout.$header-mobile-height - ($vertical-padding * 2));
+	height: calc(100% - rootLayout.$header-height - ($vertical-padding * 2));
 	transform: translateX(-100%);
 	transition: transform 500ms ease;
 	overflow: hidden auto;

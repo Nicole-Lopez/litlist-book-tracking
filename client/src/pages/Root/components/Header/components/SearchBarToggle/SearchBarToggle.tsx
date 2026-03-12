@@ -5,13 +5,7 @@ import DelayedUnmount from '@components/DelayedUnmount/DelayedUnmount'
 import './SearchBarToggle.scss'
 import type { ReactNode } from 'react'
 
-export type SearchBarToggleProps = {
-	isMobile?: boolean
-}
-
-export default function SearchBarToggle({
-	isMobile = true,
-}: SearchBarToggleProps): ReactNode {
+export default function SearchBarToggle(): ReactNode {
 	const [isSearchBarOpen, toggleSearchBarOpen] = useToggle()
 
 	return (
@@ -27,10 +21,6 @@ export default function SearchBarToggle({
 				<div
 					className={`root-header-search-bar ${
 						isSearchBarOpen ? 'root-header-search-bar--open' : ''
-					} ${
-						isMobile
-							? 'root-header-search-bar--mobile'
-							: 'root-header-search-bar--desktop'
 					}`}
 				>
 					<DelayedUnmount isVisible={isSearchBarOpen}>

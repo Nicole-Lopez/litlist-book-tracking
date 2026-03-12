@@ -1,8 +1,5 @@
-@use '@styles/variables/rootLayout.var' as rootLayout;
-
 .root-header-mobile-layout {
 	justify-content: space-between;
-	height: rootLayout.$header-mobile-height;
 	padding: 0 1rem;
 
 	&__logo-link {

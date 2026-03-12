@@ -1,12 +1,9 @@
-@use '@styles/variables/rootLayout.var' as rootLayout;
-
 .root-header-desktop-layout {
-	height: rootLayout.$header-desktop-height;
 	padding: 0 3rem;
 	gap: 15px;
 
 	&__logo {
-		height: 3.5rem;
+		height: 3rem;
 	}
 
 	&__navigation-actions {

@@ -15,7 +15,7 @@ export default function HeaderDesktopLayout(): ReactNode {
 			<div className='root-header-desktop-layout__navigation-actions'>
 				<MainNav className='root-header-desktop-layout__nav' isMobile={false} />
 
-				<SearchBarToggle isMobile={false} />
+				<SearchBarToggle />
 			</div>
 
 			<div className='root-header-desktop-layout__settings'>
