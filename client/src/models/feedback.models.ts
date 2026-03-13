@@ -3,10 +3,10 @@ import type { FEEDBACK_TYPES } from '@constants/feedback.constants'
 
 export type FeedbackTypes = keyof typeof FEEDBACK_TYPES
 
-export type Toast = {
+export type ToastNotification = {
 	id: string
 	content: ReactNode
-	type?: FeedbackTypes
+	type: FeedbackTypes
 	autoCloseDuration?: number
 	isAutoClose?: boolean
 	toastClassName?: string

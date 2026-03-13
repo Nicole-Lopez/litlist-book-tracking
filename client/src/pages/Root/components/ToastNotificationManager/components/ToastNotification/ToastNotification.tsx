@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { FEEDBACK_TYPES } from '@constants/feedback.constants'
-import { removeToast } from '@utilities/feedback.utils'
+import { removeToastNotification } from '@utilities/feedback.utils'
 import SuccessIcon from '@assets/icons/SuccessIcon'
 import InfoIcon from '@assets/icons/InfoIcon'
 import ErrorIcon from '@assets/icons/ErrorIcon'
@@ -9,9 +9,9 @@ import InOutTransition from '@components/InOutTransition/InOutTransition'
 import ProgressBar from '../ProgressBar/ProgressBar'
 import './ToastNotification.scss'
 import type { ReactNode, PointerEvent } from 'react'
-import type { Toast } from '@models/feedback.models'
+import type { ToastNotification as ToastNotificationT } from '@models/feedback.models'
 
-export type ToastNotificationProps = Toast
+export type ToastNotificationProps = ToastNotificationT
 
 const DRAGGABLE_PERCENT = 80
 const INTERACTIVE_SELECTOR = 'button, a, input, textarea, select, [data-no-drag]'
@@ -85,9 +85,7 @@ export default function ToastNotification({
 
 		e.currentTarget.releasePointerCapture(e.pointerId)
 
-		if (!dragSession.isDraggable) {
-			return
-		}
+		if (!dragSession.isDraggable) return
 
 		dragSession.isDraggable = false
 
@@ -129,24 +127,22 @@ export default function ToastNotification({
 			hiddenClassName='toast-notification--hidden'
 			isOut={isClosing}
 			outDuration={500}
-			onOutEnd={() => removeToast(id)}
+			onOutEnd={() => {
+				removeToastNotification(id)
+			}}
 		>
 			<div
 				ref={toastRef}
 				id={id}
 				tabIndex={0}
-				className={`toast-notification__toast ${
-					type !== undefined
-						? `toast-notification__toast--${
-								type === FEEDBACK_TYPES.error
-									? 'error'
-									: type === FEEDBACK_TYPES.info
-										? 'info'
-										: type === FEEDBACK_TYPES.success
-											? 'success'
-											: 'warning'
-							}`
-						: ''
+				className={`toast-notification__toast toast-notification__toast--${
+					type === FEEDBACK_TYPES.error
+						? 'error'
+						: type === FEEDBACK_TYPES.info
+							? 'info'
+							: type === FEEDBACK_TYPES.success
+								? 'success'
+								: 'warning'
 				} ${toastClassName}`}
 				onPointerDown={onDragStart}
 				onPointerMove={onDragMove}
@@ -154,23 +150,17 @@ export default function ToastNotification({
 				onPointerEnter={pauseToast}
 				onPointerLeave={playToast}
 			>
-				{type !== undefined ? (
-					<>
-						{type === FEEDBACK_TYPES.error ? (
-							<ErrorIcon />
-						) : type === FEEDBACK_TYPES.info ? (
-							<InfoIcon />
-						) : type === FEEDBACK_TYPES.success ? (
-							<SuccessIcon />
-						) : (
-							<WarningIcon />
-						)}
-
-						<p className='toast-notification__message'>{content}</p>
-					</>
+				{type === FEEDBACK_TYPES.error ? (
+					<ErrorIcon />
+				) : type === FEEDBACK_TYPES.info ? (
+					<InfoIcon />
+				) : type === FEEDBACK_TYPES.success ? (
+					<SuccessIcon />
 				) : (
-					content
+					<WarningIcon />
 				)}
+
+				<p className='toast-notification__message'>{content}</p>
 
 				<button
 					data-no-drag

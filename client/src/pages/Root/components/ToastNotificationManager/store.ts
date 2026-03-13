@@ -1,9 +1,9 @@
-import type { Toast } from '@models/feedback.models'
+import type { ToastNotification } from '@models/feedback.models'
 
-let toastQueue: Toast[] = []
+let toastQueue: ToastNotification[] = []
 const listeners = new Set<CallableFunction>()
 
-const getSnapshot = (): Toast[] => toastQueue
+const getSnapshot = (): ToastNotification[] => toastQueue
 
 const subscribe = (listener: CallableFunction): (() => boolean) => {
 	listeners.add(listener)
@@ -14,7 +14,7 @@ const notifyListeners = (): void => {
 	listeners.forEach(callback => callback())
 }
 
-const addToast = (newToast: Toast): void => {
+const addToast = (newToast: ToastNotification): void => {
 	const isToastExists = toastQueue.some(toast => toast.id === newToast.id)
 	if (!isToastExists) {
 		toastQueue = [newToast, ...toastQueue]
