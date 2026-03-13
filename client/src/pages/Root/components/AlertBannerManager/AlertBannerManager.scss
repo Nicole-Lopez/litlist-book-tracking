@@ -1,0 +1,7 @@
+@use '@styles/variables/rootLayout.var' as rootLayout;
+
+.alert-banner-manager {
+	position: sticky;
+	z-index: 2;
+	top: rootLayout.$header-height;
+}

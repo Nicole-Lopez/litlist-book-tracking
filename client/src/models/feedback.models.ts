@@ -11,3 +11,11 @@ export type Toast = {
 	isAutoClose?: boolean
 	toastClassName?: string
 }
+
+export type AlertBanner = {
+	id: string
+	content: ReactNode
+	type: FeedbackTypes
+	isCloseButtonDisplayed?: boolean
+	alertBannerClassName?: string
+}

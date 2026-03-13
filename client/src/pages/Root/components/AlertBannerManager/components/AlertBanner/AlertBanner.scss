@@ -1,0 +1,68 @@
+@use '@styles/variables/paletteLightTheme.var' as paletteLightTheme;
+@use '@styles/variables/paletteDarkTheme.var' as paletteDarkTheme;
+
+.light-theme {
+	.alert-banner {
+		&--error {
+			background-color: paletteLightTheme.$color-alert-error-bg;
+		}
+
+		&--info {
+			background-color: paletteLightTheme.$color-alert-info-bg;
+		}
+
+		&--success {
+			background-color: paletteLightTheme.$color-alert-success-bg;
+		}
+
+		&--warning {
+			background-color: paletteLightTheme.$color-alert-warning-bg;
+		}
+	}
+}
+
+.dark-theme {
+	.alert-banner {
+		&--error {
+			background-color: paletteDarkTheme.$color-alert-error-bg;
+		}
+
+		&--info {
+			background-color: paletteDarkTheme.$color-alert-info-bg;
+		}
+
+		&--success {
+			background-color: paletteDarkTheme.$color-alert-success-bg;
+		}
+
+		&--warning {
+			background-color: paletteDarkTheme.$color-alert-warning-bg;
+		}
+	}
+}
+
+.alert-banner {
+	padding: 8px 35px;
+	color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font:
+		500 1.65rem 'Source Sans 3',
+		sans-serif;
+	text-align: center;
+	transform-origin: top center;
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	transition-property: opacity, transform;
+	transition-duration: 130ms, 65ms;
+
+	&__close-btn {
+		position: absolute;
+		right: 13px;
+	}
+
+	&--hidden {
+		transform: scaleY(0.9);
+		opacity: 0;
+	}
+}
