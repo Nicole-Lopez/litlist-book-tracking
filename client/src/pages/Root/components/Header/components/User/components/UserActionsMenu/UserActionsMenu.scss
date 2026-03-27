@@ -1,0 +1,21 @@
+.root-header-user-actions-menu {
+	&__toggle {
+		border-radius: 50%;
+		overflow: hidden;
+		width: 4rem;
+		aspect-ratio: 1 / 1;
+
+		img {
+			width: 100%;
+		}
+	}
+
+	&__username {
+		font:
+			600 1.65rem 'Merriweather Sans',
+			sans-serif;
+		padding: 15px 20px 10px;
+		border-bottom: 1px silver solid;
+		text-align: center;
+	}
+}

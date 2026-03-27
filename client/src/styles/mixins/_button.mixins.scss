@@ -1,0 +1,8 @@
+@mixin btn-base() {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 5px;
+	padding: 8px 15px;
+	font-family: 'Source Sans 3', sans-serif;
+}

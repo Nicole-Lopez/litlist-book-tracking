@@ -1,0 +1,26 @@
+.auth-access-modal-anonymous-panel {
+	&__description {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		font-family: 'Source Sans 3', sans-serif;
+		margin-bottom: 20px;
+
+		p,
+		h2,
+		li {
+			font-size: 1.7rem;
+		}
+
+		h2 {
+			font-weight: 600;
+			padding-bottom: 8px;
+		}
+
+		li {
+			list-style-type: disc;
+			margin-left: 2rem;
+			padding: 2.5px 0;
+		}
+	}
+}

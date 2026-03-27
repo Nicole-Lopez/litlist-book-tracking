@@ -1,0 +1,120 @@
+@use '@styles/variables/paletteLightTheme.var' as paletteLightTheme;
+@use '@styles/variables/paletteDarkTheme.var' as paletteDarkTheme;
+@use '@styles/mixins/text.mixins' as textMixins;
+
+.light-theme {
+	.writable-input-field {
+		&__label {
+			color: rgba(paletteLightTheme.$color-input-border, 70%);
+		}
+
+		&__input {
+			border-color: paletteLightTheme.$color-input-border;
+
+			&:hover {
+				border-color: paletteLightTheme.$color-input-border-hover;
+			}
+
+			&:focus {
+				border-color: paletteLightTheme.$color-input-border-focus;
+			}
+		}
+
+		&--error {
+			.writable-input-field {
+				&__input {
+					border-color: paletteLightTheme.$color-text-inline-error;
+				}
+
+				&__label {
+					color: paletteLightTheme.$color-text-inline-error;
+				}
+			}
+		}
+	}
+}
+
+.dark-theme {
+	.writable-input-field {
+		&__label {
+			color: rgba(paletteDarkTheme.$color-input-border, 70%);
+		}
+
+		&__input {
+			border-color: paletteDarkTheme.$color-input-border;
+
+			&:hover {
+				border-color: paletteDarkTheme.$color-input-border-hover;
+			}
+
+			&:focus {
+				border-color: paletteDarkTheme.$color-input-border-focus;
+			}
+		}
+
+		&--error {
+			.writable-input-field {
+				&__input {
+					border-color: paletteDarkTheme.$color-text-inline-error;
+				}
+
+				&__label {
+					color: paletteDarkTheme.$color-text-inline-error;
+				}
+			}
+		}
+	}
+}
+
+.writable-input-field {
+	$input-padding: 1.25rem;
+
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	font:
+		600 1.7rem 'Source Sans 3',
+		sans-serif;
+
+	&__label {
+		$padding-width: 0.6rem;
+
+		position: absolute;
+		left: calc($input-padding - $padding-width);
+		top: $input-padding;
+		padding: 0 $padding-width;
+		cursor: text;
+		transition-duration: 200ms;
+		transition-timing-function: ease-in;
+		transition-property: top, left, font-size;
+	}
+
+	&__input {
+		flex: 1;
+		border: 1px solid;
+		border-radius: 0.5rem;
+		font: 400 2rem sans-serif;
+		color: currentcolor;
+		outline: none;
+		background: transparent;
+		transition: border-color 130ms ease-in;
+		padding: $input-padding;
+
+		&:focus ~ .writable-input-field__label,
+		&:not(:placeholder-shown) ~ .writable-input-field__label {
+			top: -1.05rem;
+			font-size: 1.5rem;
+			left: 0.8rem;
+		}
+
+		&:not(&--textarea) ~ .writable-input-field__label {
+			@include textMixins.text-single-ellipsis();
+
+			max-width: 80%;
+		}
+
+		&--textarea {
+			font-size: 1.8rem;
+		}
+	}
+}

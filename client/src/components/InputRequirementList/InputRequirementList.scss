@@ -1,0 +1,46 @@
+@use '@styles/variables/paletteLightTheme.var' as paletteLightTheme;
+@use '@styles/variables/paletteDarkTheme.var' as paletteDarkTheme;
+
+.light-theme {
+	.input-requirement-list {
+		&__requirement {
+			&--completed {
+				color: paletteLightTheme.$color-text-inline-success;
+			}
+		}
+	}
+}
+
+.dark-theme {
+	.input-requirement-list {
+		&__requirement {
+			&--completed {
+				color: paletteDarkTheme.$color-text-inline-success;
+			}
+		}
+	}
+}
+
+.input-requirement-list {
+	&__requirement {
+		display: flex;
+		align-items: baseline;
+		font:
+			400 1.5rem 'Source Sans 3',
+			sans-serif;
+		margin: 7px 0 7px 10px;
+
+		&::before {
+			content: '\25CF';
+			display: inline-block;
+			font-size: 1.2rem;
+			min-width: 1.5rem;
+		}
+
+		&--completed {
+			&::before {
+				content: '\2713';
+			}
+		}
+	}
+}

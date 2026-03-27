@@ -1,0 +1,67 @@
+{
+	"auth_access": {
+		"sign_in": {
+			"title": "Welcome back",
+			"auth_provider_label": {
+				"google": "Sign in with Google",
+				"anonymous": "Sign in as a guest"
+			},
+			"change_panel": "Don't have an account?"
+		},
+		"sign_up": {
+			"title": "Join LitList",
+			"auth_provider_label": {
+				"google": "Sign up with Google"
+			},
+			"change_panel": "If you already have an account,"
+		},
+		"anonymous_account": {
+			"title": "Explore LitList without commitments!",
+			"description": "<p>As a guest, you'll have access to our incredible features to discover and organize your favorite books.</p><div><h2>However, you will have some limitations:</h2><ul><li><strong>Want to Read Library:</strong> maximum 10 books</li><li><strong>Currently Reading Library:</strong> maximum 10 books</li><li><strong>Read Books Library:</strong> maximum 10 books</li><li><strong>Reading Lists:</strong> Create up to 3 reading lists, each with space for 5 books.</li></ul></div><p>Please note that as a guest account, your data may be deleted at any time.</p><p>You always have the option to upgrade to a regular account by registering from the <strong>Profile page</strong>, allowing you to retain your data and access LitList without limitations.</p>",
+			"change_panel": "Create an account without limits,"
+		},
+		"divider": "Or",
+		"actions": {
+			"sign_in": "Sign in",
+			"sign_up": "Sign up",
+			"anonymous": "Sign in as a guest"
+		},
+		"server_error_messages": {
+			"network_error": "A network error occurred. Please try again later",
+			"network_retrying": "A network error occurred. Please wait a moment",
+			"invalid_credentials": "Incorrect email or password",
+			"email_already_in_use": "This email is already in use. Please use a different email"
+		}
+	},
+	"settings_form": {
+		"fields": {
+			"username": {
+				"label": "Username",
+				"requirements": {
+					"length": "Must be between 5 and 20 characters",
+					"content": "Must not contain spaces or special characters. Can only contain letters, numbers, dashes (-), and underscores (_)"
+				}
+			},
+			"email": {
+				"label": "Email",
+				"error_messages": {
+					"invalid_email": "Invalid email address"
+				}
+			},
+			"password": {
+				"label": "Password",
+				"requirements": {
+					"length": "Must be a minimum of 8 characters",
+					"content": "Must contain a number, a special character, and both uppercase and lowercase letters"
+				},
+				"reset_password_label": "Forgot your password?"
+			},
+			"confirm_password": {
+				"label": "Confirm password",
+				"error_messages": {
+					"not_match": "Passwords do not match"
+				}
+			}
+		}
+	}
+}

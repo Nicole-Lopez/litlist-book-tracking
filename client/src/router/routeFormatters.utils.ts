@@ -1,4 +1,10 @@
-import { HOME_PATH, CATEGORIES_PATH, CONTACT_PATH } from '@router/routePaths.constants'
+import {
+	HOME_PATH,
+	CATEGORIES_PATH,
+	CONTACT_PATH,
+	USER_PROFILE_PATH,
+	USER_SETTINGS_PATH,
+} from '@router/routePaths.constants'
 import type { CategoriesRouteParams } from '@router/routeParams.models'
 
 export function formatRoute<ParamsT extends Record<string, string>>(
@@ -20,3 +26,8 @@ export const getContactRoute = (): string => CONTACT_PATH
 
 export const getCategoriesRoute = (params: CategoriesRouteParams): string =>
 	formatRoute(CATEGORIES_PATH, params)
+
+// User routes
+export const getUserProfileRoute = (): string => USER_PROFILE_PATH
+
+export const getUserSettingsRoute = (): string => USER_SETTINGS_PATH

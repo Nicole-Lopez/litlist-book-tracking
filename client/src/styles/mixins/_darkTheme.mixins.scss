@@ -1,11 +1,20 @@
 @use '@styles/variables/paletteDarkTheme.var' as paletteDarkTheme;
 @use '@styles/mixins/hover.mixins' as hoverMixins;
+@use '@styles/mixins/input.mixins' as inputMixins;
 
 @mixin hover-bg-default($not: null) {
 	@include hoverMixins.hover-bg(
 		$bg-hover: paletteDarkTheme.$color-hover-default,
 		$not: $not
 	);
+}
+
+@mixin btn-action-primary($not: null) {
+	background-color: paletteDarkTheme.$color-action-primary;
+
+	@include hoverMixins.hover-not-disabled($not: $not) {
+		background-color: paletteDarkTheme.$color-action-primary-hover;
+	}
 }
 
 @mixin btn-action-secondary($not: null) {
@@ -30,6 +39,14 @@
 	@include hoverMixins.hover-not-disabled($not: $not) {
 		background-color: paletteDarkTheme.$color-library-primary-hover;
 	}
+}
+
+@mixin input-label-bg-default() {
+	@include inputMixins.input-label-bg(paletteDarkTheme.$color-bg-default);
+}
+
+@mixin input-label-bg-surface() {
+	@include inputMixins.input-label-bg(paletteDarkTheme.$color-bg-surface);
 }
 
 @mixin custom-scrollbar() {

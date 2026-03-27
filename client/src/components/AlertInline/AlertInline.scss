@@ -1,0 +1,58 @@
+@use '@styles/variables/paletteLightTheme.var' as paletteLightTheme;
+@use '@styles/variables/paletteDarkTheme.var' as paletteDarkTheme;
+
+.light-theme {
+	.alert-inline {
+		&--error {
+			background-color: rgba(paletteLightTheme.$color-alert-error-bg, 60%);
+			color: #fff;
+		}
+
+		&--info {
+			background-color: rgba(paletteLightTheme.$color-alert-info-bg, 50%);
+		}
+
+		&--success {
+			background-color: rgba(paletteLightTheme.$color-alert-success-bg, 50%);
+		}
+
+		&--warning {
+			background-color: rgba(paletteLightTheme.$color-alert-warning-bg, 50%);
+		}
+	}
+}
+
+.dark-theme {
+	.alert-inline {
+		&--error {
+			background-color: rgba(paletteDarkTheme.$color-alert-error-bg, 65%);
+		}
+
+		&--info {
+			background-color: rgba(paletteDarkTheme.$color-alert-info-bg, 65%);
+		}
+
+		&--success {
+			background-color: rgba(paletteDarkTheme.$color-alert-success-bg, 65%);
+		}
+
+		&--warning {
+			background-color: rgba(paletteDarkTheme.$color-alert-warning-bg, 65%);
+		}
+	}
+}
+
+.alert-inline {
+	display: flex;
+	gap: 10px;
+	padding: 20px;
+	font:
+		500 1.65rem 'Source Sans 3',
+		sans-serif;
+	border-radius: 6px;
+
+	svg {
+		width: 22px;
+		flex-shrink: 0;
+	}
+}

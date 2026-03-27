@@ -1,0 +1,123 @@
+@use '@styles/variables/paletteLightTheme.var' as paletteLightTheme;
+@use '@styles/variables/paletteDarkTheme.var' as paletteDarkTheme;
+@use '@styles/mixins/lightTheme.mixins' as lightThemeMixins;
+@use '@styles/mixins/darkTheme.mixins' as darkThemeMixins;
+@use '@styles/mixins/hover.mixins' as hoverMixins;
+
+.light-theme {
+	.auth-access-modal-panel {
+		@include lightThemeMixins.input-label-bg-surface();
+
+		&__auth-provider-btn {
+			@include hoverMixins.hover-not-disabled() {
+				background-color: paletteLightTheme.$color-hover-default;
+			}
+		}
+
+		&__change-panel {
+			button {
+				color: paletteLightTheme.$color-text-link;
+			}
+		}
+
+		&__submit-btn {
+			@include lightThemeMixins.btn-action-primary();
+		}
+	}
+}
+
+.dark-theme {
+	.auth-access-modal-panel {
+		@include darkThemeMixins.input-label-bg-surface();
+
+		&__auth-provider-btn {
+			@include hoverMixins.hover-not-disabled() {
+				background-color: paletteDarkTheme.$color-hover-default;
+			}
+		}
+
+		&__change-panel {
+			button {
+				color: paletteDarkTheme.$color-text-link;
+			}
+		}
+
+		&__submit-btn {
+			@include darkThemeMixins.btn-action-primary();
+		}
+	}
+}
+
+.auth-access-modal-panel {
+	&__auth-provider-btn {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 5px;
+		padding: 10px;
+		margin: 10px auto;
+		width: 93%;
+		font:
+			500 1.55rem 'Merriweather Sans',
+			sans-serif;
+		border: 1px solid rgb(201 201 201 / 80%);
+		border-radius: 15px;
+
+		svg {
+			width: 24px;
+		}
+	}
+
+	&--loading {
+		filter: brightness(90%);
+		pointer-events: none;
+	}
+
+	&__divider {
+		position: relative;
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		width: 100%;
+		font:
+			400 1.7rem 'Merriweather Sans',
+			sans-serif;
+
+		&::after,
+		&::before {
+			content: '';
+			display: inline-block;
+			width: 100%;
+			height: 1px;
+			background-color: currentcolor;
+		}
+	}
+
+	&__change-panel {
+		padding-top: 15px;
+		font:
+			400 1.6rem 'Merriweather Sans',
+			sans-serif;
+		text-align: center;
+
+		button {
+			font-weight: 600;
+			margin-left: 5px;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+
+	.writable-input-field {
+		margin: 25px 0;
+	}
+
+	&__submit-btn {
+		width: 100%;
+		height: 40px;
+		font-size: 1.7rem;
+		font-weight: 600;
+	}
+}

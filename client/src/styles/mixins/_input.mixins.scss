@@ -1,0 +1,6 @@
+@mixin input-label-bg($bg) {
+	.writable-input-field__label,
+	.tags-input-field__label {
+		background-color: $bg;
+	}
+}

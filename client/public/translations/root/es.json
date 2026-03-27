@@ -3,7 +3,13 @@
 		"nav_links": {
 			"home": "Explorar",
 			"categories": "Categorías",
-			"contact": "Contacto"
+			"contact": "Contacto",
+			"library": "Biblioteca"
+		},
+		"user_actions": {
+			"profile": "Perfil",
+			"settings": "Configuración",
+			"sign_out": "Cerrar sesión"
 		}
 	},
 	"footer": {

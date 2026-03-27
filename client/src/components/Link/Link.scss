@@ -1,0 +1,23 @@
+@use '@styles/variables/paletteLightTheme.var' as paletteLightTheme;
+@use '@styles/variables/paletteDarkTheme.var' as paletteDarkTheme;
+
+.light-theme {
+	.link {
+		color: paletteLightTheme.$color-text-link;
+	}
+}
+
+.dark-theme {
+	.link {
+		color: paletteDarkTheme.$color-text-link;
+	}
+}
+
+.link {
+	font-family: 'Source Sans 3', sans-serif;
+	text-decoration: underline 2px;
+
+	&:hover {
+		text-decoration-thickness: 3px;
+	}
+}

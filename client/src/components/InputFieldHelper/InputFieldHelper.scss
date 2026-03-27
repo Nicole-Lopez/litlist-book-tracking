@@ -1,0 +1,26 @@
+@use '@styles/variables/paletteLightTheme.var' as paletteLightTheme;
+@use '@styles/variables/paletteDarkTheme.var' as paletteDarkTheme;
+
+.light-theme {
+	.input-field-helper {
+		&--error {
+			color: paletteLightTheme.$color-text-inline-error;
+		}
+	}
+}
+
+.dark-theme {
+	.input-field-helper {
+		&--error {
+			color: paletteDarkTheme.$color-text-inline-error;
+		}
+	}
+}
+
+.input-field-helper {
+	display: block;
+	font:
+		600 1.47rem 'Source Sans 3',
+		sans-serif;
+	padding-top: 5px;
+}

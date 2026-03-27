@@ -1,0 +1,5 @@
+@use '@styles/mixins/button.mixins' as buttonMixins;
+
+.button-with-loader {
+	@include buttonMixins.btn-base();
+}

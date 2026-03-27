@@ -6,4 +6,5 @@ export const SUPPORTED_LANGS = {
 export const TRANSLATIONS_NS = {
 	root: 'root',
 	bookCategories: 'bookCategories',
+	user: 'user',
 } as const
