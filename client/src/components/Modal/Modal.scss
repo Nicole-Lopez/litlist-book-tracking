@@ -1,0 +1,82 @@
+@use '@styles/variables/paletteLightTheme.var' as paletteLightTheme;
+@use '@styles/variables/paletteDarkTheme.var' as paletteDarkTheme;
+
+.light-theme {
+	.modal {
+		&__dialog {
+			background-color: paletteLightTheme.$color-bg-surface;
+		}
+	}
+}
+
+.dark-theme {
+	.modal {
+		&__dialog {
+			background-color: paletteDarkTheme.$color-bg-surface;
+		}
+	}
+}
+
+.modal {
+	&,
+	&-transition {
+		position: fixed;
+		inset: 0;
+		z-index: 999;
+		overflow: auto;
+	}
+
+	&-transition {
+		pointer-events: none;
+		opacity: 0;
+		transform: translateY(-25px);
+		transition:
+			opacity 150ms ease-in-out,
+			transform 150ms ease-in-out;
+
+		&--open {
+			opacity: 1;
+			pointer-events: auto;
+			transform: translateY(0);
+		}
+	}
+
+	&--with-overlay {
+		background-color: rgb(0 0 0 / 50%);
+	}
+
+	&__dialog {
+		position: relative;
+		top: 20px;
+		margin: 10px auto 30px;
+		width: clamp(270px, 80vw, 450px);
+		padding: 25px clamp(16px, 5vw, 90px);
+		border-radius: 8px;
+	}
+
+	&__close-btn {
+		position: absolute;
+		right: 20px;
+		top: 15px;
+		font-size: 2rem;
+	}
+
+	&__title {
+		font:
+			600 1.9rem 'Merriweather Sans',
+			sans-serif;
+		text-align: center;
+		padding: 0 20px 15px;
+	}
+
+	&__dialog--loader {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 450px;
+
+		.three-dots-loader {
+			font-size: 2rem;
+		}
+	}
+}

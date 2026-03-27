@@ -1,0 +1,33 @@
+.three-dots-loader {
+    width: 4.5rem;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+
+    div {
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+        background-color: currentcolor;
+        animation: fade 300ms ease-in-out alternate infinite;
+
+        &:nth-of-type(1) {
+            animation-delay: -400ms;
+        }
+
+        &:nth-of-type(2) {
+            animation-delay: -200ms;
+        }
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0.4;
+    }
+}
