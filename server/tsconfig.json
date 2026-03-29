@@ -1,24 +1,31 @@
 {
 	"compilerOptions": {
-		"rootDirs": ["src"],
+		"rootDir": "src",
 		"outDir": "dist",
-		"lib": ["es2020"],
-		"target": "es2020",
-		"module": "esnext",
-		"moduleResolution": "node",
+
+		"target": "ES2022",
+		"lib": ["ES2022"],
+
+		"module": "NodeNext",
+		"moduleResolution": "NodeNext",
+
 		"esModuleInterop": true,
-		"strictNullChecks": true,
+		"strict": true,
+
 		"types": ["node"],
-		"baseUrl": "./src",
+
+		"moduleDetection": "force",
+
+		"baseUrl": ".",
 		"paths": {
-			"@gqlTypes": ["__generated__/resolvers.generated.js"],
-			"@dataSources/*": ["schema/dataSources/*"],
-			"@resolvers/*": ["schema/resolvers/*"],
-			"@queries/*": ["schema/resolvers/queries/*"],
-			"@models/*": ["models/*"],
-			"@utilities/*": ["utilities/*"],
-			"@constants/*": ["constants/*"],
-			"@adapters/*": ["adapters/*"]
+			"@gqlTypes": ["src/__generated__/resolvers.generated"],
+			"@dataSources/*": ["src/schema/dataSources/*"],
+			"@resolvers/*": ["src/schema/resolvers/*"],
+			"@queries/*": ["src/schema/resolvers/queries/*"],
+			"@models/*": ["src/models/*"],
+			"@utilities/*": ["src/utilities/*"],
+			"@constants/*": ["src/constants/*"],
+			"@adapters/*": ["src/adapters/*"]
 		}
 	}
 }
