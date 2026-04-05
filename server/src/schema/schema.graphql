@@ -1,98 +1,84 @@
-enum BestSellersListsAvailable {
-	HARDCOVER_FICTION
-	HARDCOVER_NONFICTION
-	PRINT_AND_EBOOK_FICTION
-	PRINT_AND_EBOOK_NONFICTION
-	PAPERBACK_NONFICTION
-	PAPERBACK_FICTION
-	YOUNG_ADULT_HARDCOVER
-	MIDDLE_GRADE_HARDCOVER
+enum BestSellersListName {
+	FICTION
+	NON_FICTION
+	YOUNG_ADULT
+	CHILDRENS
 	GRAPHIC_BOOKS_AND_MANGA
 }
 
-enum CategoriesAvailable {
+enum Category {
 	FICTION
 	NON_FICTION
 	ROMANCE
-	YOUNG_ADULT_FICTION
-	ACTION
+	YOUNG_ADULT
+	GRAPHIC_BOOKS_AND_MANGA
 	FANTASY
 	HORROR
 	MYSTERY
 	THRILLER
-	SUSPENSE
 	SCIENCE_FICTION
 	ART
 	PHILOSOPHY
 	RELIGION
-	TRAVEL
 	CHILDRENS
-	COMICS
-	WEREWOLVES
-	VAMPIRES
+	CLASSICS
+	BUSINESS
+	POETRY
+	LGBTQ
 }
 
-type BookSummary {
+interface BookSummary {
 	id: ID!
-	isGoogleID: Boolean!
+	isGoogleId: Boolean!
 	title: String!
-	authors: [String!]!
-	cover: String!
+	authors: [String!]
+	cover: String
 }
 
-type BookPreview {
+type BookPreview implements BookSummary {
 	id: ID!
-	isGoogleID: Boolean!
+	isGoogleId: Boolean!
 	title: String!
-	authors: [String!]!
-	cover: String!
+	authors: [String!]
+	cover: String
 	publishedYear: Int
 	pageCount: Int
 	categories: [String!]
 	isbn: [String!]
 }
 
-type BookDetail {
+type BookDetails implements BookSummary {
+	id: ID!
+	isGoogleId: Boolean!
 	title: String!
-	authors: [String!]!
-	cover: String!
+	authors: [String!]
+	cover: String
 	subtitle: String
 	description: String
-	additionalInfo: BookAdditionalInfo!
-	categories: BookCategoriesDetail
-}
-
-type BookAdditionalInfo {
 	pageCount: Int
+	categories: [String!]
 	publishedDate: String
 	language: String
 	publisher: String
 }
 
-type BookCategoriesDetail {
-	subject: [String]
-	place: [String]
-	person: [String]
-}
-
-type SearchLimitedBooks {
-	length: Int!
-	books: [BookSummary!]!
-}
-
 type BestSellersList {
 	id: ID!
-	listName: BestSellersListsAvailable!
-	last_modified: String!
+	listName: BestSellersListName!
+	latestUpdate: Int!
 	books: [BookSummary!]!
+}
+
+input BookDetailsInput {
+	id: ID
+	title: String
+	author: String
+	isbn: [String!]
 }
 
 type Query {
-	allBestSellersLists: [BestSellersList!]
-	booksByCategory(subject: CategoriesAvailable!): [BookPreview!]
-	booksByAuthor(author: String!): [BookSummary!]
-	searchBooks(term: String!): [BookPreview!]
-	searchLimitedBooks(term: String!): SearchLimitedBooks
-	bookDetail(id: ID!): BookDetail
-	findBookId(title: String!, author: String!): ID
+	bestSellersLists: [BestSellersList!]
+	booksByCategory(category: Category!): [BookPreview!]
+	searchBooks(query: String!): [BookPreview!]
+	bookDetails(book: BookDetailsInput!): BookDetails
 }
