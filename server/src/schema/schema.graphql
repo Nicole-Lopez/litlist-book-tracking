@@ -27,7 +27,7 @@ enum Category {
 	LGBTQ
 }
 
-interface BookSummary {
+type BookSummary {
 	id: ID!
 	isGoogleId: Boolean!
 	title: String!
@@ -35,7 +35,7 @@ interface BookSummary {
 	cover: String
 }
 
-type BookPreview implements BookSummary {
+type BookPreview {
 	id: ID!
 	isGoogleId: Boolean!
 	title: String!
@@ -47,7 +47,7 @@ type BookPreview implements BookSummary {
 	isbn: [String!]
 }
 
-type BookDetails implements BookSummary {
+type BookDetails {
 	id: ID!
 	isGoogleId: Boolean!
 	title: String!
