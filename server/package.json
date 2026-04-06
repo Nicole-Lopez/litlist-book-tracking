@@ -6,12 +6,12 @@
 		"build": "tsc && tsc-alias",
 		"start": "node ./dist/index.js",
 		"dev": "tsx watch --env-file=.env src/index.ts",
-		"gql-generate": "graphql-codegen --config codegen.yml",
+		"gql-generate": "graphql-codegen --config codegen.ts",
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
 		"format": "prettier . --write",
 		"format:check": "prettier . --check",
-		"typecheck": "tsc --noEmit"
+		"typecheck": "tsc --noEmit",
 	},
 	"engines": {
 		"node": ">=16.18.0",
@@ -28,9 +28,10 @@
 	},
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
-		"@graphql-codegen/cli": "^5.0.0",
-		"@graphql-codegen/typescript": "^4.0.1",
-		"@graphql-codegen/typescript-resolvers": "^4.0.1",
+		"@graphql-codegen/cli": "6.2.1",
+		"@graphql-codegen/import-types-preset": "^4.0.0",
+		"@graphql-codegen/typescript": "5.0.9",
+		"@graphql-codegen/typescript-resolvers": "5.1.7",
 		"@graphql-eslint/eslint-plugin": "^4.4.0",
 		"@types/cors": "^2.8.19",
 		"@types/express": "^5.0.6",
