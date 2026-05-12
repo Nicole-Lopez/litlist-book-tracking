@@ -5,27 +5,28 @@
 
 		"target": "ES2022",
 		"lib": ["ES2022"],
+		"types": ["node"],
 
 		"module": "NodeNext",
 		"moduleResolution": "NodeNext",
-
-		"esModuleInterop": true,
-		"strict": true,
-
-		"types": ["node"],
-
 		"moduleDetection": "force",
 
-		"baseUrl": ".",
+		"strict": true,
+		"skipLibCheck": true,
+
+		"esModuleInterop": true,
+
 		"paths": {
-			"@gqlTypes": ["src/__generated__/resolvers.generated"],
-			"@dataSources/*": ["src/schema/dataSources/*"],
-			"@resolvers/*": ["src/schema/resolvers/*"],
-			"@queries/*": ["src/schema/resolvers/queries/*"],
-			"@models/*": ["src/models/*"],
-			"@utilities/*": ["src/utilities/*"],
-			"@constants/*": ["src/constants/*"],
-			"@adapters/*": ["src/adapters/*"]
+			"@gqlTypes": ["./src/generated/graphql.js"],
+			"@dataSources/*": ["./src/dataSources/*"],
+			"@resolvers/*": ["./src/schema/resolvers/*"],
+			"@queries/*": ["./src/schema/resolvers/queries/*"],
+			"@models/*": ["./src/models/*"],
+			"@customTypes/*": ["./src/types/*"],
+			"@utilities/*": ["./src/utilities/*"],
+			"@constants/*": ["./src/constants/*"],
+			"@adapters/*": ["./src/adapters/*"]
 		}
-	}
+	},
+	"exclude": ["node_modules", "dist", "codegen.ts"]
 }
