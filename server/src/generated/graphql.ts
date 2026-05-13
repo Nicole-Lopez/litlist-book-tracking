@@ -21,7 +21,7 @@ export type GqlBestSellersList = {
   __typename?: 'BestSellersList';
   books: Array<GqlBookSummary>;
   id: Scalars['ID']['output'];
-  latestUpdate: Scalars['Int']['output'];
+  latestUpdate: Scalars['String']['output'];
   listName: GqlBestSellersListName;
 };
 
@@ -41,19 +41,25 @@ export type GqlBookDetails = {
   description?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
   isGoogleId: Scalars['Boolean']['output'];
+  isbn10?: Maybe<Scalars['String']['output']>;
+  isbn13?: Maybe<Scalars['String']['output']>;
   language?: Maybe<Scalars['String']['output']>;
   pageCount?: Maybe<Scalars['Int']['output']>;
   publishedDate?: Maybe<Scalars['String']['output']>;
+  publishedYear?: Maybe<Scalars['Int']['output']>;
   publisher?: Maybe<Scalars['String']['output']>;
+  relatedBooks?: Maybe<Array<GqlBookSummary>>;
   subtitle?: Maybe<Scalars['String']['output']>;
   title: Scalars['String']['output'];
 };
 
 export type GqlBookDetailsInput = {
-  author?: InputMaybe<Scalars['String']['input']>;
-  id?: InputMaybe<Scalars['ID']['input']>;
-  isbn?: InputMaybe<Array<Scalars['String']['input']>>;
-  title?: InputMaybe<Scalars['String']['input']>;
+  authors?: InputMaybe<Array<Scalars['String']['input']>>;
+  id: Scalars['ID']['input'];
+  isGoogleId: Scalars['Boolean']['input'];
+  isbn10?: InputMaybe<Scalars['String']['input']>;
+  isbn13?: InputMaybe<Scalars['String']['input']>;
+  title: Scalars['String']['input'];
 };
 
 export type GqlBookPreview = {
@@ -63,7 +69,8 @@ export type GqlBookPreview = {
   cover?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
   isGoogleId: Scalars['Boolean']['output'];
-  isbn?: Maybe<Array<Scalars['String']['output']>>;
+  isbn10?: Maybe<Scalars['String']['output']>;
+  isbn13?: Maybe<Scalars['String']['output']>;
   pageCount?: Maybe<Scalars['Int']['output']>;
   publishedYear?: Maybe<Scalars['Int']['output']>;
   title: Scalars['String']['output'];
@@ -75,6 +82,8 @@ export type GqlBookSummary = {
   cover?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
   isGoogleId: Scalars['Boolean']['output'];
+  isbn10?: Maybe<Scalars['String']['output']>;
+  isbn13?: Maybe<Scalars['String']['output']>;
   title: Scalars['String']['output'];
 };
 
@@ -119,6 +128,7 @@ export type GqlQueryBooksByCategoryArgs = {
 
 
 export type GqlQuerySearchBooksArgs = {
+  isFullSearch?: InputMaybe<Scalars['Boolean']['input']>;
   query: Scalars['String']['input'];
 };
 
@@ -226,7 +236,7 @@ export type GqlResolversParentTypes = {
 export type GqlBestSellersListResolvers<ContextType = ContextServer, ParentType extends GqlResolversParentTypes['BestSellersList'] = GqlResolversParentTypes['BestSellersList']> = {
   books?: Resolver<Array<GqlResolversTypes['BookSummary']>, ParentType, ContextType>;
   id?: Resolver<GqlResolversTypes['ID'], ParentType, ContextType>;
-  latestUpdate?: Resolver<GqlResolversTypes['Int'], ParentType, ContextType>;
+  latestUpdate?: Resolver<GqlResolversTypes['String'], ParentType, ContextType>;
   listName?: Resolver<GqlResolversTypes['BestSellersListName'], ParentType, ContextType>;
 };
 
@@ -237,10 +247,14 @@ export type GqlBookDetailsResolvers<ContextType = ContextServer, ParentType exte
   description?: Resolver<Maybe<GqlResolversTypes['String']>, ParentType, ContextType>;
   id?: Resolver<GqlResolversTypes['ID'], ParentType, ContextType>;
   isGoogleId?: Resolver<GqlResolversTypes['Boolean'], ParentType, ContextType>;
+  isbn10?: Resolver<Maybe<GqlResolversTypes['String']>, ParentType, ContextType>;
+  isbn13?: Resolver<Maybe<GqlResolversTypes['String']>, ParentType, ContextType>;
   language?: Resolver<Maybe<GqlResolversTypes['String']>, ParentType, ContextType>;
   pageCount?: Resolver<Maybe<GqlResolversTypes['Int']>, ParentType, ContextType>;
   publishedDate?: Resolver<Maybe<GqlResolversTypes['String']>, ParentType, ContextType>;
+  publishedYear?: Resolver<Maybe<GqlResolversTypes['Int']>, ParentType, ContextType>;
   publisher?: Resolver<Maybe<GqlResolversTypes['String']>, ParentType, ContextType>;
+  relatedBooks?: Resolver<Maybe<Array<GqlResolversTypes['BookSummary']>>, ParentType, ContextType>;
   subtitle?: Resolver<Maybe<GqlResolversTypes['String']>, ParentType, ContextType>;
   title?: Resolver<GqlResolversTypes['String'], ParentType, ContextType>;
 };
@@ -251,7 +265,8 @@ export type GqlBookPreviewResolvers<ContextType = ContextServer, ParentType exte
   cover?: Resolver<Maybe<GqlResolversTypes['String']>, ParentType, ContextType>;
   id?: Resolver<GqlResolversTypes['ID'], ParentType, ContextType>;
   isGoogleId?: Resolver<GqlResolversTypes['Boolean'], ParentType, ContextType>;
-  isbn?: Resolver<Maybe<Array<GqlResolversTypes['String']>>, ParentType, ContextType>;
+  isbn10?: Resolver<Maybe<GqlResolversTypes['String']>, ParentType, ContextType>;
+  isbn13?: Resolver<Maybe<GqlResolversTypes['String']>, ParentType, ContextType>;
   pageCount?: Resolver<Maybe<GqlResolversTypes['Int']>, ParentType, ContextType>;
   publishedYear?: Resolver<Maybe<GqlResolversTypes['Int']>, ParentType, ContextType>;
   title?: Resolver<GqlResolversTypes['String'], ParentType, ContextType>;
@@ -262,6 +277,8 @@ export type GqlBookSummaryResolvers<ContextType = ContextServer, ParentType exte
   cover?: Resolver<Maybe<GqlResolversTypes['String']>, ParentType, ContextType>;
   id?: Resolver<GqlResolversTypes['ID'], ParentType, ContextType>;
   isGoogleId?: Resolver<GqlResolversTypes['Boolean'], ParentType, ContextType>;
+  isbn10?: Resolver<Maybe<GqlResolversTypes['String']>, ParentType, ContextType>;
+  isbn13?: Resolver<Maybe<GqlResolversTypes['String']>, ParentType, ContextType>;
   title?: Resolver<GqlResolversTypes['String'], ParentType, ContextType>;
 };
 
@@ -269,7 +286,7 @@ export type GqlQueryResolvers<ContextType = ContextServer, ParentType extends Gq
   bestSellersLists?: Resolver<Maybe<Array<GqlResolversTypes['BestSellersList']>>, ParentType, ContextType>;
   bookDetails?: Resolver<Maybe<GqlResolversTypes['BookDetails']>, ParentType, ContextType, RequireFields<GqlQueryBookDetailsArgs, 'book'>>;
   booksByCategory?: Resolver<Maybe<Array<GqlResolversTypes['BookPreview']>>, ParentType, ContextType, RequireFields<GqlQueryBooksByCategoryArgs, 'category'>>;
-  searchBooks?: Resolver<Maybe<Array<GqlResolversTypes['BookPreview']>>, ParentType, ContextType, RequireFields<GqlQuerySearchBooksArgs, 'query'>>;
+  searchBooks?: Resolver<Maybe<Array<GqlResolversTypes['BookPreview']>>, ParentType, ContextType, RequireFields<GqlQuerySearchBooksArgs, 'isFullSearch' | 'query'>>;
 };
 
 export type GqlResolvers<ContextType = ContextServer> = {

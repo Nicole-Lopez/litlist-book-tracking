@@ -33,6 +33,8 @@ type BookSummary {
 	title: String!
 	authors: [String!]
 	cover: String
+	isbn10: String
+	isbn13: String
 }
 
 type BookPreview {
@@ -41,10 +43,11 @@ type BookPreview {
 	title: String!
 	authors: [String!]
 	cover: String
+	isbn10: String
+	isbn13: String
 	publishedYear: Int
 	pageCount: Int
 	categories: [String!]
-	isbn: [String!]
 }
 
 type BookDetails {
@@ -53,32 +56,38 @@ type BookDetails {
 	title: String!
 	authors: [String!]
 	cover: String
-	subtitle: String
-	description: String
+	isbn10: String
+	isbn13: String
+	publishedYear: Int
 	pageCount: Int
 	categories: [String!]
+	subtitle: String
+	description: String
 	publishedDate: String
 	language: String
 	publisher: String
+	relatedBooks: [BookSummary!]
 }
 
 type BestSellersList {
 	id: ID!
 	listName: BestSellersListName!
-	latestUpdate: Int!
+	latestUpdate: String!
 	books: [BookSummary!]!
 }
 
 input BookDetailsInput {
-	id: ID
-	title: String
-	author: String
-	isbn: [String!]
+	id: ID!
+	isGoogleId: Boolean!
+	title: String!
+	authors: [String!]
+	isbn10: String
+	isbn13: String
 }
 
 type Query {
 	bestSellersLists: [BestSellersList!]
 	booksByCategory(category: Category!): [BookPreview!]
-	searchBooks(query: String!): [BookPreview!]
+	searchBooks(query: String!, isFullSearch: Boolean = true): [BookPreview!]
 	bookDetails(book: BookDetailsInput!): BookDetails
 }
