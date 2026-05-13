@@ -1,4 +1,4 @@
-import { allBestSellersLists } from '@queries/bestSellersList.js'
+import { bestSellersLists } from './bestSellersList.queries.js'
 import { searchBooks, searchLimitedBooks } from '@queries/searchBooksByTerm.js'
 import {
 	booksByCategory,
@@ -9,7 +9,7 @@ import type { GqlResolvers } from '@gqlTypes'
 
 const queries: GqlResolvers = {
 	Query: {
-		allBestSellersLists,
+		bestSellersLists,
 
 		booksByCategory,
 		booksByAuthor,

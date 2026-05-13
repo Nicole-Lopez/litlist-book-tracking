@@ -6,7 +6,7 @@ import http from 'http'
 import cors from 'cors'
 import { readFileSync } from 'fs'
 import resolvers from '@resolvers/index.js'
-import { BestSellersAPI } from '@dataSources/BestSellersAPI.js'
+import { BestSellersListDataSource } from '@dataSources/bestSellersList/bestSellersList.dataSource.js'
 import { BooksAPI } from '@dataSources/BooksAPI.js'
 import { CategoriesAPI } from '@dataSources/CategoriesAPI.js'
 
@@ -18,7 +18,7 @@ const typeDefs = readFileSync('src/schema/schema.graphql', {
 
 export type ContextServer = {
 	dataSources: {
-		bestSellersAPI: BestSellersAPI
+		bestSellersListApi: BestSellersListDataSource
 		booksAPI: BooksAPI
 		categoriesAPI: CategoriesAPI
 	}
@@ -44,7 +44,7 @@ app.use(
 
 			return {
 				dataSources: {
-					bestSellersAPI: new BestSellersAPI({ cache }),
+					bestSellersListApi: new BestSellersListDataSource({ cache }),
 					booksAPI: new BooksAPI({ cache }),
 					categoriesAPI: new CategoriesAPI({ cache }),
 				},
