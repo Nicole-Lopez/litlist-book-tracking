@@ -8,7 +8,7 @@ import { readFileSync } from 'fs'
 import resolvers from '@resolvers/index.js'
 import { BestSellersListDataSource } from '@dataSources/bestSellersList/bestSellersList.dataSource.js'
 import { BooksAPI } from '@dataSources/BooksAPI.js'
-import { CategoriesAPI } from '@dataSources/CategoriesAPI.js'
+import { CategoryDataSource } from '@dataSources/category/category.dataSource.js'
 
 process.loadEnvFile()
 
@@ -20,7 +20,7 @@ export type ContextServer = {
 	dataSources: {
 		bestSellersListApi: BestSellersListDataSource
 		booksAPI: BooksAPI
-		categoriesAPI: CategoriesAPI
+		categoriesAPI: CategoryDataSource
 	}
 }
 
@@ -46,7 +46,7 @@ app.use(
 				dataSources: {
 					bestSellersListApi: new BestSellersListDataSource({ cache }),
 					booksAPI: new BooksAPI({ cache }),
-					categoriesAPI: new CategoriesAPI({ cache }),
+					categoriesAPI: new CategoryDataSource({ cache }),
 				},
 			}
 		},
