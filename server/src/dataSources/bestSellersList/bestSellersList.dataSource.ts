@@ -34,7 +34,7 @@ export class BestSellersListDataSource extends BaseDataSource {
 		_path: string,
 		requestOpts: AugmentedRequest<CacheOptions>,
 	): ValueOrPromise<void> {
-		requestOpts.params.set('api-key', `${process.env.BEST_SELLERS_API_KEY}`)
+		requestOpts.params.set('api-key', `${process.env.BEST_SELLERS_LIST_API_KEY}`)
 	}
 
 	protected mapListId(listData: List): string {
@@ -52,7 +52,7 @@ export class BestSellersListDataSource extends BaseDataSource {
 			books.push(
 				bookSummaryAdapter({
 					id: `${book.rank}-${listData.list_name_encoded}`,
-					isGoogleId: false,
+					isExternalId: true,
 					title: book.title,
 					authors: [book.author],
 					cover: book.book_image,

@@ -1,5 +1,6 @@
-import { gqlBookPreviewAdapter } from '@adapters/book.adapters.js'
 import { GQL_CATEGORY_TO_CATEGORY } from '@adapters/category.adapters.js'
+import { gqlBookPreviewAdapter } from '@adapters/book.adapters.js'
+import { generateArray } from '@utilities/array.utils.js'
 import type { GqlBookPreview, GqlQueryResolvers } from '@gqlTypes'
 
 export const booksByCategory: GqlQueryResolvers['booksByCategory'] = async (
@@ -12,19 +13,18 @@ export const booksByCategory: GqlQueryResolvers['booksByCategory'] = async (
 	const resultsPerCall = maxResults / calls
 	const categoryInfo = {
 		name: GQL_CATEGORY_TO_CATEGORY[category],
-		count: dataSources.categoryApi.categories[GQL_CATEGORY_TO_CATEGORY[category]]
-			.count,
+		count: dataSources.bookApi.categories[GQL_CATEGORY_TO_CATEGORY[category]].count,
 		lastOffset:
-			dataSources.categoryApi.categories[GQL_CATEGORY_TO_CATEGORY[category]].count -
+			dataSources.bookApi.categories[GQL_CATEGORY_TO_CATEGORY[category]].count -
 			resultsPerCall,
 	}
 
 	let offsets: number[] = []
 
 	if (categoryInfo.count < maxResults) {
-		offsets = Array.from(
-			{ length: categoryInfo.count / resultsPerCall + 1 },
-			(_, i) => i * resultsPerCall,
+		offsets = generateArray(
+			Math.ceil(categoryInfo.count / resultsPerCall),
+			i => i * resultsPerCall,
 		).sort(() => Math.random() - 0.5)
 	} else {
 		const offsetsRanges: { min: number; max: number }[] = []
@@ -49,9 +49,10 @@ export const booksByCategory: GqlQueryResolvers['booksByCategory'] = async (
 			}
 		}
 	}
+
 	const settledBooksResults = await Promise.allSettled(
 		offsets.map(offset =>
-			dataSources.categoryApi.getBooksByCategory(
+			dataSources.bookApi.getBooksByCategory(
 				categoryInfo.name,
 				offset,
 				resultsPerCall,

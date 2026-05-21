@@ -3,13 +3,14 @@ import type { NullableProperties, Prettify } from '@customTypes/customUtilityTyp
 export type BookId = string
 export type BookAuthor = string
 export type BookCategory = string
+export type BookContentWarning = string
 export type BookPublishedYear = number
 export type BookPageCount = number
 
 export type BookSummary = Prettify<
 	{
 		id: BookId
-		isGoogleId: boolean
+		isExternalId: boolean
 		title: string
 	} & NullableProperties<{
 		authors?: BookAuthor[]
@@ -25,6 +26,7 @@ export type BookPreview = Prettify<
 			publishedYear?: BookPublishedYear
 			pageCount?: BookPageCount
 			categories?: BookCategory[]
+			contentWarnings?: BookContentWarning[]
 		}>
 >
 
@@ -33,6 +35,7 @@ export type BookDetails = Prettify<
 		NullableProperties<{
 			subtitle?: string
 			description?: string
+			characters?: string[]
 			publishedDate?: string
 			language?: string
 			publisher?: string

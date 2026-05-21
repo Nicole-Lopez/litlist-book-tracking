@@ -14,8 +14,7 @@
 		"typecheck": "tsc --noEmit"
 	},
 	"engines": {
-		"node": ">=16.18.0",
-		"npm": ">=8.19.2"
+		"node": ">=22"
 	},
 	"license": "ISC",
 	"dependencies": {
@@ -29,7 +28,6 @@
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
 		"@graphql-codegen/cli": "6.2.1",
-		"@graphql-codegen/import-types-preset": "^4.0.0",
 		"@graphql-codegen/typescript": "5.0.9",
 		"@graphql-codegen/typescript-resolvers": "5.1.7",
 		"@graphql-eslint/eslint-plugin": "^4.4.0",

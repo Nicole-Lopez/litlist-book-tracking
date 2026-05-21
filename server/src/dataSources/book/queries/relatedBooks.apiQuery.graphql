@@ -1,0 +1,30 @@
+query RelatedBooks($category: String!, $offset: Int = 0, $limit: Int = 50) {
+    books(
+        where: { taggings: { tag: { tag: { _eq: $category } } } }
+        offset: $offset
+        limit: $limit
+        order_by: { users_read_count: desc }
+    ) {
+        title
+        id
+        image {
+            url
+        }
+        contributions {
+            author {
+                name
+            }
+        }
+        pages
+        release_year
+        default_cover_edition {
+            isbn_10
+            isbn_13
+        }
+        taggings {
+            tag {
+                tag
+            }
+        }
+    }
+}

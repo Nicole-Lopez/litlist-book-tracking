@@ -1,8 +1,4 @@
-import {
-	parseBookCategories,
-	parseBookPageCount,
-	parseBookPublishedYear,
-} from '@utilities/book.utils.js'
+import { parseBookPageCount, parseBookPublishedYear } from '@utilities/book.utils.js'
 import type { BookPreview, BookSummary, BookDetails } from '@models/book.models.js'
 import type { GqlBookPreview, GqlBookDetails, GqlBookSummary } from '@gqlTypes'
 import type { NullableProperties } from '@customTypes/customUtilityTypes.js'
@@ -10,7 +6,7 @@ import type { NullableProperties } from '@customTypes/customUtilityTypes.js'
 export const bookSummaryAdapter = (
 	data: {
 		id: string
-		isGoogleId: boolean
+		isExternalId: boolean
 		title: string
 	} & NullableProperties<{
 		authors?: string[]
@@ -21,7 +17,7 @@ export const bookSummaryAdapter = (
 ): BookSummary => {
 	return {
 		id: data.id,
-		isGoogleId: data.isGoogleId,
+		isExternalId: data.isExternalId,
 		title: data.title,
 		authors: data.authors,
 		cover: data.cover,
@@ -33,7 +29,7 @@ export const bookSummaryAdapter = (
 export const gqlBookSummaryAdapter = (data: BookSummary): GqlBookSummary => {
 	return {
 		id: data.id,
-		isGoogleId: data.isGoogleId,
+		isExternalId: data.isExternalId,
 		title: data.title,
 		authors: data.authors,
 		cover: data.cover,
@@ -45,7 +41,7 @@ export const gqlBookSummaryAdapter = (data: BookSummary): GqlBookSummary => {
 export const bookPreviewAdapter = (
 	data: {
 		id: string
-		isGoogleId: boolean
+		isExternalId: boolean
 		title: string
 	} & NullableProperties<{
 		authors?: string[]
@@ -55,11 +51,12 @@ export const bookPreviewAdapter = (
 		publishedYear?: number
 		pageCount?: number
 		categories?: string[]
+		contentWarnings?: string[]
 	}>,
 ): BookPreview => {
 	return {
 		id: data.id,
-		isGoogleId: data.isGoogleId,
+		isExternalId: data.isExternalId,
 		title: data.title,
 		authors: data.authors,
 		cover: data.cover,
@@ -67,14 +64,15 @@ export const bookPreviewAdapter = (
 		isbn13: data.isbn13,
 		publishedYear: parseBookPublishedYear(data.publishedYear),
 		pageCount: parseBookPageCount(data.pageCount),
-		categories: parseBookCategories(data.categories),
+		categories: data.categories,
+		contentWarnings: data.contentWarnings,
 	}
 }
 
 export const gqlBookPreviewAdapter = (data: BookPreview): GqlBookPreview => {
 	return {
 		id: data.id,
-		isGoogleId: data.isGoogleId,
+		isExternalId: data.isExternalId,
 		title: data.title,
 		authors: data.authors,
 		cover: data.cover,
@@ -83,13 +81,14 @@ export const gqlBookPreviewAdapter = (data: BookPreview): GqlBookPreview => {
 		publishedYear: data.publishedYear,
 		pageCount: data.pageCount,
 		categories: data.categories,
+		contentWarnings: data.contentWarnings,
 	}
 }
 
 export const bookDetailsAdapter = (
 	data: {
 		id: string
-		isGoogleId: boolean
+		isExternalId: boolean
 		title: string
 	} & NullableProperties<{
 		authors?: string[]
@@ -99,8 +98,10 @@ export const bookDetailsAdapter = (
 		publishedYear?: number
 		pageCount?: number
 		categories?: string[]
+		contentWarnings?: string[]
 		subtitle?: string
 		description?: string
+		characters?: string[]
 		publishedDate?: string
 		language?: string
 		publisher?: string
@@ -109,7 +110,7 @@ export const bookDetailsAdapter = (
 ): BookDetails => {
 	return {
 		id: data.id,
-		isGoogleId: data.isGoogleId,
+		isExternalId: data.isExternalId,
 		title: data.title,
 		authors: data.authors,
 		cover: data.cover,
@@ -117,9 +118,11 @@ export const bookDetailsAdapter = (
 		isbn13: data.isbn13,
 		publishedYear: parseBookPublishedYear(data.publishedYear),
 		pageCount: parseBookPageCount(data.pageCount),
-		categories: parseBookCategories(data.categories),
+		categories: data.categories,
+		contentWarnings: data.contentWarnings,
 		subtitle: data.subtitle,
 		description: data.description,
+		characters: data.characters,
 		publishedDate: data.publishedDate,
 		language: data.language,
 		publisher: data.publisher,
@@ -130,7 +133,7 @@ export const bookDetailsAdapter = (
 export const gqlBookDetailsAdapter = (data: BookDetails): GqlBookDetails => {
 	return {
 		id: data.id,
-		isGoogleId: data.isGoogleId,
+		isExternalId: data.isExternalId,
 		title: data.title,
 		authors: data.authors,
 		cover: data.cover,
@@ -139,8 +142,10 @@ export const gqlBookDetailsAdapter = (data: BookDetails): GqlBookDetails => {
 		publishedYear: data.publishedYear,
 		pageCount: data.pageCount,
 		categories: data.categories,
+		contentWarnings: data.contentWarnings,
 		subtitle: data.subtitle,
 		description: data.description,
+		characters: data.characters,
 		publishedDate: data.publishedDate,
 		language: data.language,
 		publisher: data.publisher,

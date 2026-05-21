@@ -1,0 +1,29 @@
+query BooksByCategory($categoryId: bigint!, $offset: Int!, $limit: Int!) {
+    tags_by_pk(id: $categoryId) {
+        taggings(offset: $offset, limit: $limit) {
+            book {
+                title
+                id
+                image {
+                    url
+                }
+                contributions {
+                    author {
+                        name
+                    }
+                }
+                pages
+                release_year
+                default_cover_edition {
+                    isbn_10
+                    isbn_13
+                }
+                taggings {
+                    tag {
+                        tag
+                    }
+                }
+            }
+        }
+    }
+}

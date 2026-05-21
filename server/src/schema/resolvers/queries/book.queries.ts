@@ -1,6 +1,6 @@
 import { gqlBookDetailsAdapter, gqlBookPreviewAdapter } from '@adapters/book.adapters.js'
 import { HttpGraphQLError } from '@utilities/errors.utils.js'
-import type { BookDataSource } from '@dataSources/book/book.dataSource.js'
+import { generateArray } from '@utilities/array.utils.js'
 import type { GqlQueryResolvers, GqlBookPreview } from '@gqlTypes'
 import type { BookSummary } from '@models/book.models.js'
 
@@ -10,26 +10,24 @@ export const searchBooks: GqlQueryResolvers['searchBooks'] = async (
 	{ dataSources },
 ) => {
 	if (!isFullSearch) {
-		const results = await dataSources.bookApi.getSearchBooks(query, 0)
+		const results = await dataSources.bookApi.getSearchBooks(
+			query,
+			dataSources.bookApi.searchInitialPage,
+		)
 
 		return results?.size
 			? [...results.values()].map(book => gqlBookPreviewAdapter(book))
 			: null
 	}
 
+	const maxResults = 300
 	const results = new Map<string, GqlBookPreview>()
 
-	const searchRequests: Array<ReturnType<BookDataSource['getSearchBooks']>> = []
-
-	for (
-		let offset = 0;
-		offset < dataSources.bookApi.searchLimit;
-		offset += dataSources.bookApi.searchMaxResults
-	) {
-		searchRequests.push(dataSources.bookApi.getSearchBooks(query, offset))
-	}
-
-	const settledBooksResults = await Promise.allSettled(searchRequests)
+	const settledBooksResults = await Promise.allSettled(
+		generateArray(maxResults / dataSources.bookApi.searchResultsPerPage, i =>
+			dataSources.bookApi.getSearchBooks(query, i + 1),
+		),
+	)
 
 	for (let i = 0; i < settledBooksResults.length; ++i) {
 		const settledResult = settledBooksResults[i]
@@ -37,7 +35,7 @@ export const searchBooks: GqlQueryResolvers['searchBooks'] = async (
 		if (settledResult.status === 'fulfilled') {
 			const { value } = settledResult
 
-			if (value === null) break
+			if (!value) break
 
 			for (const [key, book] of value) {
 				if (!results.has(key)) {
@@ -55,25 +53,26 @@ export const bookDetails: GqlQueryResolvers['bookDetails'] = async (
 	{ book },
 	{ dataSources },
 ) => {
-	const bookId = book.isGoogleId ? book.id : await dataSources.bookApi.getBookId(book)
+	const bookId = book.isExternalId ? await dataSources.bookApi.getBookId(book) : book.id
 
-	if (!bookId)
+	const bookDetailsData = bookId
+		? await dataSources.bookApi.getBookDetails(bookId)
+		: null
+
+	if (!bookDetailsData)
 		throw new HttpGraphQLError({ url: '', status: 404, statusText: 'Book not found' })
-
-	const bookDetailsData = await dataSources.bookApi.getBookDetails(bookId)
 
 	const relatedBooks = new Map<string, BookSummary>()
 	const maxRelatedBooks = 20
 
-	if (bookDetailsData.authors) {
-		const maxAuthorMatches = 0.25 * maxRelatedBooks // 25%
+	if (bookDetailsData.authors?.length) {
+		const maxAuthorMatches = maxRelatedBooks * 0.25 // 25%
 		const primaryAuthor = bookDetailsData.authors[0]
 
-		const authorMatches = await dataSources.bookApi.getSearchBooks(
-			'',
+		const authorMatches = await dataSources.bookApi.getBooksByAuthor(
+			primaryAuthor,
 			0,
-			dataSources.bookApi.searchMaxResults,
-			{ author: primaryAuthor },
+			20,
 		)
 
 		if (authorMatches) {
@@ -100,12 +99,7 @@ export const bookDetails: GqlQueryResolvers['bookDetails'] = async (
 
 		const settledCategoryMatches = await Promise.allSettled(
 			primaryCategories.map(category =>
-				dataSources.bookApi.getSearchBooks(
-					'',
-					0,
-					dataSources.bookApi.searchMaxResults,
-					{ category },
-				),
+				dataSources.bookApi.getRelatedBooks(category, 0, 20),
 			),
 		)
 

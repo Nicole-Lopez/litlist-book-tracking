@@ -1,0 +1,42 @@
+query BookDetails($id: Int!) {
+    books_by_pk(id: $id) {
+        id
+        title
+        subtitle
+        description
+        pages
+        release_date
+        release_year
+        image {
+            url
+        }
+        contributions {
+            author {
+                name
+            }
+        }
+        book_characters {
+            character {
+                name
+            }
+        }
+        taggings {
+            tag {
+                tag
+                tag_category {
+                    category
+                }
+            }
+        }
+        default_cover_edition {
+            isbn_10
+            isbn_13
+            language {
+                language
+            }
+            publisher {
+                name
+            }
+        }
+    }
+}

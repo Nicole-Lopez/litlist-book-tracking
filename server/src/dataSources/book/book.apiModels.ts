@@ -1,135 +1,158 @@
-export type QueryFields = {
-	isbn?: string
-	title?: string
-	author?: string
-	category?: string
+export type BookDetailsQueryVariables = {
+	id: number
 }
 
-export type Volumes = {
-	kind?: string
-	totalItems?: number
-	items?: Item[]
+export type BookDetailsQuery = {
+	books_by_pk?: {
+		id: number
+		title?: string
+		subtitle?: string
+		description?: string
+		pages?: number
+		release_date?: string
+		release_year?: number
+		image?: Image
+		contributions?: Contribution[]
+		book_characters?: BookCharacter[]
+		taggings?: Tag[]
+		default_cover_edition?: {
+			isbn_10?: string
+			isbn_13?: string
+			language?: {
+				language?: string
+			}
+			publisher?: {
+				name?: string
+			}
+		}
+	}
 }
 
-export type Item = {
-	kind: string
-	id: string
-	etag: string
-	selfLink: string
-	volumeInfo: VolumeInfo
-	saleInfo?: SaleInfo
-	accessInfo?: AccessInfo
-	searchInfo?: SearchInfo
+export type BooksByAuthorQueryVariables = {
+	authorName: string
+	offset?: number
+	limit?: number
 }
 
-export type VolumeInfo = {
-	title: string
-	authors?: string[]
-	publisher?: string
-	publishedDate?: string
-	industryIdentifiers?: IndustryIdentifier[]
-	readingModes?: ReadingModes
-	pageCount?: number
-	printType?: string
-	averageRating?: number
-	ratingsCount?: number
-	maturityRating?: string
-	allowAnonLogging?: boolean
-	contentVersion?: string
-	panelizationSummary?: PanelizationSummary
-	imageLinks?: ImageLinks
-	language?: string
-	previewLink?: string
-	infoLink?: string
-	canonicalVolumeLink?: string
-	subtitle?: string
-	description?: string
-	categories?: string[]
+export type BooksByAuthorQuery = {
+	books?: Array<{
+		title?: string
+		id: number
+		pages?: number
+		release_year?: number
+		image?: Image
+		contributions?: Contribution[]
+		default_cover_edition?: {
+			isbn_10?: string
+			isbn_13?: string
+		}
+		taggings?: Tag[]
+	}>
 }
 
-export type IndustryIdentifier = {
-	type?: string
-	identifier?: string
+export type BooksByCategoryQueryVariables = {
+	categoryId: number
+	offset: number
+	limit: number
 }
 
-export type ReadingModes = {
-	text?: boolean
-	image?: boolean
+export type BooksByCategoryQuery = {
+	tags_by_pk?: {
+		taggings?: Array<{
+			book?: {
+				title?: string
+				id: number
+				pages?: number
+				release_year?: number
+				image?: Image
+				contributions?: Contribution[]
+				default_cover_edition?: {
+					isbn_10?: string
+					isbn_13?: string
+				}
+				taggings?: Tag[]
+			}
+		}>
+	}
 }
 
-export type PanelizationSummary = {
-	containsEpubBubbles?: boolean
-	containsImageBubbles?: boolean
+export type RelatedBooksQueryVariables = {
+	category: string
+	offset?: number
+	limit?: number
 }
 
-export type ImageLinks = {
-	smallThumbnail?: string
-	thumbnail?: string
-	small?: string
-	medium?: string
-	large?: string
-	extraLarge?: string
+export type RelatedBooksQuery = {
+	books?: Array<{
+		title?: string
+		id: number
+		pages?: number
+		release_year?: number
+		image?: Image
+		contributions?: Contribution[]
+		default_cover_edition?: {
+			isbn_10?: string
+			isbn_13?: string
+		}
+		taggings?: Tag[]
+	}>
 }
 
-export type SaleInfo = {
-	country?: string
-	saleability?: string
-	isEbook?: boolean
-	listPrice?: ListPrice
-	retailPrice?: RetailPrice
-	buyLink?: string
-	offers?: Offer[]
+export type SearchBooksQueryVariables = {
+	query: string
+	page?: number
+	perPage?: number
 }
 
-export type ListPrice = {
-	amount?: number
-	currencyCode?: string
+export type SearchBooksQuery = {
+	search?: {
+		results?: {
+			hits?: Array<{
+				document?: {
+					id?: string
+					title?: string
+					author_names?: string[]
+					image?: Image
+					isbns?: string[]
+					release_year?: number
+					pages?: number
+					content_warnings?: string[]
+					genres?: string[]
+				}
+			}>
+		}
+	}
 }
 
-export type RetailPrice = {
-	amount?: number
-	currencyCode?: string
+export type Contribution = {
+	author?: {
+		name?: string
+	}
 }
 
-export type Offer = {
-	finskyOfferType?: number
-	listPrice?: ListPrice2
-	retailPrice?: RetailPrice2
+export type Image = {
+	url?: string
 }
 
-export type ListPrice2 = {
-	amountInMicros?: number
-	currencyCode?: string
+export type Tag = {
+	tag?: {
+		tag?: string
+		tag_category?: {
+			category?: TagCategory
+		}
+	}
 }
 
-export type RetailPrice2 = {
-	amountInMicros?: number
-	currencyCode?: string
+export const enum TagCategory {
+	Genre = 'Genre',
+	Tag = 'Tag',
+	ContentWarning = 'Content Warning',
+	Mood = 'Mood',
+	Pace = 'Pace',
 }
 
-export type AccessInfo = {
-	country?: string
-	viewability?: string
-	embeddable?: boolean
-	publicDomain?: boolean
-	textToSpeechPermission?: string
-	epub?: Epub
-	pdf?: Pdf
-	webReaderLink?: string
-	accessViewStatus?: string
-	quoteSharingAllowed?: boolean
-}
-
-export type Epub = {
-	isAvailable?: boolean
-	acsTokenLink?: string
-}
-
-export type Pdf = {
-	isAvailable?: boolean
-	acsTokenLink?: string
-}
-
-export type SearchInfo = {
-	textSnippet?: string
+export type BookCharacter = {
+	character?: {
+		name?: string
+	}
 }
