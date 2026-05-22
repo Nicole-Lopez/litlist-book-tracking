@@ -1,40 +1,44 @@
 {
 	"compilerOptions": {
-		"target": "ES2020",
+		"target": "ES2022",
 		"useDefineForClassFields": true,
-		"lib": ["ES2022", "DOM", "DOM.Iterable"],
+		"lib": ["ES2022", "DOM"],
 		"module": "ESNext",
+		"jsx": "react-jsx",
+		"erasableSyntaxOnly": true,
 		"skipLibCheck": true,
 
 		/* Bundler mode */
 		"moduleResolution": "bundler",
+		"moduleDetection": "force",
+		"verbatimModuleSyntax": true,
 		"allowImportingTsExtensions": true,
 		"resolveJsonModule": true,
 		"isolatedModules": true,
-		"noEmit": true,
-		"jsx": "react-jsx",
 		"esModuleInterop": true,
+		"noEmit": true,
 
 		/* Linting */
 		"strict": true,
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
+		"noUncheckedIndexedAccess": true,
 		"noFallthroughCasesInSwitch": true,
-		"baseUrl": ".",
+
 		"paths": {
-			"@adapters/*": ["src/adapters/*"],
-			"@assets/*": ["src/assets/*"],
-			"@components/*": ["src/components/*"],
-			"@constants/*": ["src/constants/*"],
-			"@contexts/*": ["src/contexts/*"],
-			"@styles/*": ["src/styles/*"],
-			"@hooks/*": ["src/hooks/*"],
-			"@models/*": ["src/models/*"],
-			"@customTypes/*": ["src/types/*"],
-			"@pages/*": ["src/pages/*"],
-			"@router/*": ["src/router/*"],
-			"@services/*": ["src/services/*"],
-			"@utilities/*": ["src/utilities/*"]
+			"@adapters/*": ["./src/adapters/*"],
+			"@assets/*": ["./src/assets/*"],
+			"@components/*": ["./src/components/*"],
+			"@constants/*": ["./src/constants/*"],
+			"@contexts/*": ["./src/contexts/*"],
+			"@styles/*": ["./src/styles/*"],
+			"@hooks/*": ["./src/hooks/*"],
+			"@models/*": ["./src/models/*"],
+			"@customTypes/*": ["./src/types/*"],
+			"@pages/*": ["./src/pages/*"],
+			"@router/*": ["./src/router/*"],
+			"@services/*": ["./src/services/*"],
+			"@utilities/*": ["./src/utilities/*"]
 		}
 	},
 	"include": ["src"],
