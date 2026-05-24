@@ -1,4 +1,4 @@
-import { isEmptyString } from '@utilities/string.utils'
+import { isBlankString } from '@utilities/string.utils'
 import './WritableInputField.scss'
 import type {
 	DetailedHTMLProps,
@@ -61,7 +61,7 @@ function Input({
 			onChange={e => {
 				onChange?.(e)
 				onValidationError?.(
-					isNonEmpty && isEmptyString(e.target.value),
+					isNonEmpty && isBlankString(e.target.value),
 					e.target.value,
 					e.target.name,
 				)
@@ -100,7 +100,7 @@ function Textarea({
 			onChange={e => {
 				onChange?.(e)
 				onValidationError?.(
-					isNonEmpty && isEmptyString(e.target.value),
+					isNonEmpty && isBlankString(e.target.value),
 					e.target.value,
 					e.target.name,
 				)
