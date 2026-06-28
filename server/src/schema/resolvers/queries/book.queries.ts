@@ -4,28 +4,21 @@ import { generateArray } from '@utilities/array.utils.js'
 import type { GqlQueryResolvers, GqlBookPreview } from '@gqlTypes'
 import type { BookSummary } from '@models/book.models.js'
 
+const MAX_SEARCH_RESULTS = 300
+
 export const searchBooks: GqlQueryResolvers['searchBooks'] = async (
 	_,
-	{ query, isFullSearch = true },
+	{ query, limit },
 	{ dataSources },
 ) => {
-	if (!isFullSearch) {
-		const results = await dataSources.bookApi.getSearchBooks(
-			query,
-			dataSources.bookApi.searchInitialPage,
-		)
-
-		return results?.size
-			? [...results.values()].map(book => gqlBookPreviewAdapter(book))
-			: null
-	}
-
-	const maxResults = 300
+	const maxResults = limit && limit <= MAX_SEARCH_RESULTS ? limit : MAX_SEARCH_RESULTS
+	let totalCount = undefined
 	const results = new Map<string, GqlBookPreview>()
 
 	const settledBooksResults = await Promise.allSettled(
-		generateArray(maxResults / dataSources.bookApi.searchResultsPerPage, i =>
-			dataSources.bookApi.getSearchBooks(query, i + 1),
+		generateArray(
+			Math.ceil(maxResults / dataSources.bookApi.searchResultsPerPage),
+			i => dataSources.bookApi.getSearchBooks(query, i + 1),
 		),
 	)
 
@@ -37,15 +30,27 @@ export const searchBooks: GqlQueryResolvers['searchBooks'] = async (
 
 			if (!value) break
 
-			for (const [key, book] of value) {
+			for (const [key, book] of value.results) {
 				if (!results.has(key)) {
 					results.set(key, gqlBookPreviewAdapter(book))
 				}
 			}
+
+			if (!totalCount) {
+				totalCount = value.count
+			}
 		}
 	}
 
-	return results.size ? [...results.values()] : null
+	if (!totalCount) return { totalCount: 0, books: null }
+
+	return {
+		totalCount: totalCount > MAX_SEARCH_RESULTS ? MAX_SEARCH_RESULTS : totalCount,
+		books:
+			results.size !== maxResults
+				? [...results.values()].slice(0, maxResults)
+				: [...results.values()],
+	}
 }
 
 export const bookDetails: GqlQueryResolvers['bookDetails'] = async (

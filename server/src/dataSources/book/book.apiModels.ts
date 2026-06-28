@@ -107,6 +107,7 @@ export type SearchBooksQueryVariables = {
 export type SearchBooksQuery = {
 	search?: {
 		results?: {
+			found: number
 			hits?: Array<{
 				document?: {
 					id?: string

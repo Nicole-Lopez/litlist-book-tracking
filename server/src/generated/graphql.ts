@@ -116,7 +116,7 @@ export type GqlQuery = {
   bestSellersLists?: Maybe<Array<GqlBestSellersList>>;
   bookDetails?: Maybe<GqlBookDetails>;
   booksByCategory?: Maybe<Array<GqlBookPreview>>;
-  searchBooks?: Maybe<Array<GqlBookPreview>>;
+  searchBooks: GqlSearchBooksResult;
 };
 
 
@@ -131,8 +131,14 @@ export type GqlQueryBooksByCategoryArgs = {
 
 
 export type GqlQuerySearchBooksArgs = {
-  isFullSearch?: InputMaybe<Scalars['Boolean']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
   query: Scalars['String']['input'];
+};
+
+export type GqlSearchBooksResult = {
+  __typename?: 'SearchBooksResult';
+  books?: Maybe<Array<GqlBookPreview>>;
+  totalCount: Scalars['Int']['output'];
 };
 
 
@@ -219,6 +225,7 @@ export type GqlResolversTypes = {
   ID: ResolverTypeWrapper<Scalars['ID']['output']>;
   Int: ResolverTypeWrapper<Scalars['Int']['output']>;
   Query: ResolverTypeWrapper<Record<PropertyKey, never>>;
+  SearchBooksResult: ResolverTypeWrapper<GqlSearchBooksResult>;
   String: ResolverTypeWrapper<Scalars['String']['output']>;
 };
 
@@ -233,6 +240,7 @@ export type GqlResolversParentTypes = {
   ID: Scalars['ID']['output'];
   Int: Scalars['Int']['output'];
   Query: Record<PropertyKey, never>;
+  SearchBooksResult: GqlSearchBooksResult;
   String: Scalars['String']['output'];
 };
 
@@ -292,7 +300,12 @@ export type GqlQueryResolvers<ContextType = ContextServer, ParentType extends Gq
   bestSellersLists?: Resolver<Maybe<Array<GqlResolversTypes['BestSellersList']>>, ParentType, ContextType>;
   bookDetails?: Resolver<Maybe<GqlResolversTypes['BookDetails']>, ParentType, ContextType, RequireFields<GqlQueryBookDetailsArgs, 'book'>>;
   booksByCategory?: Resolver<Maybe<Array<GqlResolversTypes['BookPreview']>>, ParentType, ContextType, RequireFields<GqlQueryBooksByCategoryArgs, 'category'>>;
-  searchBooks?: Resolver<Maybe<Array<GqlResolversTypes['BookPreview']>>, ParentType, ContextType, RequireFields<GqlQuerySearchBooksArgs, 'isFullSearch' | 'query'>>;
+  searchBooks?: Resolver<GqlResolversTypes['SearchBooksResult'], ParentType, ContextType, RequireFields<GqlQuerySearchBooksArgs, 'query'>>;
+};
+
+export type GqlSearchBooksResultResolvers<ContextType = ContextServer, ParentType extends GqlResolversParentTypes['SearchBooksResult'] = GqlResolversParentTypes['SearchBooksResult']> = {
+  books?: Resolver<Maybe<Array<GqlResolversTypes['BookPreview']>>, ParentType, ContextType>;
+  totalCount?: Resolver<GqlResolversTypes['Int'], ParentType, ContextType>;
 };
 
 export type GqlResolvers<ContextType = ContextServer> = {
@@ -301,5 +314,6 @@ export type GqlResolvers<ContextType = ContextServer> = {
   BookPreview?: GqlBookPreviewResolvers<ContextType>;
   BookSummary?: GqlBookSummaryResolvers<ContextType>;
   Query?: GqlQueryResolvers<ContextType>;
+  SearchBooksResult?: GqlSearchBooksResultResolvers<ContextType>;
 };
 

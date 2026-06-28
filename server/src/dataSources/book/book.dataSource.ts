@@ -318,20 +318,20 @@ export class BookDataSource extends BaseGraphqlDataSource {
 		query: string,
 		page: number = this.searchInitialPage,
 		perPage: number = this.searchResultsPerPage,
-	): Promise<Map<string, BookPreview> | null> {
+	): Promise<{ count: number; results: Map<string, BookPreview> } | null> {
 		const data = await this.query<SearchBooksQuery, SearchBooksQueryVariables>(
 			searchBooksQuery,
 			{ query, page, perPage },
 		)
 
-		const resultsData = data.search?.results?.hits
+		const resultsData = data.search?.results
 
-		if (!resultsData?.length) return null
+		if (!resultsData?.hits?.length) return null
 
 		const results: Map<string, BookPreview> = new Map()
 
-		for (let i = 0; i < resultsData.length; i++) {
-			const book = resultsData[i].document
+		for (let i = 0; i < resultsData.hits.length; i++) {
+			const book = resultsData.hits[i].document
 
 			if (book?.id && book.title) {
 				results.set(
@@ -355,7 +355,7 @@ export class BookDataSource extends BaseGraphqlDataSource {
 			}
 		}
 
-		return results
+		return { count: resultsData.found, results }
 	}
 
 	async getBookDetails(id: string): Promise<BookDetails | null> {

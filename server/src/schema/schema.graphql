@@ -79,6 +79,11 @@ type BestSellersList {
 	books: [BookSummary!]!
 }
 
+type SearchBooksResult {
+	totalCount: Int!
+	books: [BookPreview!]
+}
+
 input BookDetailsInput {
 	id: ID!
 	isExternalId: Boolean!
@@ -91,6 +96,6 @@ input BookDetailsInput {
 type Query {
 	bestSellersLists: [BestSellersList!]
 	booksByCategory(category: Category!): [BookPreview!]
-	searchBooks(query: String!, isFullSearch: Boolean): [BookPreview!]
+	searchBooks(query: String!, limit: Int): SearchBooksResult!
 	bookDetails(book: BookDetailsInput!): BookDetails
 }
