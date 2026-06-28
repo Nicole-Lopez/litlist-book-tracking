@@ -64,7 +64,7 @@ export const bookPreviewAdapter = (
 		isbn13: data.isbn13,
 		publishedYear: parseBookPublishedYear(data.publishedYear),
 		pageCount: parseBookPageCount(data.pageCount),
-		categories: data.categories,
+		categories: data.categories?.slice(0, 5),
 		contentWarnings: data.contentWarnings,
 	}
 }
