@@ -4,21 +4,24 @@ import Footer from './components/Footer/Footer'
 import ToastNotificationManager from './components/ToastNotificationManager/ToastNotificationManager'
 import AlertBannerManager from './components/AlertBannerManager/AlertBannerManager'
 import UserProvider from '@contexts/UserContext/UserProvider'
+import BooksApiProvider from '@services/books/BooksApiProvider'
 import type { ReactNode } from 'react'
 
 export default function Root(): ReactNode {
 	return (
 		<UserProvider>
-			<Header />
+			<BooksApiProvider>
+				<Header />
 
-			<AlertBannerManager />
-			<ToastNotificationManager />
+				<AlertBannerManager />
+				<ToastNotificationManager />
 
-			<main className='page-container'>
-				<Outlet />
-			</main>
+				<main className='page-container'>
+					<Outlet />
+				</main>
 
-			<Footer />
+				<Footer />
+			</BooksApiProvider>
 		</UserProvider>
 	)
 }

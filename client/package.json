@@ -7,6 +7,7 @@
 		"dev": "vite",
 		"build": "tsc && vite build",
 		"preview": "vite preview",
+		"codegen:books": "graphql-codegen --config src/services/books/codegen.ts",
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
 		"lint:styles": "stylelint \"**/*.scss\"",
@@ -16,8 +17,9 @@
 		"typecheck": "tsc --noEmit"
 	},
 	"dependencies": {
-		"@apollo/client": "^4.1.4",
+		"@apollo/client": "^4.2.0",
 		"firebase": "^12.10.0",
+		"graphql": "^16.14.0",
 		"html-react-parser": "^5.2.17",
 		"i18next": "^26.2.0",
 		"i18next-browser-languagedetector": "^8.2.1",
@@ -25,10 +27,16 @@
 		"react": "^19.2.3",
 		"react-dom": "^19.2.3",
 		"react-i18next": "^17.0.8",
-		"react-router-dom": "^7.13.1"
+		"react-router-dom": "^7.13.1",
+		"rxjs": "^7.8.2"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.39.1",
+		"@graphql-codegen/cli": "^7.0.0",
+		"@graphql-codegen/near-operation-file-preset": "^5.2.1",
+		"@graphql-codegen/typed-document-node": "^7.0.0",
+		"@graphql-codegen/typescript-operations": "^6.0.2",
+		"@graphql-typed-document-node/core": "^3.2.0",
 		"@types/node": "^25.9.1",
 		"@types/react": "^19.2.15",
 		"@types/react-dom": "^19.2.3",
