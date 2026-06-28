@@ -9,9 +9,9 @@ void i18n
 	.use(LanguageDetector)
 	.use(initReactI18next)
 	.init({
+		load: 'languageOnly',
 		detection: {
 			order: ['localStorage', 'sessionStorage', 'navigator', 'htmlTag'],
-			convertDetectedLanguage: lang => lang.split('-')[0],
 		},
 		backend: {
 			loadPath: '/translations/{{ns}}/{{lng}}.json',
@@ -19,11 +19,10 @@ void i18n
 		supportedLngs: Object.values(SUPPORTED_LANGS),
 		fallbackLng: SUPPORTED_LANGS.en,
 		ns: Object.values(TRANSLATIONS_NS),
+		defaultNS: TRANSLATIONS_NS.root,
 		interpolation: {
 			escapeValue: false,
 		},
-
-		showSupportNotice: false,
 		debug: false,
 	})
 
