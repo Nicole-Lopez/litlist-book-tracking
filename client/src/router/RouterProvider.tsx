@@ -4,6 +4,7 @@ import {
 	RouterProvider as RouterProviderReact,
 } from 'react-router-dom'
 import {
+	BOOK_DETAILS_PATH,
 	CATEGORIES_PATH,
 	CONTACT_PATH,
 	HOME_PATH,
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
 			{
 				path: CONTACT_PATH,
 				element: <h1>Contact</h1>,
+			},
+			{
+				path: BOOK_DETAILS_PATH,
+				element: <h1>Book details</h1>,
 			},
 			{
 				path: USER_PROFILE_PATH,
