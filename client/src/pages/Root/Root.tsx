@@ -16,9 +16,7 @@ export default function Root(): ReactNode {
 				<AlertBannerManager />
 				<ToastNotificationManager />
 
-				<main className='page-container'>
-					<Outlet />
-				</main>
+				<Outlet />
 
 				<Footer />
 			</BooksApiProvider>
