@@ -152,3 +152,37 @@ export type WithRequired<T, K extends keyof T> = Prettify<
  * // number
  */
 export type ArrayElement<T> = T extends readonly (infer U)[] ? U : never
+
+/**
+ * Makes all properties in a type nullable.
+ *
+ * Given a type `T`, this utility transforms each of its properties so that
+ * they can also be `null`, while preserving their original types.
+ *
+ * @template T The base object type.
+ *
+ * @example
+ * type A = {
+ *   id: string;
+ *   name: string;
+ * };
+ *
+ * type B = NullableProperties<A>;
+ * // {
+ * //   id: string | null;
+ * //   name: string | null;
+ * // }
+ *
+ * @example
+ * type User = {
+ *   email: string;
+ *   age?: number;
+ * };
+ *
+ * type NullableUser = NullableProperties<User>;
+ * // {
+ * //   email: string | null;
+ * //   age?: number | null;
+ * // }
+ */
+export type NullableProperties<T> = { [K in keyof T]: T[K] | null }
