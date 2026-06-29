@@ -1,0 +1,26 @@
+@use '@styles/mixins/card.mixins' as cardMixins;
+
+.list-book-card {
+	display: flex;
+	gap: 7px;
+	width: 100%;
+
+	&--with-hover {
+		@include cardMixins.card-hover-effect(
+			$title-selector: '.list-book-card__heading',
+			$cover-selector: '.list-book-card__cover'
+		);
+	}
+
+	&__cover {
+		flex: 1;
+		width: 20%;
+		min-width: 90px;
+		max-width: 150px;
+	}
+
+	&__content {
+		flex: 2;
+		min-width: 0;
+	}
+}
