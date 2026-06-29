@@ -1,0 +1,74 @@
+@use '@styles/variables/paletteLightTheme.var' as paletteLightTheme;
+@use '@styles/variables/paletteDarkTheme.var' as paletteDarkTheme;
+@use '@styles/mixins/hover.mixins' as hoverMixins;
+
+.light-theme {
+    .search-input-field {
+        background-color: paletteLightTheme.$color-input-bg;
+        border-color: paletteLightTheme.$color-input-border;
+
+        &:focus-within,
+        &:hover {
+            border-color: paletteLightTheme.$color-input-border-hover;
+        }
+
+        &__search-btn,
+        &__clear-query-btn {
+            @include hoverMixins.hover-not-disabled() {
+                background-color: paletteLightTheme.$color-input-bg-hover;
+            }
+        }
+    }
+}
+
+.dark-theme {
+    .search-input-field {
+        background-color: paletteDarkTheme.$color-input-bg;
+        border-color: paletteDarkTheme.$color-input-border;
+
+        &:focus-within,
+        &:hover {
+            border-color: paletteDarkTheme.$color-input-border-hover;
+        }
+
+        &__search-btn,
+        &__clear-query-btn {
+            @include hoverMixins.hover-not-disabled() {
+                background-color: paletteDarkTheme.$color-input-bg-hover;
+            }
+        }
+    }
+}
+
+.search-input-field {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    border: solid 2px;
+    transition: border-color 130ms ease-in;
+
+    &__input {
+        width: 100%;
+        color: currentcolor;
+        font:
+            500 2rem 'Source Sans 3',
+            sans-serif;
+        padding: 10px;
+        border: none;
+        outline: none;
+        background-color: initial;
+    }
+
+    &__search-btn {
+        padding: 5px 1.5%;
+
+        svg {
+            width: 18px;
+        }
+    }
+
+    &__clear-query-btn {
+        font-size: 2rem;
+        padding: 0 5px;
+    }
+}
