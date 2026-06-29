@@ -1,0 +1,47 @@
+@use '@styles/variables/paletteLightTheme.var' as paletteLightTheme;
+@use '@styles/variables/paletteDarkTheme.var' as paletteDarkTheme;
+@use '@styles/mixins/text.mixins' as textMixins;
+
+.light-theme {
+	.book-card-heading {
+		&__authors {
+			color: paletteLightTheme.$color-text-secondary;
+		}
+	}
+}
+
+.dark-theme {
+	.book-card-heading {
+		&__authors {
+			color: paletteDarkTheme.$color-text-secondary;
+		}
+	}
+}
+
+.book-card-heading {
+	&__title,
+	&__authors {
+		@include textMixins.text-single-ellipsis();
+
+		display: block;
+		text-align: start;
+	}
+
+	&__title {
+		font:
+			600 1.8rem / 1.2 'Source Sans 3',
+			sans-serif;
+	}
+
+	&__authors {
+		font:
+			500 1.7rem 'Source Sans 3',
+			sans-serif;
+	}
+
+	&--loader {
+		.book-card-heading__authors {
+			width: 80%;
+		}
+	}
+}

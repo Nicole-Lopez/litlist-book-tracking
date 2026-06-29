@@ -1,0 +1,24 @@
+@use '@styles/mixins/card.mixins' as cardMixins;
+
+.grid-book-card {
+	width: clamp(130px, 27vw, 180px);
+
+	&--with-hover {
+		@include cardMixins.card-hover-effect(
+			$title-selector: '.grid-book-card__title',
+			$cover-selector: '.grid-book-card__cover'
+		);
+	}
+
+	&__cover {
+		margin-bottom: 12px;
+		border-radius: 4px;
+		width: 100%;
+		height: 100%;
+	}
+
+	&--loader {
+		display: flex;
+		flex-direction: column;
+	}
+}

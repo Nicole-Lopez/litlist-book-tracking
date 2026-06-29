@@ -1,0 +1,37 @@
+@use '@styles/variables/paletteLightTheme.var' as paletteLightTheme;
+@use '@styles/variables/paletteDarkTheme.var' as paletteDarkTheme;
+
+.light-theme {
+	.image-with-placeholder {
+		&--no-load {
+			background-color: paletteLightTheme.$color-placeholder;
+		}
+	}
+}
+
+.dark-theme {
+	.image-with-placeholder {
+		&--no-load {
+			background-color: paletteDarkTheme.$color-placeholder;
+		}
+	}
+}
+
+.image-with-placeholder {
+	position: relative;
+
+	&--load img {
+		opacity: 1;
+	}
+
+	&--no-load img {
+		opacity: 0;
+	}
+
+	img {
+		display: block;
+		transition: opacity 300ms ease-in-out;
+		width: 100%;
+		height: 100%;
+	}
+}

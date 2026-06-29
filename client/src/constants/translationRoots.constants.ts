@@ -55,3 +55,9 @@ export const USER_SETTINGS_FORM_ROOT = {
 		},
 	},
 }
+
+export const BOOK_CARD_ROOT = {
+	authors: {
+		unspecified: 'authors.unspecified',
+	},
+}

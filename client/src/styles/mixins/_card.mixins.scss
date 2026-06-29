@@ -1,0 +1,23 @@
+@mixin card-hover-effect($title-selector, $cover-selector) {
+	#{$cover-selector} {
+		overflow: hidden;
+
+		img {
+			transition:
+				transform 200ms ease-in-out,
+				opacity 300ms ease-in-out;
+		}
+	}
+
+	&:hover {
+		#{$title-selector} {
+			text-decoration: underline;
+		}
+		#{$cover-selector} {
+			img {
+				filter: brightness(0.9) saturate(0.5);
+				transform: scale(1.1);
+			}
+		}
+	}
+}

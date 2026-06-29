@@ -7,4 +7,5 @@ export const TRANSLATIONS_NS = {
 	root: 'root',
 	bookCategories: 'bookCategories',
 	user: 'user',
+	bookCard: 'bookCard'
 } as const
