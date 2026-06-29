@@ -4,6 +4,8 @@ export const CATEGORIES_PATH = '/categories/:category'
 
 export const CONTACT_PATH = '/contact'
 
+export const SEARCH_PATH = '/search'
+
 export const BOOK_DETAILS_PATH = '/book/:id?'
 
 // User routes

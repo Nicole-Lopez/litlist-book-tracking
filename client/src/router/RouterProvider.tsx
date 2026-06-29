@@ -8,6 +8,7 @@ import {
 	CATEGORIES_PATH,
 	CONTACT_PATH,
 	HOME_PATH,
+	SEARCH_PATH,
 	USER_PROFILE_PATH,
 	USER_SETTINGS_PATH,
 } from '@router/routePaths.constants'
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
 			{
 				path: CONTACT_PATH,
 				element: <h1>Contact</h1>,
+			},
+			{
+				path: SEARCH_PATH,
+				element: <h1>Search</h1>,
 			},
 			{
 				path: BOOK_DETAILS_PATH,

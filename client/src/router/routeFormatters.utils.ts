@@ -5,9 +5,13 @@ import {
 	USER_PROFILE_PATH,
 	USER_SETTINGS_PATH,
 	BOOK_DETAILS_PATH,
+	SEARCH_PATH,
 } from '@router/routePaths.constants'
-import { generatePath } from 'react-router-dom'
-import type { CategoriesRouteParams } from '@router/routeParams.models'
+import { createSearchParams, generatePath } from 'react-router-dom'
+import type {
+	CategoriesRouteParams,
+	SearchRouteQueries,
+} from '@router/routeParams.models'
 import type { LinkProps } from 'react-router-dom'
 import type { BookSummary } from '@models/book.models'
 
@@ -30,6 +34,10 @@ export const getContactRoute = (): string => CONTACT_PATH
 
 export const getCategoriesRoute = (params: CategoriesRouteParams): string =>
 	formatRoute(CATEGORIES_PATH, params)
+
+export const getSearchLink = (queries: SearchRouteQueries): LinkProps => ({
+	to: { pathname: SEARCH_PATH, search: `${createSearchParams(queries)}` },
+})
 
 export const getBookDetailsLink = (book: BookSummary): LinkProps => {
 	if (book.isExternalId) {
