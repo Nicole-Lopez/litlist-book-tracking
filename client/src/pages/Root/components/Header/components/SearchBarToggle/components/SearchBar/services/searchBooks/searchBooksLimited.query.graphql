@@ -1,0 +1,8 @@
+query SearchBooksLimited($query: String!, $limit: Int!) {
+	searchBooks(query: $query, limit: $limit) {
+		totalCount
+		books {
+			...BookPreviewBasic
+		}
+	}
+}

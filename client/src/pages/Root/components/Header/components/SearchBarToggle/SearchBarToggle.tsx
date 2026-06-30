@@ -2,6 +2,7 @@ import { useToggle } from '@hooks/useToggle'
 import { createPortal } from 'react-dom'
 import SearchIcon from '@assets/icons/SearchIcon'
 import DelayedUnmount from '@components/DelayedUnmount/DelayedUnmount'
+import SearchBar from './components/SearchBar/SearchBar'
 import './SearchBarToggle.scss'
 import type { ReactNode } from 'react'
 
@@ -24,7 +25,7 @@ export default function SearchBarToggle(): ReactNode {
 					}`}
 				>
 					<DelayedUnmount isVisible={isSearchBarOpen}>
-						<div>SearchBar</div>
+						<SearchBar onClose={toggleSearchBarOpen} />
 					</DelayedUnmount>
 				</div>,
 				document.body,

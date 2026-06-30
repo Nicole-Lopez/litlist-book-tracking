@@ -1,0 +1,9 @@
+fragment BookPreviewBasic on BookPreview {
+    id
+    isExternalId
+    title
+    authors
+    cover
+    isbn10
+    isbn13
+}

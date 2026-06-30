@@ -1,0 +1,89 @@
+@use '@styles/variables/paletteLightTheme.var' as paletteLightTheme;
+@use '@styles/variables/paletteDarkTheme.var' as paletteDarkTheme;
+@use '@styles/mixins/hover.mixins' as hoverMixins;
+
+.light-theme {
+	.root-header-search-bar {
+		.book-card-heading {
+			&__authors {
+				color: paletteDarkTheme.$color-text-secondary;
+			}
+		}
+	}
+}
+
+.dark-theme {
+	.root-header-search-bar {
+		.book-card-heading {
+			&__authors {
+				color: paletteDarkTheme.$color-text-secondary;
+			}
+		}
+	}
+}
+
+.root-header-search-bar {
+	& &__search-input-field {
+		border-style: none none solid;
+	}
+
+	&__search-input-field {
+		.search-icon {
+			width: 20px;
+		}
+	}
+
+	&__search-loader {
+		color: #fff;
+	}
+
+	&__search-results {
+		color: #fff;
+		padding: 15px 5%;
+		font-family: 'Source Sans 3', sans-serif;
+		font-weight: 500;
+	}
+
+	&__results-info {
+		display: flex;
+		justify-content: space-between;
+		padding-bottom: 10px;
+		margin-bottom: 20px;
+		border-bottom: solid 2px;
+		font-size: 1.65rem;
+
+		span,
+		button,
+		.skeleton-loader {
+			padding: 5px 10px;
+		}
+	}
+
+	&__view-all-results-btn {
+		@include hoverMixins.hover-not-disabled() {
+			background-color: #4e5356;
+		}
+
+		border-radius: 20px;
+	}
+
+	&__no-results,
+	&__error {
+		font-size: 1.8rem;
+		overflow-wrap: break-word;
+		width: 100%;
+	}
+
+	&__error {
+		text-align: center;
+	}
+
+	&__results {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 100px 20px;
+		overflow: hidden;
+		max-height: 350px;
+	}
+}
