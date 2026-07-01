@@ -1,0 +1,15 @@
+export const SORT_OPTIONS = {
+	relevance: 'relevance',
+	titleAZ: 'titleAZ',
+	titleZA: 'titleZA',
+	mostPages: 'mostPages',
+	leastPages: 'leastPages',
+	latest: 'latest',
+	oldest: 'oldest',
+	latestUpdated: 'latestUpdated',
+	oldestUpdated: 'oldestUpdated',
+	latestSaved: 'latestSaved',
+	oldestSaved: 'oldestSaved',
+	mostCompleted: 'mostCompleted',
+	leastCompleted: 'leastCompleted',
+} as const

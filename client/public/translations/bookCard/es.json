@@ -1,5 +1,13 @@
 {
 	"authors": {
 		"unspecified": "Desconocido"
+	},
+	"page_count": {
+		"pages_zero": "No especificado",
+		"pages_one": "1 página",
+		"pages_other": "{{count}} páginas"
+	},
+	"published_year": {
+		"unspecified": "No especificado"
 	}
 }

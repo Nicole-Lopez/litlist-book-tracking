@@ -1,0 +1,14 @@
+.sort-select {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+
+	&__label {
+		font: 500 1.7rem sans-serif;
+		white-space: nowrap;
+	}
+
+	&__select-dropdown {
+		width: 170px;
+	}
+}

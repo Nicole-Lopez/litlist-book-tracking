@@ -1,0 +1,45 @@
+@use '@styles/variables/paletteLightTheme.var' as paletteLightTheme;
+@use '@styles/variables/paletteDarkTheme.var' as paletteDarkTheme;
+
+.light-theme {
+	.select-dropdown {
+		&__toggle {
+			border-color: #333;
+			background-color: paletteLightTheme.$color-dropdown-bg-primary;
+		}
+	}
+}
+
+.dark-theme {
+	.select-dropdown {
+		&__toggle {
+			border-color: #c1c1c1;
+			background-color: paletteDarkTheme.$color-dropdown-bg-primary;
+		}
+	}
+}
+
+.select-dropdown {
+	&__toggle {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 6px;
+		padding: 10px 6px 10px 10px;
+		width: 100%;
+		font:
+			500 1.7rem Arial,
+			sans-serif;
+		border: 1px solid;
+	}
+
+	&__chevron {
+		font-size: 2rem;
+		line-height: 1;
+	}
+
+	&__menu {
+		width: 100%;
+		border-radius: 0 0 5px 5px;
+	}
+}

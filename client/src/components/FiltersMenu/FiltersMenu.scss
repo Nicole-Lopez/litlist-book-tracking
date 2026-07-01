@@ -1,0 +1,114 @@
+@use '@styles/mixins/hover.mixins' as hoverMixins;
+@use '@styles/variables/paletteDarkTheme.var' as paletteDarkTheme;
+@use '@styles/variables/paletteLightTheme.var' as paletteLightTheme;
+@use '@styles/mixins/input.mixins' as inputMixins;
+
+.light-theme {
+	.filters-menu {
+		$shadow-color: rgb(0 0 0 / 25%);
+		$background-color: rgba(paletteLightTheme.$color-bg-surface, 95%);
+
+		@include inputMixins.input-label-bg($background-color);
+
+		background-color: $background-color;
+
+		&__header,
+		&__footer {
+			background-color: paletteLightTheme.$color-bg-surface;
+		}
+
+		&__header {
+			box-shadow: 0 0 6px 0 $shadow-color;
+		}
+
+		&__footer {
+			box-shadow: 0 -3px 6px 0 $shadow-color;
+		}
+
+		&__clear-all-btn {
+			@include hoverMixins.darken-hover-bg(
+				$bg: paletteLightTheme.$color-bg-surface,
+				$not: ':disabled'
+			);
+		}
+	}
+}
+
+.dark-theme {
+	.filters-menu {
+		$shadow-color: rgb(255 255 255 / 25%);
+		$background-color: rgb(paletteDarkTheme.$color-bg-surface, 99%);
+
+		@include inputMixins.input-label-bg($background-color);
+
+		background-color: $background-color;
+
+		&__header,
+		&__footer {
+			background-color: paletteDarkTheme.$color-bg-surface;
+		}
+
+		&__header {
+			box-shadow: 0 0 6px 0 $shadow-color;
+		}
+
+		&__footer {
+			box-shadow: 0 8px 6px 6px $shadow-color;
+		}
+
+		&__clear-all-btn {
+			@include hoverMixins.lighten-hover-bg(
+				$bg: paletteDarkTheme.$color-bg-surface,
+				$not: ':disabled'
+			);
+		}
+	}
+}
+
+.filters-menu {
+	display: flex;
+	flex-direction: column;
+
+	&__header {
+		position: sticky;
+		top: 0;
+		z-index: 2;
+		padding: 10px 15px;
+	}
+
+	&__title {
+		display: flex;
+		align-items: center;
+		gap: 5px;
+		font:
+			600 2.15rem 'Merriweather Sans',
+			sans-serif;
+
+		svg {
+			width: 19px;
+		}
+	}
+
+	&__filters {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		flex-grow: 1;
+		padding: 20px;
+	}
+
+	&__footer {
+		position: sticky;
+		inset: 0;
+		padding: 15px 10px;
+	}
+
+	&__clear-all-btn {
+		width: 100%;
+		padding: 10px 6px;
+		font:
+			700 1.75rem/1.3 'Source Sans 3',
+			sans-serif;
+		border: 5px solid;
+	}
+}

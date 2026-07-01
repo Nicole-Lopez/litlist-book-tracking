@@ -1,0 +1,21 @@
+.light-theme {
+	.tag-pill {
+		background-color: #807a7a;
+	}
+}
+
+.dark-theme {
+	.tag-pill {
+		background-color: #4a4a4a;
+	}
+}
+
+.tag-pill {
+	text-align: center;
+	font:
+		500 1.35rem 'Merriweather Sans',
+		sans-serif;
+	padding: 8px 15px;
+	border-radius: 50px;
+	color: #fff;
+}

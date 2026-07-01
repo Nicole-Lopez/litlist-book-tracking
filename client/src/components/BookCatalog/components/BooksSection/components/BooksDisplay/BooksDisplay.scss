@@ -1,0 +1,33 @@
+@use '@styles/mixins/lightTheme.mixins' as lightThemeMixins;
+@use '@styles/mixins/darkTheme.mixins' as darkThemeMixins;
+
+.light-theme {
+	.book-catalog__card-view-btn {
+		@include lightThemeMixins.hover-bg-default($not: ':disabled');
+	}
+}
+
+.dark-theme {
+	.book-catalog__card-view-btn {
+		@include darkThemeMixins.hover-bg-default($not: ':disabled');
+	}
+}
+
+.book-catalog {
+	&__card-view-controls {
+		display: flex;
+	}
+
+	&__card-view-btn {
+		width: 40px;
+		aspect-ratio: 1 / 1;
+		padding: 5px;
+		border-radius: 50%;
+		transition: opacity 100ms ease;
+
+		svg {
+			width: 23px;
+			fill: currentcolor;
+		}
+	}
+}

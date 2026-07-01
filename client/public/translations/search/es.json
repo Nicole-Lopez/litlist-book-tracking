@@ -1,0 +1,40 @@
+{
+	"search_books": {
+		"placeholder": "Título, autor, ISBN o keywords",
+		"no_results_messages": {
+			"1": "¡No te desanimes! Incluso los detectives literarios más expertos a veces necesitan más pistas. Intenta afinar tu búsqueda.",
+			"2": "¡Parece que alguien ha conjurado un hechizo de invisibilidad sobre los libros! Pero no temas, prueba con otras palabras mágicas.",
+			"3": "¡Silencio en la biblioteca! Pero no te preocupes, ¡nuestros libros están en sus estantes esperando ser descubiertos! Intenta una búsqueda diferente",
+			"4": "El misterio está en el aire... ¡No hay resultados! Pero, ¡no te preocupes! Nuestro catálogo es tan grande como la imaginación. ¡Inténtalo con otra búsqueda literaria!",
+			"5": "¡Parece que has descubierto un rincón vacio de la biblioteca! No hemos encontrado libros que coincidan exactamente con tu búsqueda. ¿Por qué no pruebas con otra búsqueda literaria?",
+			"6": "En el mundo de las letras, a veces los libros se esconden con timidez. No te desanimes, intenta una búsqueda diferente"
+		},
+		"search_in": {
+			"label": "Buscar en",
+			"options": {
+				"anywhere": "Cualquier lugar",
+				"title": "Título",
+				"author": "Autor",
+				"isbn": "ISBN"
+			}
+		}
+	},
+	"search_placeholder": "Buscar...",
+	"error_message": "Lo siento, parece que hubo un problema. Por favor, inténtalo de nuevo más tarde.",
+	"view_results": {
+		"view_all": "Ver todos",
+		"see_more": "Ver más",
+		"see_less": "Ver menos"
+	},
+	"results_summary": {
+		"counter_one": "1 resultado",
+		"counter_other": "{{count}} resultados",
+		"for_query": "para \"{{query}}\"",
+		"no_results_message": "No se han encontrado resultados para \"{{query}}\""
+	},
+	"pagination": {
+		"range_results_zero": "0 resultados",
+		"range_results_one": "1 - 1 de 1 resultado",
+		"range_results_other": "{{start}} - {{end}} de {{count}} resultados"
+	}
+}

@@ -1,0 +1,29 @@
+@use '@styles/variables/paletteDarkTheme.var' as paletteDarkTheme;
+@use '@styles/variables/paletteLightTheme.var' as paletteLightTheme;
+
+.light-theme {
+	.removable-chip {
+		background-color: paletteLightTheme.$color-input-checked;
+		color: paletteLightTheme.$color-text-primary-inverse;
+	}
+}
+
+.dark-theme {
+	.removable-chip {
+		background-color: paletteDarkTheme.$color-input-checked;
+		color: paletteDarkTheme.$color-text-primary-inverse;
+	}
+}
+
+.removable-chip {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+	text-align: center;
+	font:
+		500 1.35rem 'Merriweather Sans',
+		sans-serif;
+	padding: 8px 10px;
+	border-radius: 50px;
+}

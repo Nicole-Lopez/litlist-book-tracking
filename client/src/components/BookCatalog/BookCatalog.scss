@@ -1,0 +1,133 @@
+.book-catalog {
+	display: grid;
+
+	&__books-container {
+		&--list {
+			.book-catalog__card {
+				padding: 10px 0;
+			}
+
+			.book-catalog__list-card-details {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 5px 20px;
+				padding-top: 10px;
+
+				&--loader {
+					font-size: 2rem;
+					margin-top: 5px;
+					width: 75%;
+					max-width: 350px;
+				}
+			}
+		}
+
+		&--grid {
+			display: flex;
+			flex-wrap: wrap;
+			position: relative;
+
+			.book-catalog__card {
+				$width: 20px;
+
+				display: flex;
+				justify-content: center;
+				padding: 20px calc($width / 2);
+				width: calc(50% - $width);
+
+				@media (width >= 500px) {
+					width: calc((100% / 3) - $width);
+				}
+
+				@media (width >= 920px) {
+					width: calc(25% - $width);
+				}
+
+				@media (width >= 1450px) {
+					width: calc(20% - $width);
+				}
+			}
+		}
+	}
+
+	&__pagination-navigation {
+		margin: 40px auto;
+	}
+
+	&--loading {
+		.book-catalog-filters-panel__open-btn,
+		.sort-select,
+		.book-catalog__card-view-controls,
+		.book-catalog-filters-panel {
+			opacity: 0.7;
+			pointer-events: none;
+		}
+	}
+
+	&--mobile {
+		grid-template-columns: auto 1fr 1fr auto;
+		grid-template-rows: auto auto 1fr auto;
+
+		.book-catalog-filters-panel__open-btn,
+		.sort-select {
+			grid-column: 1 / -1;
+			justify-self: center;
+			margin: 0 0 15px;
+		}
+
+		.book-catalog__pagination-range-results {
+			grid-column: 1 / span 3;
+			place-self: center end;
+		}
+
+		.book-catalog__card-view-controls {
+			grid-column-start: 4;
+		}
+
+		.book-catalog__results,
+		.book-catalog__pagination-navigation {
+			grid-column: 1 / -1;
+		}
+
+		@media (width >= 480px) {
+			.book-catalog-filters-panel__open-btn {
+				grid-column: 1 / span 2;
+				justify-self: end;
+				margin-right: 10px;
+			}
+
+			.sort-select {
+				grid-column: 3 / -1;
+				margin-left: 10px;
+				justify-self: start;
+			}
+		}
+	}
+
+	&--desktop {
+		grid-template-columns: repeat(4, 1fr) max-content;
+		grid-template-rows: auto 1fr auto;
+
+		.book-catalog-filters-panel {
+			grid-row: 1 / -1;
+			margin-right: 35px;
+		}
+
+		.book-catalog__results {
+			grid-area: 2 / 2 / 2 / -1;
+		}
+
+		.book-catalog__pagination-navigation {
+			grid-area: 3 / 2 / -1 / -1;
+		}
+
+		.book-catalog__card-view-controls {
+			grid-column-start: 5;
+		}
+
+		.book-catalog__pagination-range-results {
+			grid-column-start: 4;
+			place-self: center end;
+		}
+	}
+}

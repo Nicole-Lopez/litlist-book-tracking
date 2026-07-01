@@ -1,0 +1,13 @@
+.card-icon-text {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	font:
+		500 1.65rem 'Source Sans 3',
+		sans-serif;
+
+	svg {
+		height: 17px;
+		width: 17px;
+	}
+}
