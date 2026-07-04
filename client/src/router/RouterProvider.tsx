@@ -16,6 +16,7 @@ import Root from '@pages/Root/Root'
 import type { ReactNode } from 'react'
 
 const Home = lazy(() => import('@pages/Home/Home'))
+const Search = lazy(() => import('@pages/Search/Search'))
 
 const router = createBrowserRouter([
 	{
@@ -33,7 +34,7 @@ const router = createBrowserRouter([
 			},
 			{
 				path: SEARCH_PATH,
-				element: <h1>Search</h1>,
+				Component: Search,
 			},
 			{
 				path: BOOK_DETAILS_PATH,

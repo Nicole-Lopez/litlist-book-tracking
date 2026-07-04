@@ -1,0 +1,24 @@
+.radio-group-input-field {
+	&__option {
+		padding: 6px 0;
+
+		input {
+			border-radius: 50%;
+
+			&::after {
+				content: '';
+				inset: 50%;
+				border-radius: 50%;
+				transition:
+					opacity 300ms,
+					inset 300ms;
+			}
+
+			&:checked {
+				&::after {
+					inset: 10%;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,20 @@
+.page-count-book-filter {
+	&__unspecified-page-count-input-field {
+		font-size: 1.7rem;
+		margin-bottom: 15px;
+	}
+
+	&__input-field-container {
+		display: flex;
+		gap: 7px;
+		margin-top: 3px;
+	}
+
+	&__page-count-input-field {
+		input {
+			width: 100%;
+			font-size: 1.75rem;
+			box-sizing: border-box;
+		}
+	}
+}

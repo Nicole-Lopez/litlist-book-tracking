@@ -1,0 +1,25 @@
+@use '@styles/variables/rootLayout.var' as rootLayout;
+
+.error-fallback {
+	margin: auto;
+	width: clamp(300px, 90%, 1500px);
+	padding: rootLayout.$page-container-padding-top 0 0;
+	text-align: center;
+
+	h1 {
+		font:
+			800 3.5rem 'Merriweather Sans',
+			sans-serif;
+	}
+
+	p {
+		padding: 5px 0;
+		font:
+			500 1.85rem 'Source Sans 3',
+			sans-serif;
+	}
+
+	svg {
+		width: 280px;
+	}
+}

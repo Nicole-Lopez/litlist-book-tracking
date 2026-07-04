@@ -1,0 +1,54 @@
+@use '@styles/variables/paletteLightTheme.var' as paletteLightTheme;
+@use '@styles/variables/paletteDarkTheme.var' as paletteDarkTheme;
+@use '@styles/mixins/lightTheme.mixins' as lightThemeMixins;
+@use '@styles/mixins/darkTheme.mixins' as darkThemeMixins;
+
+.light-theme {
+	.searchable-list {
+		&__list {
+			@include lightThemeMixins.custom-scrollbar();
+		}
+
+		&__collapse-btn {
+			@include lightThemeMixins.hover-bg-default($not: ':disabled');
+
+			color: paletteLightTheme.$color-input-checked;
+		}
+	}
+}
+
+.dark-theme {
+	.searchable-list {
+		&__list {
+			@include darkThemeMixins.custom-scrollbar();
+		}
+
+		&__collapse-btn {
+			@include darkThemeMixins.hover-bg-default($not: ':disabled');
+
+			color: paletteDarkTheme.$color-input-checked;
+		}
+	}
+}
+
+.searchable-list {
+	&__collapse-btn {
+		padding: 5px;
+		font:
+			600 1.75rem/1.2 'Source Sans 3',
+			sans-serif;
+	}
+
+	&__no-results-msg {
+		font:
+			600 1.75rem/1.2 'Source Sans 3',
+			sans-serif;
+		text-align: center;
+
+		svg {
+			display: block;
+			margin: auto;
+			width: 90px;
+		}
+	}
+}

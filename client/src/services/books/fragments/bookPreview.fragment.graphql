@@ -7,3 +7,12 @@ fragment BookPreviewBasic on BookPreview {
     isbn10
     isbn13
 }
+
+fragment BookPreviewCatalog on BookPreview {
+    ...BookPreviewBasic
+
+    publishedYear
+    pageCount
+    categories
+    contentWarnings
+}

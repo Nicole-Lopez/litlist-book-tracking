@@ -23,5 +23,9 @@
 			}
 		},
 		"copyright": "All rights reserved"
+	},
+	"error_fallback": {
+		"title": "We couldn't reach the shelves",
+		"description": "An unexpected error occurred while loading this section. Please check your internet connection and refresh the page to try again."
 	}
 }

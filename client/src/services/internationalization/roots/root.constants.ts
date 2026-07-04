@@ -23,3 +23,8 @@ export const FOOTER_ROOT = {
 	},
 	copyright: 'footer.copyright',
 }
+
+export const ERROR_FALLBACK_ROOT = {
+	title: 'error_fallback.title',
+	description: 'error_fallback.description',
+}

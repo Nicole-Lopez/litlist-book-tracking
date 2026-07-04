@@ -1,0 +1,16 @@
+.checkbox-input-field {
+	padding: 6px 0;
+
+	input {
+		border-radius: 4px;
+
+		&::after {
+			content: '\2714';
+			inset: 0;
+			font-weight: 600;
+			font-size: 1.6rem;
+			text-align: center;
+			transition: opacity 120ms;
+		}
+	}
+}

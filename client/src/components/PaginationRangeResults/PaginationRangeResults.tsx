@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { SEARCH_ROOT } from '@constants/translationRoots.constants'
+import { SEARCH_ROOT } from '@services/internationalization/roots/search.constants'
 import { TRANSLATIONS_NS } from '@services/internationalization/locale.constants'
 import SkeletonLoader from '@assets/loaders/SkeletonLoader/SkeletonLoader'
 import './PaginationRangeResults.scss'

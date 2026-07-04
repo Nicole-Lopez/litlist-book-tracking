@@ -1,0 +1,93 @@
+@use '@styles/variables/paletteLightTheme.var' as paletteLightTheme;
+@use '@styles/variables/paletteDarkTheme.var' as paletteDarkTheme;
+
+.light-theme {
+	.checkable-input-field {
+		input {
+			background-color: paletteLightTheme.$color-input-bg;
+			border-color: paletteLightTheme.$color-input-border;
+
+			&:checked {
+				border-color: paletteLightTheme.$color-input-checked;
+			}
+
+			&::after {
+				background-color: paletteLightTheme.$color-input-checked;
+				color: paletteLightTheme.$color-text-primary-inverse;
+			}
+
+			&:focus,
+			&:hover:not(:disabled) {
+				box-shadow:
+					0 0 0 2.3px rgba(paletteLightTheme.$color-input-checked, 0.5),
+					0 0 0 4px rgba(paletteLightTheme.$color-input-checked, 0.3);
+			}
+		}
+	}
+}
+
+.dark-theme {
+	.checkable-input-field {
+		input {
+			background-color: paletteDarkTheme.$color-input-bg;
+			border-color: paletteDarkTheme.$color-input-border;
+
+			&:checked {
+				border-color: paletteDarkTheme.$color-input-checked;
+			}
+
+			&::after {
+				background-color: paletteDarkTheme.$color-input-checked;
+				color: paletteDarkTheme.$color-text-primary-inverse;
+			}
+
+			&:focus,
+			&:hover:not(:disabled) {
+				box-shadow:
+					0 0 0 3.3px rgba(paletteDarkTheme.$color-input-checked, 0.5),
+					0 0 0 4px rgba(paletteDarkTheme.$color-input-checked, 0.3);
+			}
+		}
+	}
+}
+
+.checkable-input-field {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	width: fit-content;
+	font:
+		500 1.75rem/1.2 'Source Sans 3',
+		sans-serif;
+	cursor: pointer;
+
+	input {
+		position: relative;
+		height: 2.1rem;
+		aspect-ratio: 1;
+		appearance: none;
+		margin: 0 0 0 5px;
+		border: 2px solid;
+		outline: none;
+		cursor: inherit;
+		transition:
+			border-color 150ms,
+			box-shadow 200ms;
+
+		&::after {
+			position: absolute;
+			opacity: 0;
+		}
+
+		&:checked {
+			&::after {
+				opacity: 1;
+			}
+		}
+	}
+
+	&--disabled {
+		cursor: initial;
+		opacity: 0.6;
+	}
+}

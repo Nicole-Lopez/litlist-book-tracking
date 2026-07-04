@@ -1,0 +1,44 @@
+@use '@styles/variables/rootLayout.var' as rootLayout;
+
+.search-page {
+    width: clamp(300px, 90%, 1500px);
+    padding: rootLayout.$page-container-padding-top 0
+        rootLayout.$page-container-padding-bottom;
+    margin: auto;
+
+    &__title {
+        text-align: center;
+        font-family: 'Source Sans 3', sans-serif;
+        word-break: break-all;
+        white-space: normal;
+
+        &--results-length {
+            font-weight: 700;
+            font-size: clamp(3rem, 2.5rem + 1vw, 3.8rem);
+        }
+
+        &--query {
+            font-weight: 600;
+            font-size: clamp(1.9rem, 1.5rem + 1vw, 2.3rem);
+        }
+
+        &--loader {
+            margin: auto;
+
+            &.search-page__title {
+                &--results-length {
+                    max-width: 300px;
+                }
+
+                &--query {
+                    max-width: 350px;
+                }
+            }
+        }
+    }
+
+    &__search-bar {
+        max-width: 800px;
+        margin: 2rem auto;
+    }
+}

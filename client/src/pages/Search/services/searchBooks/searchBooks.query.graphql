@@ -1,0 +1,8 @@
+query SearchBooks($query: String!) {
+    searchBooks(query: $query) {
+        totalCount
+        books {
+            ...BookPreviewCatalog
+        }
+    }
+}
