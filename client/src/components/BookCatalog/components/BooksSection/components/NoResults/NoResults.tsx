@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { SEARCH_BOOKS_ROOT } from '@constants/translationRoots.constants'
+import { SEARCH_BOOKS_ROOT } from '@services/internationalization/roots/search.constants'
 import { TRANSLATIONS_NS } from '@services/internationalization/locale.constants'
 import { getRandomNumber } from '@utilities/number.utils'
 import BookSearchIcon from '@assets/icons/BookSearchIcon'

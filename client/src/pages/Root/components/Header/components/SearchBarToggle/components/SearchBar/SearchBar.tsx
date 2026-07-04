@@ -4,7 +4,10 @@ import { useTranslation } from 'react-i18next'
 import { useDebounceSearch } from '@hooks/useDebounceSearch'
 import { useSearchBooks } from './hooks/useSearchBooks'
 import { TRANSLATIONS_NS } from '@services/internationalization/locale.constants'
-import { SEARCH_ROOT, SEARCH_BOOKS_ROOT } from '@constants/translationRoots.constants'
+import {
+	SEARCH_BOOKS_ROOT,
+	SEARCH_ROOT,
+} from '@services/internationalization/roots/search.constants'
 import { getBookDetailsLink, getSearchLink } from '@router/routeFormatters.utils'
 import SearchResultsLoader from './assets/loaders/SearchResultsLoader'
 import BarLoader from '@assets/loaders/BarLoader/BarLoader'
