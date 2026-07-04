@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
-import { SORT_ROOT } from '@constants/translationRoots.constants'
 import { TRANSLATIONS_NS } from '@services/internationalization/locale.constants'
+import { SORT_ROOT } from '@services/internationalization/roots/sortAndFilter.constants'
 import SelectDropdown from '@components/SelectDropdown/SelectDropdown'
 import './SortSelect.scss'
 import type { ReactNode } from 'react'
@@ -20,7 +20,7 @@ export default function SortSelect<Option extends ValueOf<typeof SORT_OPTIONS>>(
 	onSelect,
 	className = '',
 }: SortSelectProps<Option>): ReactNode {
-	const { t } = useTranslation(TRANSLATIONS_NS.sortAndFilterBooks)
+	const { t } = useTranslation(TRANSLATIONS_NS.sortAndFilter)
 
 	return (
 		<div className={`sort-select ${className}`}>

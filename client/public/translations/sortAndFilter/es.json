@@ -1,0 +1,46 @@
+{
+	"sort": {
+		"label": "Ordenar por",
+		"options": {
+			"relevance": "Relevancia",
+			"title_az": "Título A - Z",
+			"title_za": "Título Z - A",
+			"latest": "Más recientes",
+			"oldest": "Más antiguos",
+			"most_pages": "Más páginas",
+			"least_pages": "Menos páginas",
+			"latest_updated": "Recientes actualizados",
+			"oldest_updated": "Antiguos actualizados",
+			"latest_saved": "Recientes guardados",
+			"oldest_saved": "Antiguos guardados",
+			"most_completed": "Cerca de completar",
+			"least_completed": "Lejos de completar"
+		}
+	},
+	"filters": {
+		"label": "Filtros",
+		"clear_filters_label": "Remover filtros",
+		"categories": {
+			"label": "Categorías",
+			"sub_categories_label": "Subcategorías"
+		},
+		"authors": {
+			"label": "Autores"
+		},
+		"content_warnings": {
+			"label": "Excluir advertencias de contenido"
+		},
+		"pages_range": {
+			"label": "Número de páginas",
+			"exclude_unspecified": "Excluir no especificados",
+			"min": {
+				"label": "Desde",
+				"description": "Mín"
+			},
+			"max": {
+				"label": "Hasta",
+				"description": "Máx"
+			}
+		}
+	}
+}

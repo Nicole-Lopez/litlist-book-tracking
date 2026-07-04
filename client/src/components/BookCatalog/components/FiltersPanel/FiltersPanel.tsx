@@ -2,7 +2,7 @@ import { lazy } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useIsMobile } from '@components/BookCatalog/hooks/useIsMobile'
 import { TRANSLATIONS_NS } from '@services/internationalization/locale.constants'
-import { FILTERS_BOOKS_ROOT } from '@constants/translationRoots.constants'
+import { FILTERS_ROOT } from '@services/internationalization/roots/sortAndFilter.constants'
 import FilterIcon from '@assets/icons/FilterIcon'
 import AccordionBase from '@components/Accordion/Accordion'
 import ActiveFilterList from '@components/ActiveFilterList/ActiveFilterList'
@@ -24,7 +24,7 @@ export default function FiltersPanel({
 	onClearFilters,
 	activeFilterList,
 }: FiltersPanelProps): ReactNode {
-	const { t } = useTranslation(TRANSLATIONS_NS.sortAndFilterBooks)
+	const { t } = useTranslation(TRANSLATIONS_NS.sortAndFilter)
 	const isMobile = useIsMobile()
 
 	if (isMobile) {
@@ -42,7 +42,7 @@ export default function FiltersPanel({
 	return (
 		<div className='book-catalog-filters-panel'>
 			<span className='book-catalog-filters-panel__title'>
-				<FilterIcon /> {t(FILTERS_BOOKS_ROOT.label)}
+				<FilterIcon /> {t(FILTERS_ROOT.label)}
 			</span>
 
 			<ActiveFilterList items={activeFilterList} />
@@ -53,7 +53,7 @@ export default function FiltersPanel({
 				className='book-catalog-filters-panel__clear-filters-btn'
 				onClick={onClearFilters}
 			>
-				{t(FILTERS_BOOKS_ROOT.clearFiltersLabel)}
+				{t(FILTERS_ROOT.clearFiltersLabel)}
 			</button>
 		</div>
 	)

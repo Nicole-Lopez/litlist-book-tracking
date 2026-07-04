@@ -6,7 +6,7 @@ export const SUPPORTED_LANGS = {
 export const TRANSLATIONS_NS = {
 	root: 'root',
 	bookCategories: 'bookCategories',
-	sortAndFilterBooks: 'sortAndFilterBooks',
+	sortAndFilter: 'sortAndFilter',
 	user: 'user',
 	search: 'search',
 	bookCard: 'bookCard',

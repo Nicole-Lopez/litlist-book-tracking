@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { useToggle } from '@hooks/useToggle'
 import { TRANSLATIONS_NS } from '@services/internationalization/locale.constants'
-import { FILTERS_BOOKS_ROOT } from '@constants/translationRoots.constants'
+import { FILTERS_ROOT } from '@services/internationalization/roots/sortAndFilter.constants'
 import FilterIcon from '@assets/icons/FilterIcon'
 import ActiveFilterList from '@components/ActiveFilterList/ActiveFilterList'
 import Modal from '@components/Modal/Modal'
@@ -22,13 +22,13 @@ export default function FiltersMenu({
 	activeFilterList,
 	openButtonClassName,
 }: FiltersMenuProps): ReactNode {
-	const { t } = useTranslation(TRANSLATIONS_NS.sortAndFilterBooks)
+	const { t } = useTranslation(TRANSLATIONS_NS.sortAndFilter)
 	const [isOpen, toggleOpen] = useToggle()
 
 	return (
 		<>
 			<button className={openButtonClassName} onClick={toggleOpen}>
-				<FilterIcon /> {t(FILTERS_BOOKS_ROOT.label)}
+				<FilterIcon /> {t(FILTERS_ROOT.label)}
 				<span>({activeFilterList.length})</span>
 			</button>
 
@@ -41,7 +41,7 @@ export default function FiltersMenu({
 				<div className='filters-menu__header'>
 					<span className='filters-menu__title'>
 						<FilterIcon />
-						{t(FILTERS_BOOKS_ROOT.label)}
+						{t(FILTERS_ROOT.label)}
 					</span>
 					<Modal.CloseButton onClose={toggleOpen} />
 				</div>
@@ -57,7 +57,7 @@ export default function FiltersMenu({
 						className='filters-menu__clear-all-btn'
 						onClick={onClearFilters}
 					>
-						{t(FILTERS_BOOKS_ROOT.clearFiltersLabel)}
+						{t(FILTERS_ROOT.clearFiltersLabel)}
 					</button>
 				</div>
 			</Modal>
