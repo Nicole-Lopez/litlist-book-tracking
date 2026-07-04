@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { CATEGORIES_LIST } from '@constants/categories.constants'
 import { CATEGORIES_ROOT } from '@constants/translationRoots.constants'
-import { FOOTER_ROOT } from '../../constants/translationRoots.constants'
+import { FOOTER_ROOT } from '@services/internationalization/roots/root.constants'
 import { TRANSLATIONS_NS } from '@services/internationalization/locale.constants'
 import { getCategoriesRoute, getContactRoute } from '@router/routeFormatters.utils'
 import { Link } from 'react-router-dom'

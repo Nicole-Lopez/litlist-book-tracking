@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { useAuthContext, useUserSummaryContext } from '@contexts/UserContext/userContext'
 import { TRANSLATIONS_NS } from '@services/internationalization/locale.constants'
-import { HEADER_ROOT } from '@pages/Root/constants/translationRoots.constants'
+import { HEADER_ROOT } from '@services/internationalization/roots/root.constants'
 import { getUserProfileRoute, getUserSettingsRoute } from '@router/routeFormatters.utils'
 import Dropdown from '@components/Dropdown/Dropdown'
 import './UserActionsMenu.scss'

@@ -5,7 +5,7 @@ import { CATEGORIES_LIST } from '@constants/categories.constants'
 import { CATEGORIES_PATH } from '@router/routePaths.constants'
 import { CATEGORIES_ROOT } from '@constants/translationRoots.constants'
 import { TRANSLATIONS_NS } from '@services/internationalization/locale.constants'
-import { HEADER_ROOT } from '@pages/Root/constants/translationRoots.constants'
+import { HEADER_ROOT } from '@services/internationalization/roots/root.constants'
 import {
 	getCategoriesRoute,
 	getContactRoute,
