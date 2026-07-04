@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { TRANSLATIONS_NS } from '@services/internationalization/locale.constants'
-import { BOOK_CARD_ROOT } from '@constants/translationRoots.constants'
+import { BOOK_CARD_ROOT } from '@services/internationalization/roots/bookCard.constants'
 import './BookCardHeading.scss'
 import type { ReactNode } from 'react'
 import type { BookSummary } from '@models/book.models'

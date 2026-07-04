@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { TRANSLATIONS_NS } from '@services/internationalization/locale.constants'
-import { BOOK_CARD_ROOT } from '@constants/translationRoots.constants'
+import { BOOK_CARD_ROOT } from '@services/internationalization/roots/bookCard.constants'
 import { getBookDetailsLink } from '@router/routeFormatters.utils'
 import { Virtuoso } from 'react-virtuoso'
 import { Link } from 'react-router-dom'
