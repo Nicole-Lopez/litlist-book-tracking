@@ -1,9 +1,9 @@
 import { lazy } from 'react'
 import { useLocation, matchPath } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { CATEGORIES_LIST } from '@constants/categories.constants'
+import { CATEGORIES_LIST } from '@constants/category.constants'
 import { CATEGORIES_PATH } from '@router/routePaths.constants'
-import { CATEGORIES_ROOT } from '@constants/translationRoots.constants'
+import { CATEGORIES_ROOT } from '@services/internationalization/roots/category.constants'
 import { TRANSLATIONS_NS } from '@services/internationalization/locale.constants'
 import { HEADER_ROOT } from '@services/internationalization/roots/root.constants'
 import {
@@ -34,7 +34,7 @@ export default function MainNav({
 	className = '',
 	isMobile = true,
 }: MainNavProps): ReactNode {
-	const { t } = useTranslation([TRANSLATIONS_NS.root, TRANSLATIONS_NS.bookCategories])
+	const { t } = useTranslation([TRANSLATIONS_NS.root, TRANSLATIONS_NS.category])
 
 	return (
 		<nav className={`main-nav ${className}`}>
@@ -59,7 +59,7 @@ export default function MainNav({
 										className='main-nav__nav-link'
 									>
 										{t(CATEGORIES_ROOT[category], {
-											ns: TRANSLATIONS_NS.bookCategories,
+											ns: TRANSLATIONS_NS.category,
 										})}
 									</NavLink>
 								</li>

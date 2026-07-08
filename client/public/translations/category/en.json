@@ -1,0 +1,20 @@
+{
+	"fiction": "Fiction",
+	"non_fiction": "Non-fiction",
+	"romance": "Romance",
+	"young_adult": "Young Adult",
+	"fantasy": "Fantasy",
+	"horror": "Horror",
+	"mystery": "Mystery",
+	"thriller": "Thriller",
+	"science_fiction": "Science Fiction",
+	"art": "Art",
+	"philosophy": "Philosophy",
+	"religion": "Religion",
+	"childrens": "Children's",
+	"business": "Business",
+	"classics": "Classics",
+	"poetry": "Poetry",
+	"graphic_novels_and_manga": "Graphic Novels & Manga",
+	"lgbtq": "LGBTQ+"
+}

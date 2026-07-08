@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
-import { CATEGORIES_LIST } from '@constants/categories.constants'
-import { CATEGORIES_ROOT } from '@constants/translationRoots.constants'
+import { CATEGORIES_LIST } from '@constants/category.constants'
+import { CATEGORIES_ROOT } from '@services/internationalization/roots/category.constants'
 import { FOOTER_ROOT } from '@services/internationalization/roots/root.constants'
 import { TRANSLATIONS_NS } from '@services/internationalization/locale.constants'
 import { getCategoriesRoute, getContactRoute } from '@router/routeFormatters.utils'
@@ -10,7 +10,7 @@ import './Footer.scss'
 import type { ReactNode } from 'react'
 
 export default function Footer(): ReactNode {
-	const { t } = useTranslation([TRANSLATIONS_NS.root, TRANSLATIONS_NS.bookCategories])
+	const { t } = useTranslation([TRANSLATIONS_NS.root, TRANSLATIONS_NS.category])
 
 	return (
 		<footer className='root-footer'>
@@ -26,7 +26,7 @@ export default function Footer(): ReactNode {
 								<li key={category}>
 									<Link to={getCategoriesRoute({ category })}>
 										{t(CATEGORIES_ROOT[category], {
-											ns: TRANSLATIONS_NS.bookCategories,
+											ns: TRANSLATIONS_NS.category,
 										})}
 									</Link>
 								</li>

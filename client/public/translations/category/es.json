@@ -1,0 +1,20 @@
+{
+	"fiction": "Ficción",
+	"non_fiction": "No ficción",
+	"romance": "Romance",
+	"young_adult": "Juvenil",
+	"fantasy": "Fantasía",
+	"horror": "Terror",
+	"mystery": "Misterio",
+	"thriller": "Thriller",
+	"science_fiction": "Ciencia ficción",
+	"art": "Arte",
+	"philosophy": "Filosofía",
+	"religion": "Religión",
+	"childrens": "Infantil",
+	"business": "Negocios",
+	"classics": "Clásicos",
+	"poetry": "Poesía",
+	"graphic_novels_and_manga": "Novela gráfica y manga",
+	"lgbtq": "LGBTQ+"
+}
