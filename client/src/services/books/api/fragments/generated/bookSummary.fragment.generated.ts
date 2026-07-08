@@ -1,0 +1,6 @@
+/** Internal type. DO NOT USE DIRECTLY. */
+export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
+import type { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
+export type GqlBookSummaryCoreFragment = { __typename: 'BookSummary', id: string, isExternalId: boolean, title: string, authors: Array<string> | null, cover: string | null, isbn10: string | null, isbn13: string | null };
+
+export const BookSummaryCoreFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"BookSummaryCore"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"BookSummary"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"isExternalId"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"authors"}},{"kind":"Field","name":{"kind":"Name","value":"cover"}},{"kind":"Field","name":{"kind":"Name","value":"isbn10"}},{"kind":"Field","name":{"kind":"Name","value":"isbn13"}}]}}]} as unknown as DocumentNode<GqlBookSummaryCoreFragment, unknown>;

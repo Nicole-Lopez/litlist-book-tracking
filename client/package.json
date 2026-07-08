@@ -7,7 +7,7 @@
 		"dev": "vite",
 		"build": "tsc && vite build",
 		"preview": "vite preview",
-		"codegen:books": "graphql-codegen --config src/services/books/codegen.ts",
+		"codegen:books": "graphql-codegen --config src/services/books/api/codegen.ts",
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
 		"lint:styles": "stylelint \"**/*.scss\"",

@@ -1,0 +1,9 @@
+fragment BookSummaryCore on BookSummary {
+    id
+    isExternalId
+    title
+    authors
+    cover
+    isbn10
+    isbn13
+}

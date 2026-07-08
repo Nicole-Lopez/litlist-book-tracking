@@ -9,28 +9,27 @@ const config: CodegenConfig = {
     documents: ['./src/**/*.graphql'],
     ignoreNoDocuments: true,
     generates: {
-        './src/services/books/generated/graphql.generated.ts': {
-            plugins: ['typescript-operations'],
+        './src/services/books/api/generated/enums.generated.ts': {
+            plugins: ['typescript'],
             config: {
-                generateOperationTypes: false,
+                onlyEnums: true,
                 enumsAsConst: true,
                 typesPrefix: 'Gql',
-                useTypeImports: true,
             },
         },
         './src/': {
             preset: 'near-operation-file',
             plugins: ['typescript-operations', 'typed-document-node'],
             presetConfig: {
-                baseTypesPath: '~@services/books/generated/graphql.generated.ts',
                 folder: 'generated',
                 extension: '.generated.ts',
             },
             config: {
-                importSchemaTypesFrom: '~@services/books/generated/graphql.generated.ts',
-                enumType: 'const',
-                typesPrefix: 'Gql',
+                importSchemaTypesFrom:
+                    '~@services/books/api/generated/enums.generated.ts',
                 useTypeImports: true,
+                typesPrefix: 'Gql',
+                namespacedImportName: 'Enums',
                 nonOptionalTypename: true,
                 skipTypeNameForRoot: true,
             },
