@@ -9,7 +9,7 @@ export const CATEGORY_TO_API_CATEGORY: Readonly<Record<Category, GqlCategory>> =
 	[CATEGORIES.classics]: GqlCategory.GqlClassics,
 	[CATEGORIES.fantasy]: GqlCategory.GqlFantasy,
 	[CATEGORIES.fiction]: GqlCategory.GqlFiction,
-	[CATEGORIES.graphicBooksAndManga]: GqlCategory.GqlGraphicBooksAndManga,
+	[CATEGORIES.graphicNovelsAndManga]: GqlCategory.GqlGraphicBooksAndManga,
 	[CATEGORIES.horror]: GqlCategory.GqlHorror,
 	[CATEGORIES.lgbtq]: GqlCategory.GqlLgbtq,
 	[CATEGORIES.mystery]: GqlCategory.GqlMystery,
