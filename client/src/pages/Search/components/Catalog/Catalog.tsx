@@ -173,81 +173,91 @@ function FiltersPanel(): ReactNode {
 				</RadioGroupInputField>
 			</BookCatalog.Accordion>
 
-			<BookCatalog.Accordion
-				label={t(FILTERS_ROOT.authors.label)}
-				isForceCollapsed={isLoading}
-			>
-				<SearchableList
-					items={filters.authors.availableCounts}
-					isCollapsible
-					getSearchValue={author => author.name}
-					isUsingWindowScroll={false}
-					renderItem={item => (
-						<CheckboxWithCount
-							onChange={() => applyAuthorsFilter(item.name)}
-							checked={filters.authors.value.includes(item.name)}
-							count={item.count}
-						>
-							{item.name}
-						</CheckboxWithCount>
-					)}
-				/>
-			</BookCatalog.Accordion>
+			{filters.authors.availableCounts.length ? (
+				<BookCatalog.Accordion
+					label={t(FILTERS_ROOT.authors.label)}
+					isForceCollapsed={isLoading}
+				>
+					<SearchableList
+						items={filters.authors.availableCounts}
+						isCollapsible
+						getSearchValue={author => author.name}
+						isUsingWindowScroll={false}
+						renderItem={item => (
+							<CheckboxWithCount
+								onChange={() => applyAuthorsFilter(item.name)}
+								checked={filters.authors.value.includes(item.name)}
+								count={item.count}
+							>
+								{item.name}
+							</CheckboxWithCount>
+						)}
+					/>
+				</BookCatalog.Accordion>
+			) : null}
 
-			<BookCatalog.Accordion
-				label={t(FILTERS_ROOT.categories.label)}
-				isForceCollapsed={isLoading}
-			>
-				<SearchableList
-					items={filters.categories.availableCounts}
-					isCollapsible
-					getSearchValue={category => category.name}
-					isUsingWindowScroll={false}
-					renderItem={item => (
-						<CheckboxWithCount
-							onChange={() => applyCategoriesFilter(item.name)}
-							checked={filters.categories.value.includes(item.name)}
-							count={item.count}
-						>
-							{item.name}
-						</CheckboxWithCount>
-					)}
-				/>
-			</BookCatalog.Accordion>
+			{filters.categories.availableCounts.length ? (
+				<BookCatalog.Accordion
+					label={t(FILTERS_ROOT.categories.label)}
+					isForceCollapsed={isLoading}
+				>
+					<SearchableList
+						items={filters.categories.availableCounts}
+						isCollapsible
+						getSearchValue={category => category.name}
+						isUsingWindowScroll={false}
+						renderItem={item => (
+							<CheckboxWithCount
+								onChange={() => applyCategoriesFilter(item.name)}
+								checked={filters.categories.value.includes(item.name)}
+								count={item.count}
+							>
+								{item.name}
+							</CheckboxWithCount>
+						)}
+					/>
+				</BookCatalog.Accordion>
+			) : null}
 
-			<BookCatalog.Accordion
-				isForceCollapsed={isLoading}
-				label={t(FILTERS_ROOT.pagesRange.label)}
-			>
-				<PageCountBookFilter
-					currentPageCount={filters.pageCount.value}
-					min={filters.pageCount.availableCounts.minPages}
-					max={filters.pageCount.availableCounts.maxPages}
-					applyPageCountFilter={applyPageCountFilter}
-				/>
-			</BookCatalog.Accordion>
+			{filters.pageCount.availableCounts.maxPages ? (
+				<BookCatalog.Accordion
+					isForceCollapsed={isLoading}
+					label={t(FILTERS_ROOT.pagesRange.label)}
+				>
+					<PageCountBookFilter
+						currentPageCount={filters.pageCount.value}
+						min={filters.pageCount.availableCounts.minPages}
+						max={filters.pageCount.availableCounts.maxPages}
+						applyPageCountFilter={applyPageCountFilter}
+					/>
+				</BookCatalog.Accordion>
+			) : null}
 
-			<BookCatalog.Accordion
-				label={t(FILTERS_ROOT.contentWarnings.label)}
-				isForceCollapsed={isLoading}
-			>
-				<SearchableList
-					items={filters.contentWarnings.availableCounts}
-					isCollapsible
-					getSearchValue={contentWarning => contentWarning.name}
-					isUsingWindowScroll={false}
-					renderItem={item => (
-						<CheckboxWithCount
-							onChange={() => applyContentWarningsFilter(item.name)}
-							checked={filters.contentWarnings.value.includes(item.name)}
-							count={item.count}
-							isDisabledOnZero={false}
-						>
-							{item.name}
-						</CheckboxWithCount>
-					)}
-				/>
-			</BookCatalog.Accordion>
+			{filters.contentWarnings.availableCounts.length ? (
+				<BookCatalog.Accordion
+					label={t(FILTERS_ROOT.contentWarnings.label)}
+					isForceCollapsed={isLoading}
+				>
+					<SearchableList
+						items={filters.contentWarnings.availableCounts}
+						isCollapsible
+						getSearchValue={contentWarning => contentWarning.name}
+						isUsingWindowScroll={false}
+						renderItem={item => (
+							<CheckboxWithCount
+								onChange={() => applyContentWarningsFilter(item.name)}
+								checked={filters.contentWarnings.value.includes(
+									item.name,
+								)}
+								count={item.count}
+								isDisabledOnZero={false}
+							>
+								{item.name}
+							</CheckboxWithCount>
+						)}
+					/>
+				</BookCatalog.Accordion>
+			) : null}
 		</BookCatalog.FiltersPanel>
 	)
 }

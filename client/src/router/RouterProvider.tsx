@@ -18,7 +18,6 @@ import NotFound from '@pages/NotFound/NotFound'
 import type { ReactNode } from 'react'
 
 const Home = lazy(() => import('@pages/Home/Home'))
-const Search = lazy(() => import('@pages/Search/Search'))
 
 const router = createBrowserRouter([
 	{
@@ -54,7 +53,20 @@ const router = createBrowserRouter([
 						path: CONTACT_PATH,
 						element: <h1>Contact</h1>,
 					},
-					{ path: SEARCH_PATH, Component: Search },
+					{
+						path: SEARCH_PATH,
+						lazy: async () => {
+							const [componentModule, routeModule] = await Promise.all([
+								import('@pages/Search/Search'),
+								import('@pages/Search/searchRoute'),
+							])
+
+							return {
+								Component: componentModule.default,
+								loader: routeModule.searchLoader,
+							}
+						},
+					},
 					{
 						path: BOOK_DETAILS_PATH,
 						element: <h1>Book details</h1>,
