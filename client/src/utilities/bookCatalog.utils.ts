@@ -8,6 +8,7 @@ import {
 import { isArrayIncludingAllStrings, removeFirstMatch } from '@utilities/array.utils'
 import { isAtLeast, isAtMost, isInRange } from '@utilities/number.utils'
 import { filterEffect } from '@utilities/filters.utils'
+import { sortObjectsByNumberDesc } from './sort.utils'
 import type { WithRequired } from '@customTypes/customUtilityTypes'
 import type {
 	BookCatalogState,
@@ -262,9 +263,13 @@ export const initAvailableCategoriesCounts = (
 			}
 		},
 		getAvailableCategoriesCounts: () =>
-			[...availableCategoriesCounts.entries()]
-				.sort((a, b) => b[1] - a[1])
-				.map(([name, count]) => ({ name, count })),
+			sortObjectsByNumberDesc(
+				[...availableCategoriesCounts.entries()].map(([name, count]) => ({
+					name,
+					count,
+				})),
+				'count',
+			),
 	}
 }
 
@@ -292,9 +297,13 @@ export const initAvailableAuthorsCounts = (
 			}
 		},
 		getAvailableAuthorsCounts: () =>
-			[...availableAuthorsCounts.entries()]
-				.sort((a, b) => b[1] - a[1])
-				.map(([name, count]) => ({ name, count })),
+			sortObjectsByNumberDesc(
+				[...availableAuthorsCounts.entries()].map(([name, count]) => ({
+					name,
+					count,
+				})),
+				'count',
+			),
 	}
 }
 
@@ -324,18 +333,21 @@ export const initAvailableContentWarningsCounts = (
 			}
 		},
 		getAvailableContentWarningsCounts: currentFilterValue => {
-			const beqwe = []
-			const selectedP = []
+			const inactiveWarnings = []
+			const activeWarnings = []
 
 			for (const [name, count] of availableContentWarningsCounts) {
 				if (currentFilterValue.includes(name)) {
-					selectedP.unshift({ name, count })
+					activeWarnings.unshift({ name, count })
 				} else {
-					beqwe.push({ name, count })
+					inactiveWarnings.push({ name, count })
 				}
 			}
 
-			return [...selectedP, ...beqwe.sort((a, b) => b.count - a.count)]
+			return [
+				...activeWarnings,
+				...sortObjectsByNumberDesc(inactiveWarnings, 'count'),
+			]
 		},
 	}
 }

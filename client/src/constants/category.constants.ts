@@ -5,18 +5,18 @@ export const CATEGORIES = {
 	classics: 'classics',
 	fantasy: 'fantasy',
 	fiction: 'fiction',
-	graphicNovelsAndManga: 'graphicNovelsAndManga',
+	graphicNovelsAndManga: 'graphic-novels-and-manga',
 	horror: 'horror',
 	lgbtq: 'lgbtq',
 	mystery: 'mystery',
-	nonFiction: 'nonFiction',
+	nonFiction: 'non-fiction',
 	philosophy: 'philosophy',
 	poetry: 'poetry',
 	religion: 'religion',
 	romance: 'romance',
-	scienceFiction: 'scienceFiction',
+	scienceFiction: 'science-fiction',
 	thriller: 'thriller',
-	youngAdult: 'youngAdult',
+	youngAdult: 'young-adult',
 } as const
 
 export const CATEGORIES_LIST = Object.values(CATEGORIES)

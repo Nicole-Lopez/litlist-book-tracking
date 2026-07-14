@@ -24,7 +24,6 @@ export const FILTERS_ROOT = {
 	clearFiltersLabel: 'filters.clear_filters_label',
 	categories: {
 		label: 'filters.categories.label',
-		subCategoriesLabel: 'filters.categories.sub_categories_label',
 	},
 	authors: {
 		label: 'filters.authors.label',

@@ -32,7 +32,23 @@ const router = createBrowserRouter([
 					{ index: true, Component: Home },
 					{
 						path: CATEGORIES_PATH,
-						element: <h1>Categories</h1>,
+						lazy: async () => {
+							const [componentModule, routeModule] = await Promise.all([
+								import('@pages/Category/Category'),
+								import('@pages/Category/categoryRoute'),
+							])
+
+							return {
+								Component: componentModule.default,
+								loader: routeModule.categoryLoader,
+							}
+						},
+						// lazy: {
+						// 	Component: async () => {
+						// 		return (await import('@pages/Category/Category'))
+						// 			.default
+						// 	},
+						// },
 					},
 					{
 						path: CONTACT_PATH,
