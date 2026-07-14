@@ -7,7 +7,7 @@ import { CATEGORIES_ROOT } from '@services/internationalization/roots/category.c
 import { TRANSLATIONS_NS } from '@services/internationalization/locale.constants'
 import { HEADER_ROOT } from '@services/internationalization/roots/root.constants'
 import {
-	getCategoriesRoute,
+	getCategoriesLink,
 	getContactRoute,
 	getHomeRoute,
 } from '@router/routeFormatters.utils'
@@ -55,7 +55,7 @@ export default function MainNav({
 							{CATEGORIES_LIST.map(category => (
 								<li key={category}>
 									<NavLink
-										to={getCategoriesRoute({ category })}
+										{...getCategoriesLink({ category })}
 										className='main-nav__nav-link'
 									>
 										{t(CATEGORIES_ROOT[category], {

@@ -1,8 +1,8 @@
-type RouteParams<T> = Readonly<Partial<T>>
+import type { Category } from '@models/category.models'
 
-export type CategoriesRouteParams = RouteParams<{
-	category: string
-}>
+export type CategoriesRouteParams = {
+	category: Category
+}
 
 export type SearchRouteQueries = {
 	q: string

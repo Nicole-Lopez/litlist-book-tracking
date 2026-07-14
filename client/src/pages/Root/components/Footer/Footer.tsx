@@ -3,7 +3,7 @@ import { CATEGORIES_LIST } from '@constants/category.constants'
 import { CATEGORIES_ROOT } from '@services/internationalization/roots/category.constants'
 import { FOOTER_ROOT } from '@services/internationalization/roots/root.constants'
 import { TRANSLATIONS_NS } from '@services/internationalization/locale.constants'
-import { getCategoriesRoute, getContactRoute } from '@router/routeFormatters.utils'
+import { getCategoriesLink, getContactRoute } from '@router/routeFormatters.utils'
 import { Link } from 'react-router-dom'
 import LogoLink from '../LogoLink/LogoLink'
 import './Footer.scss'
@@ -24,7 +24,7 @@ export default function Footer(): ReactNode {
 						<ul>
 							{CATEGORIES_LIST.map(category => (
 								<li key={category}>
-									<Link to={getCategoriesRoute({ category })}>
+									<Link {...getCategoriesLink({ category })}>
 										{t(CATEGORIES_ROOT[category], {
 											ns: TRANSLATIONS_NS.category,
 										})}
