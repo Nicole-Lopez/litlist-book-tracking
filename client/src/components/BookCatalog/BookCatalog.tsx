@@ -10,6 +10,7 @@ export type BookCatalogProps = {
 	renderFiltersPanel: ReactNode
 	renderSortSelect: ReactNode
 	renderBooksSection: ReactNode
+	className?: string
 }
 
 export default function BookCatalog({
@@ -17,6 +18,7 @@ export default function BookCatalog({
 	renderBooksSection,
 	renderFiltersPanel,
 	renderSortSelect,
+	className = '',
 }: BookCatalogProps): ReactNode {
 	const isMobile = useIsMobile()
 
@@ -24,7 +26,7 @@ export default function BookCatalog({
 		<div
 			className={`book-catalog book-catalog--${isMobile ? 'mobile' : 'desktop'} ${
 				isLoading ? 'book-catalog--loading' : ''
-			}`}
+			} ${className}`}
 		>
 			{renderFiltersPanel}
 
