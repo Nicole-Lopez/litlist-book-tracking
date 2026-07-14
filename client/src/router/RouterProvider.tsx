@@ -12,7 +12,9 @@ import {
 	USER_PROFILE_PATH,
 	USER_SETTINGS_PATH,
 } from '@router/routePaths.constants'
+import MainLoader from '@assets/loaders/MainLoader/MainLoader'
 import Root from '@pages/Root/Root'
+import NotFound from '@pages/NotFound/NotFound'
 import type { ReactNode } from 'react'
 
 const Home = lazy(() => import('@pages/Home/Home'))
@@ -22,32 +24,36 @@ const router = createBrowserRouter([
 	{
 		path: HOME_PATH,
 		Component: Root,
+		HydrateFallback: MainLoader,
 		children: [
-			{ index: true, Component: Home },
 			{
-				path: CATEGORIES_PATH,
-				element: <h1>Categories</h1>,
-			},
-			{
-				path: CONTACT_PATH,
-				element: <h1>Contact</h1>,
-			},
-			{
-				path: SEARCH_PATH,
-				Component: Search,
-			},
-			{
-				path: BOOK_DETAILS_PATH,
-				element: <h1>Book details</h1>,
-			},
-			{
-				path: USER_PROFILE_PATH,
+				ErrorBoundary: NotFound,
 				children: [
-					{ index: true, element: <h1>User profile</h1> },
+					{ index: true, Component: Home },
 					{
-						path: USER_SETTINGS_PATH,
-						element: <h1>User settings</h1>,
+						path: CATEGORIES_PATH,
+						element: <h1>Categories</h1>,
 					},
+					{
+						path: CONTACT_PATH,
+						element: <h1>Contact</h1>,
+					},
+					{ path: SEARCH_PATH, Component: Search },
+					{
+						path: BOOK_DETAILS_PATH,
+						element: <h1>Book details</h1>,
+					},
+					{
+						path: USER_PROFILE_PATH,
+						children: [
+							{ index: true, element: <h1>User profile</h1> },
+							{
+								path: USER_SETTINGS_PATH,
+								element: <h1>User settings</h1>,
+							},
+						],
+					},
+					{ path: '*', Component: NotFound },
 				],
 			},
 		],

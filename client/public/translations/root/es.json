@@ -27,5 +27,10 @@
 	"error_fallback": {
 		"title": "No pudimos alcanzar los estantes",
 		"description": "Ocurrió un error inesperado al cargar esta sección. Por favor, verifica tu conexión a internet y recarga la página para intentarlo de nuevo."
+	},
+	"page_not_found_fallback": {
+		"title": "Una página en blanco",
+		"description": "No pudimos encontrar la página que buscas.",
+		"action_label": "Volver a Explorar"
 	}
 }

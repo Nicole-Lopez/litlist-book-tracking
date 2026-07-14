@@ -28,3 +28,9 @@ export const ERROR_FALLBACK_ROOT = {
 	title: 'error_fallback.title',
 	description: 'error_fallback.description',
 }
+
+export const PAGE_NOT_FOUND_FALLBACK_ROOT = {
+	title: 'page_not_found_fallback.title',
+	description: 'page_not_found_fallback.description',
+	actionLabel: 'page_not_found_fallback.action_label',
+}
