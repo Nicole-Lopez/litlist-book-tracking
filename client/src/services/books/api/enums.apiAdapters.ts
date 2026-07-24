@@ -1,5 +1,5 @@
 import { CATEGORIES } from '@constants/category.constants'
-import { GqlCategory } from './generated/enums.generated'
+import { GqlCategory } from './generated/schema.generated'
 import type { Category } from '@models/category.models'
 
 export const CATEGORY_TO_API_CATEGORY: Readonly<Record<Category, GqlCategory>> = {

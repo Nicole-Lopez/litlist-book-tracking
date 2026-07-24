@@ -1,12 +1,12 @@
-export const GqlBestSellersListName = {
-  GqlChildrens: 'CHILDRENS',
-  GqlFiction: 'FICTION',
-  GqlGraphicBooksAndManga: 'GRAPHIC_BOOKS_AND_MANGA',
-  GqlNonFiction: 'NON_FICTION',
-  GqlYoungAdult: 'YOUNG_ADULT'
-} as const;
+export type GqlBookDetailsInput = {
+  authors?: Array<string> | null | undefined;
+  id: string | number;
+  isExternalId: boolean;
+  isbn10?: string | null | undefined;
+  isbn13?: string | null | undefined;
+  title: string;
+};
 
-export type GqlBestSellersListName = typeof GqlBestSellersListName[keyof typeof GqlBestSellersListName];
 export const GqlCategory = {
   GqlArt: 'ART',
   GqlBusiness: 'BUSINESS',
