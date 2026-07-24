@@ -10,4 +10,5 @@ export const TRANSLATIONS_NS = {
 	user: 'user',
 	search: 'search',
 	bookCard: 'bookCard',
+	bookDetails: 'bookDetails',
 } as const

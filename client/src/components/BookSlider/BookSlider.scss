@@ -1,0 +1,95 @@
+@use '@styles/variables/paletteDarkTheme.var' as paletteDarkTheme;
+@use '@styles/variables/paletteLightTheme.var' as paletteLightTheme;
+@use '@styles/mixins/hover.mixins' as hoverMixins;
+
+.light-theme {
+	.book-slider {
+		&__control-btn {
+			@include hoverMixins.hover-not-disabled() {
+				background-color: paletteLightTheme.$color-hover-default;
+			}
+		}
+	}
+}
+
+.dark-theme {
+	.book-slider {
+		&__control-btn {
+			@include hoverMixins.hover-not-disabled() {
+				background-color: paletteDarkTheme.$color-hover-default;
+			}
+		}
+	}
+}
+
+.book-slider {
+	$slide-gap: 5px;
+
+	&__header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 5px;
+		margin-bottom: 15px;
+	}
+
+	&__label {
+		font:
+			400 2rem 'Merriweather Sans',
+			sans-serif;
+	}
+
+	&__controls {
+		display: flex;
+		gap: 5px;
+	}
+
+	&__control-btn {
+		font-size: 2.8rem;
+		padding: 5px 10px;
+		border-radius: 25%;
+
+		&:disabled {
+			opacity: 0.6;
+		}
+	}
+
+	&__viewport {
+		overflow: hidden;
+		width: 100%;
+	}
+
+	&__list {
+		display: flex;
+		margin-left: -$slide-gap;
+		touch-action: pan-y pinch-zoom;
+	}
+
+	&__slide {
+		min-width: 0;
+		padding-left: $slide-gap;
+		flex: 0 0 50%;
+
+		@media (width >= 650px) {
+			flex: 0 0 (100% / 3);
+		}
+
+		@media (width >= 920px) {
+			flex: 0 0 25%;
+		}
+
+		@media (width >= 1200px) {
+			flex: 0 0 20%;
+		}
+
+		@media (width >= 1400px) {
+			flex: 0 0 (100% / 6);
+		}
+
+		a {
+			width: fit-content;
+			display: block;
+			margin: auto;
+		}
+	}
+}

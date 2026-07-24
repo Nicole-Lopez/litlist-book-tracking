@@ -1,0 +1,24 @@
+query BookDetails($book: BookDetailsInput!) {
+	bookDetails(book: $book) {
+		id
+		isExternalId
+		title
+		authors
+		cover
+		isbn10
+		isbn13
+		publishedYear
+		pageCount
+		categories
+		contentWarnings
+		characters
+		subtitle
+		description
+		publishedDate
+		language
+		publisher
+		relatedBooks {
+			...BookSummaryCore
+		}
+	}
+}

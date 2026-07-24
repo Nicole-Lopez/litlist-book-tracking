@@ -9,11 +9,11 @@ import {
 } from '@router/routePaths.constants'
 import { createSearchParams, generatePath } from 'react-router-dom'
 import type {
+	BookDetailsRouteState,
 	CategoriesRouteParams,
 	SearchRouteQueries,
 } from '@router/routeParams.models'
 import type { LinkProps } from 'react-router-dom'
-import type { BookSummary } from '@models/book.models'
 
 export const getHomeRoute = (): string => HOME_PATH
 
@@ -27,17 +27,12 @@ export const getSearchLink = (queries: SearchRouteQueries): LinkProps => ({
 	to: { pathname: SEARCH_PATH, search: `${createSearchParams(queries)}` },
 })
 
-export const getBookDetailsLink = (book: BookSummary): LinkProps => {
+export const getBookDetailsLink = (book: BookDetailsRouteState): LinkProps => {
 	if (book.isExternalId) {
-		return {
-			to: generatePath(BOOK_DETAILS_PATH),
-			state: book,
-		}
+		return { to: generatePath(BOOK_DETAILS_PATH), state: book }
 	}
 
-	return {
-		to: generatePath(BOOK_DETAILS_PATH, { id: book.id }),
-	}
+	return { to: generatePath(BOOK_DETAILS_PATH, { id: book.id }) }
 }
 
 // User routes

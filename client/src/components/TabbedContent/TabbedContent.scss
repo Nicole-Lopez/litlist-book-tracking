@@ -1,0 +1,75 @@
+@use '@styles/variables/paletteDarkTheme.var' as paletteDarkTheme;
+@use '@styles/variables/paletteLightTheme.var' as paletteLightTheme;
+@use '@styles/mixins/hover.mixins' as hoverMixins;
+
+.light-theme {
+	.tabbed-content {
+		&__tab {
+			@include hoverMixins.hover-not-disabled() {
+				color: paletteLightTheme.$color-text-primary;
+			}
+
+			color: paletteLightTheme.$color-text-secondary;
+
+			&--active {
+				@include hoverMixins.hover-not-disabled() {
+					color: paletteLightTheme.$color-text-secondary;
+				}
+
+				background-color: paletteLightTheme.$color-bg-surface;
+				color: paletteLightTheme.$color-text-primary;
+				border-bottom-color: paletteLightTheme.$color-bg-surface;
+			}
+		}
+	}
+}
+
+.dark-theme {
+	.tabbed-content {
+		&__tab {
+			@include hoverMixins.hover-not-disabled() {
+				color: paletteDarkTheme.$color-text-primary;
+			}
+
+			color: paletteDarkTheme.$color-text-secondary;
+
+			&--active {
+				@include hoverMixins.hover-not-disabled() {
+					color: rgba(paletteDarkTheme.$color-text-primary, 80%);
+				}
+
+				background-color: paletteDarkTheme.$color-bg-surface;
+				color: paletteDarkTheme.$color-text-primary;
+				border-bottom-color: paletteDarkTheme.$color-bg-surface;
+			}
+		}
+	}
+}
+
+.tabbed-content {
+	$border-color: #bababa;
+	$border-width: 1px;
+
+	&__tabs-container {
+		margin-bottom: 15px;
+		border-bottom: $border-width solid $border-color;
+	}
+
+	&__tab {
+		padding: 8px 16px;
+		border: $border-width solid transparent;
+		border-radius: 1rem 1rem 0 0;
+		margin-bottom: -0.1rem;
+		font:
+			500 1.65rem 'Merriweather Sans',
+			sans-serif;
+
+		&--active {
+			border-color: $border-color;
+		}
+
+		&:disabled {
+			opacity: 0.7;
+		}
+	}
+}

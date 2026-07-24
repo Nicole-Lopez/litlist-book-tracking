@@ -1,0 +1,125 @@
+@use '@styles/variables/paletteDarkTheme.var' as paletteDarkTheme;
+@use '@styles/variables/paletteLightTheme.var' as paletteLightTheme;
+@use '@styles/variables/rootLayout.var' as rootLayout;
+
+.light-theme {
+	.book-details-page {
+		&-card {
+			&__authors {
+				color: paletteLightTheme.$color-text-secondary;
+			}
+		}
+	}
+}
+
+.dark-theme {
+	.book-details-page {
+		&-card {
+			&__authors {
+				color: paletteDarkTheme.$color-text-secondary;
+			}
+		}
+	}
+}
+
+.book-details-page {
+	width: clamp(300px, 90%, 1300px);
+	padding: rootLayout.$page-container-padding-top 0
+		rootLayout.$page-container-padding-bottom;
+	margin: auto;
+
+	&-card {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 15px;
+		text-align: center;
+
+		&__cover {
+			min-width: 170px;
+			width: 170px;
+		}
+
+		&__title {
+			font:
+				600 2.4rem/1.2 'Source Sans 3',
+				sans-serif;
+		}
+
+		&__subtitle {
+			font:
+				italic 500 2rem 'Source Sans 3',
+				sans-serif;
+		}
+
+		&__authors {
+			font:
+				500 1.8rem/1.2 'Source Sans 3',
+				sans-serif;
+			margin: 8px 0 20px;
+		}
+
+		@media (width >= 900px) {
+			flex-direction: row;
+			align-items: stretch;
+			text-align: left;
+
+			&__cover {
+				min-width: 200px;
+				width: 200px;
+			}
+		}
+	}
+
+	&-topic {
+		margin: 25px 0;
+
+		&__fallback {
+			font:
+				400 1.7rem 'Source Sans 3',
+				sans-serif;
+		}
+	}
+
+	.expandable-wrap-preview__panel--collapsed {
+		.tag-pill {
+			white-space: nowrap;
+		}
+	}
+
+	&__tabbed-content {
+		margin-bottom: 50px;
+	}
+
+	&__description {
+		font:
+			400 1.7rem 'Source Sans 3',
+			sans-serif;
+	}
+
+	&--loader {
+		.book-details-page {
+			&-card {
+				&__content {
+					width: 100%;
+				}
+
+				&__title {
+					height: 40px;
+				}
+
+				&__authors {
+					height: 35px;
+				}
+			}
+
+			&-topic {
+				height: 50px;
+			}
+
+			&__tabbed-content {
+				height: 200px;
+			}
+		}
+	}
+}

@@ -18,6 +18,7 @@
 	},
 	"dependencies": {
 		"@apollo/client": "^4.2.0",
+		"embla-carousel-react": "^8.6.0",
 		"firebase": "^12.10.0",
 		"graphql": "^16.14.0",
 		"html-react-parser": "^5.2.17",

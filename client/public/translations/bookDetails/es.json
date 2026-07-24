@@ -1,0 +1,38 @@
+{
+	"topics": {
+		"categories": {
+			"label": "Categorías",
+			"empty": "No hay categorías para mostrar"
+		},
+		"content_warnings": {
+			"label": "Advertencias de contenido"
+		},
+		"characters": {
+			"label": "Personajes"
+		}
+	},
+	"description": {
+		"label": "Sinopsis"
+	},
+	"technical_sheet": {
+		"label": "Ficha técnica",
+		"not_available": "No especificado",
+		"fields": {
+			"page_count": {
+				"label": "Número de páginas"
+			},
+			"published_date": {
+				"label": "Fecha de publicación"
+			},
+			"language": {
+				"label": "Idioma"
+			},
+			"publisher": {
+				"label": "Editorial"
+			}
+		}
+	},
+	"related_books": {
+		"label": "También te puede interesar..."
+	}
+}

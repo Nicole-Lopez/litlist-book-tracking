@@ -1,0 +1,38 @@
+{
+	"topics": {
+		"categories": {
+			"label": "Categories",
+			"empty": "No categories available"
+		},
+		"content_warnings": {
+			"label": "Content warnings"
+		},
+		"characters": {
+			"label": "Characters"
+		}
+	},
+	"description": {
+		"label": "Synopsis"
+	},
+	"technical_sheet": {
+		"label": "Technical sheet",
+		"not_available": "Not specified",
+		"fields": {
+			"page_count": {
+				"label": "Page count"
+			},
+			"published_date": {
+				"label": "Publication date"
+			},
+			"language": {
+				"label": "Language"
+			},
+			"publisher": {
+				"label": "Publisher"
+			}
+		}
+	},
+	"related_books": {
+		"label": "You might also like..."
+	}
+}

@@ -42,12 +42,6 @@ const router = createBrowserRouter([
 								loader: routeModule.categoryLoader,
 							}
 						},
-						// lazy: {
-						// 	Component: async () => {
-						// 		return (await import('@pages/Category/Category'))
-						// 			.default
-						// 	},
-						// },
 					},
 					{
 						path: CONTACT_PATH,
@@ -69,7 +63,12 @@ const router = createBrowserRouter([
 					},
 					{
 						path: BOOK_DETAILS_PATH,
-						element: <h1>Book details</h1>,
+						lazy: {
+							Component: async () => {
+								return (await import('@pages/BookDetails/BookDetails'))
+									.default
+							},
+						},
 					},
 					{
 						path: USER_PROFILE_PATH,
