@@ -1,6 +1,7 @@
+import type { ValueOf } from '@customTypes/customUtilityTypes'
 import type { THEMES } from '../constants/context.constants'
 
-export type Themes = (typeof THEMES)[keyof typeof THEMES]
+export type Themes = ValueOf<typeof THEMES>
 
 export type ThemeContextValue = {
 	currentTheme: Themes

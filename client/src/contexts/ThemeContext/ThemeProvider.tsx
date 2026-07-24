@@ -11,7 +11,9 @@ import type { ReactNode } from 'react'
 import type { PropsOnlyChildren } from '@customTypes/componentProps'
 import type { ThemeContextValue } from './models/context.models'
 
-export default function ThemeProvider({ children }: PropsOnlyChildren): ReactNode {
+export type ThemeProviderProps = PropsOnlyChildren
+
+export default function ThemeProvider({ children }: ThemeProviderProps): ReactNode {
 	const [currentTheme, setCurrentTheme] = useLocalStorage(
 		THEME_LOCAL_STORAGE_KEY,
 		window.matchMedia('(prefers-color-scheme: dark)').matches

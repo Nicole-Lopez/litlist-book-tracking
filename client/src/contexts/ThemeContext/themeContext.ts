@@ -7,9 +7,7 @@ export function useThemeContext(): ThemeContextValue {
 	const context = useContext(ThemeContext)
 
 	if (context === undefined)
-		throw new Error(
-			'ThemeContext must be used within a ThemeContextProvider. Please ensure that your component is wrapped with a ThemeContextProvider',
-		)
+		throw new Error('useThemeContext must be used within a ThemeProvider')
 
 	return context
 }
