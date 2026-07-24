@@ -25,3 +25,15 @@ export type BookPreview = Prettify<
 		contentWarnings?: BookContentWarning[]
 	}
 >
+
+export type BookDetails = Prettify<
+	BookPreview & {
+		subtitle?: string
+		characters?: string[]
+		description?: string
+		publishedDate?: string
+		lang?: string
+		publisher?: string
+		relatedBooks?: BookSummary[]
+	}
+>
