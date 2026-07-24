@@ -2,7 +2,7 @@ import { useToggle } from '@hooks/useToggle'
 import { useOutsideAlerter } from '@hooks/useOutsideAlerter'
 import { Link } from 'react-router-dom'
 import './Dropdown.scss'
-import type { ReactNode, DetailedHTMLProps, ButtonHTMLAttributes } from 'react'
+import type { ReactNode, ButtonHTMLAttributes } from 'react'
 import type { LinkProps } from 'react-router-dom'
 import type { PropsWithChildren } from '@customTypes/componentProps'
 
@@ -44,10 +44,7 @@ function Menu({ isOpen, children, className = '' }: MenuProps): ReactNode {
 	)
 }
 
-export type OptionButtonProps = DetailedHTMLProps<
-	ButtonHTMLAttributes<HTMLButtonElement>,
-	HTMLButtonElement
-> & {
+export type OptionButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 	isMarked?: boolean
 }
 

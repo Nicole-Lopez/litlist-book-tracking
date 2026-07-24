@@ -1,12 +1,7 @@
 import { isBlankString } from '@utilities/string.utils'
 import SearchIcon from '@assets/icons/SearchIcon'
 import './SearchInputField.scss'
-import type {
-	DetailedHTMLProps,
-	InputHTMLAttributes,
-	ButtonHTMLAttributes,
-	ReactNode,
-} from 'react'
+import type { InputHTMLAttributes, ButtonHTMLAttributes, ReactNode } from 'react'
 import type { PropsWithChildren } from '@customTypes/componentProps'
 
 export type SearchInputFieldProps = PropsWithChildren<{
@@ -34,7 +29,7 @@ export default function SearchInputField({
 }
 
 export type InputProps = Omit<
-	DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
+	InputHTMLAttributes<HTMLInputElement>,
 	'type' | 'name' | 'children'
 >
 
@@ -50,7 +45,7 @@ function Input({ className = '', ...inputAttributes }: InputProps): ReactNode {
 }
 
 export type SearchButtonProps = Omit<
-	DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>,
+	ButtonHTMLAttributes<HTMLButtonElement>,
 	'type' | 'children'
 > & {
 	query: string
@@ -75,7 +70,7 @@ function SearchButton({
 }
 
 export type ClearQueryButtonProps = Omit<
-	DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>,
+	ButtonHTMLAttributes<HTMLButtonElement>,
 	'type' | 'children'
 > & {
 	query: string

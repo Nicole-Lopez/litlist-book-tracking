@@ -1,10 +1,7 @@
 import './IconButton.scss'
-import type { ButtonHTMLAttributes, DetailedHTMLProps, ReactNode } from 'react'
+import type { ButtonHTMLAttributes, ReactNode } from 'react'
 
-export type IconButtonProps = DetailedHTMLProps<
-	ButtonHTMLAttributes<HTMLButtonElement>,
-	HTMLButtonElement
->
+export type IconButtonProps = ButtonHTMLAttributes<HTMLButtonElement>
 
 export default function IconButton({
 	className = '',

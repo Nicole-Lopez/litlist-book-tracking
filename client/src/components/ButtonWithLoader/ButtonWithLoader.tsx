@@ -1,11 +1,8 @@
 import ThreeDotsLoader from '@assets/loaders/ThreeDotsLoader/ThreeDotsLoader'
 import './ButtonWithLoader.scss'
-import type { ButtonHTMLAttributes, DetailedHTMLProps, ReactNode } from 'react'
+import type { ButtonHTMLAttributes, ReactNode } from 'react'
 
-export type ButtonWithLoaderProps = DetailedHTMLProps<
-	ButtonHTMLAttributes<HTMLButtonElement>,
-	HTMLButtonElement
-> & {
+export type ButtonWithLoaderProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 	isLoading: boolean
 }
 

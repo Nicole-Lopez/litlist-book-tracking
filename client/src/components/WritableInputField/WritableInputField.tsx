@@ -1,11 +1,6 @@
 import { isBlankString } from '@utilities/string.utils'
 import './WritableInputField.scss'
-import type {
-	DetailedHTMLProps,
-	InputHTMLAttributes,
-	ReactNode,
-	TextareaHTMLAttributes,
-} from 'react'
+import type { InputHTMLAttributes, ReactNode, TextareaHTMLAttributes } from 'react'
 import type { InputFieldBaseProps, PropsWithChildren } from '@customTypes/componentProps'
 import type { WithRequired } from '@customTypes/customUtilityTypes'
 
@@ -39,10 +34,7 @@ export default function WritableInputField({
 
 export type InputProps = Pick<InputFieldBaseProps, 'onValidationError' | 'isNonEmpty'> &
 	WithRequired<
-		Omit<
-			DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
-			'placeholder' | 'children'
-		>,
+		Omit<InputHTMLAttributes<HTMLInputElement>, 'placeholder' | 'children'>,
 		'id' | 'name'
 	>
 
@@ -75,13 +67,7 @@ export type TextareaProps = Pick<
 	'onValidationError' | 'isNonEmpty'
 > &
 	WithRequired<
-		Omit<
-			DetailedHTMLProps<
-				TextareaHTMLAttributes<HTMLTextAreaElement>,
-				HTMLTextAreaElement
-			>,
-			'placeholder'
-		>,
+		Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'placeholder'>,
 		'id' | 'name'
 	>
 

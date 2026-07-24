@@ -1,15 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
 import './ImageWithPlaceholder.scss'
-import type {
-    DetailedHTMLProps,
-    ImgHTMLAttributes,
-    Dispatch,
-    SetStateAction,
-    ReactNode,
-} from 'react'
+import type { ImgHTMLAttributes, Dispatch, SetStateAction, ReactNode } from 'react'
 
 export type ImageWithPlaceholderProps = Omit<
-    DetailedHTMLProps<ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>,
+    ImgHTMLAttributes<HTMLImageElement>,
     'ref' | 'onLoad'
 > & {
     containerClassName?: string

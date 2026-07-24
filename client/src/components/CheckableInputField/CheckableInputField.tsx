@@ -1,8 +1,8 @@
 import './CheckableInputField.scss'
-import type { DetailedHTMLProps, InputHTMLAttributes, ReactNode } from 'react'
+import type { InputHTMLAttributes, ReactNode } from 'react'
 
 export type CheckableInputFieldProps = Omit<
-	DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
+	InputHTMLAttributes<HTMLInputElement>,
 	'type'
 > & {
 	type: 'radio' | 'checkbox'

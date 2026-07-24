@@ -11,7 +11,7 @@ import Modal from '@components/Modal/Modal'
 import AlertInline from '@components/AlertInline/AlertInline'
 import ButtonWithLoader from '@components/ButtonWithLoader/ButtonWithLoader'
 import './Panel.scss'
-import type { ButtonHTMLAttributes, DetailedHTMLProps, ReactNode } from 'react'
+import type { ButtonHTMLAttributes, ReactNode } from 'react'
 import type { PropsWithChildren } from '@customTypes/componentProps'
 
 export type PanelProps = PropsWithChildren<{
@@ -49,10 +49,7 @@ export default function Panel({
 	)
 }
 
-export type AuthProviderButtonProps = DetailedHTMLProps<
-	ButtonHTMLAttributes<HTMLButtonElement>,
-	HTMLButtonElement
->
+export type AuthProviderButtonProps = ButtonHTMLAttributes<HTMLButtonElement>
 
 function AuthProviderButton({
 	className = '',
@@ -123,10 +120,7 @@ function ChangePanelButton({
 	)
 }
 
-export type SubmitButtonProps = DetailedHTMLProps<
-	ButtonHTMLAttributes<HTMLButtonElement>,
-	HTMLButtonElement
->
+export type SubmitButtonProps = ButtonHTMLAttributes<HTMLButtonElement>
 
 function SubmitButton({
 	className = '',
