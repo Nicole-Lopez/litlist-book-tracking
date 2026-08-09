@@ -6,7 +6,7 @@ import {
 	USER_PASSWORD_MIN_LENGTH,
 	VALID_USER_PASSWORD_REGEX,
 } from '@constants/user.constants'
-import { USER_SETTINGS_FORM_ROOT } from '@constants/translationRoots.constants'
+import { USER_TRANSLATION_ROOT } from '@services/internationalization/roots/user.constants'
 import { TRANSLATIONS_NS } from '@services/internationalization/locale.constants'
 import { getHomeRoute } from '@router/routeFormatters.utils'
 import HidePasswordIcon from './assets/icons/HidePasswordIcon'
@@ -54,7 +54,7 @@ export default function UserPasswordInputField({
 	return (
 		<WritableInputField
 			classNameContainer={`user-password-input-field ${classNameContainer}`}
-			label={label ?? t(USER_SETTINGS_FORM_ROOT.fields.password.label)}
+			label={label ?? t(USER_TRANSLATION_ROOT.settingsForm.fields.password.label)}
 			idLabel={id}
 			isErrorDisplayed={isErrorDisplayed}
 		>
@@ -104,7 +104,7 @@ export default function UserPasswordInputField({
 					to={getHomeRoute()}
 					className='user-password-input-field__reset-password-link'
 				>
-					{t(USER_SETTINGS_FORM_ROOT.fields.password.resetPasswordLabel)}
+					{t(USER_TRANSLATION_ROOT.settingsForm.fields.password.resetPassword)}
 				</Link>
 			) : null}
 
@@ -113,13 +113,19 @@ export default function UserPasswordInputField({
 					<InputRequirementList.Requirement
 						isCompleted={passwordValidity.length}
 					>
-						{t(USER_SETTINGS_FORM_ROOT.fields.password.requirements.length)}
+						{t(
+							USER_TRANSLATION_ROOT.settingsForm.fields.password
+								.requirements.length,
+						)}
 					</InputRequirementList.Requirement>
 
 					<InputRequirementList.Requirement
 						isCompleted={passwordValidity.content}
 					>
-						{t(USER_SETTINGS_FORM_ROOT.fields.password.requirements.content)}
+						{t(
+							USER_TRANSLATION_ROOT.settingsForm.fields.password
+								.requirements.content,
+						)}
 					</InputRequirementList.Requirement>
 				</InputRequirementList>
 			) : null}

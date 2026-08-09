@@ -1,7 +1,9 @@
-export const PROVIDER_USERNAME_PLACEHOLDER = '>provider_user'
-
-export const ANONYMOUS_USERNAME_PLACEHOLDER = '>anonymous_user'
-
-export const USER_SUMMARY_ERROR_TYPES = {
-	userSummaryNotFound: 'userSummaryNotFound',
+export const PROFILE_ERROR_TYPES = {
+	userNotFound: 'USER_NOT_FOUND',
+	networkError: 'NETWORK_ERROR',
 } as const
+
+export const USER_PHOTO_DEFAULT = '/images/fallbacks/user-photo-default.png'
+
+export const ANONYMOUS_USER_PHOTO_DEFAULT =
+	'/images/fallbacks/anonymous-user-photo-default.png'

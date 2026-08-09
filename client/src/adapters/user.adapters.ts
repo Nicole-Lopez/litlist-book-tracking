@@ -1,45 +1,43 @@
 import {
 	ANONYMOUS_USER_PHOTO_DEFAULT,
-	ANONYMOUS_USERNAME_DEFAULT,
 	USER_PHOTO_DEFAULT,
-	USERNAME_DEFAULT,
-} from '@constants/user.constants'
-import {
-	ANONYMOUS_USERNAME_PLACEHOLDER,
-	PROVIDER_USERNAME_PLACEHOLDER,
 } from '@services/user/profile/profile.constants'
-import { GOOGLE_PROVIDER_ID } from '@services/user/auth/auth.constants'
-import { removeEmptyValues } from '@utilities/object.utils'
+import { ANONYMOUS_USERNAME_DEFAULT, USERNAME_DEFAULT } from '@constants/user.constants'
 import type { AuthInfo, UserSummary } from '@models/user.models'
-import type { ApiAuthInfo } from '@services/user/auth/auth.apiModels'
-import type { ApiUserSummary } from '@services/user/profile/profile.apiModels'
-import type { WithRequired } from '@customTypes/customUtilityTypes'
 
-export const authInfoAdapter = (data: ApiAuthInfo): AuthInfo => {
+export const authInfoAdapter = (data: {
+	uid: string
+	isAnonymous: boolean
+	email: string
+	isEmailVerified: boolean
+	dateCreated: number
+	isGoogleLinked: boolean
+}): AuthInfo => {
 	return {
-		isAnonymous: data.isAnonymous,
 		uid: data.uid,
-		email: data.email ?? '',
-		isEmailVerified: data.emailVerified,
-		dateCreated:
-			data.metadata.creationTime !== undefined
-				? new Date(data.metadata.creationTime).getTime()
-				: new Date().getTime(),
-		isGoogleLinked: data.providerData.some(
-			provider => provider.providerId === GOOGLE_PROVIDER_ID,
-		),
+		isAnonymous: data.isAnonymous,
+		email: data.email,
+		isEmailVerified: data.isEmailVerified,
+		dateCreated: data.dateCreated,
+		isGoogleLinked: data.isGoogleLinked,
 	}
 }
 
-export const userSummaryAdapter = (data: ApiUserSummary): UserSummary => {
-	const isAnonymous = data.username === ANONYMOUS_USERNAME_PLACEHOLDER
-
+export const userSummaryAdapter = (
+	data: {
+		username?: string
+		photo?: string
+		favoriteCategories?: string[]
+		wantToReadLibrary?: string[]
+		currentlyReadingLibrary?: string[]
+		alreadyReadLibrary?: string[]
+	},
+	isAnonymous: boolean,
+): UserSummary => {
 	return {
 		username: isAnonymous
 			? ANONYMOUS_USERNAME_DEFAULT
-			: data.username === PROVIDER_USERNAME_PLACEHOLDER
-				? USERNAME_DEFAULT
-				: data.username,
+			: (data.username ?? USERNAME_DEFAULT),
 		photo: isAnonymous
 			? ANONYMOUS_USER_PHOTO_DEFAULT
 			: (data.photo ?? USER_PHOTO_DEFAULT),
@@ -50,19 +48,4 @@ export const userSummaryAdapter = (data: ApiUserSummary): UserSummary => {
 			alreadyRead: data.alreadyReadLibrary ?? [],
 		},
 	}
-}
-
-export const apiUserSummaryAdapter = (
-	data: WithRequired<Partial<UserSummary>, 'username'>,
-): ApiUserSummary => {
-	const user: ApiUserSummary = {
-		username: data.username,
-		photo: data.photo,
-		favoriteCategories: data.favoriteCategories,
-		wantToReadLibrary: data.libraries?.wantToRead,
-		currentlyReadingLibrary: data.libraries?.currentlyReading,
-		alreadyReadLibrary: data.libraries?.alreadyRead,
-	}
-
-	return removeEmptyValues(user)
 }

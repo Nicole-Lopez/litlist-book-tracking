@@ -11,4 +11,5 @@ export const TRANSLATIONS_NS = {
 	search: 'search',
 	bookCard: 'bookCard',
 	bookDetails: 'bookDetails',
+	library: 'library',
 } as const

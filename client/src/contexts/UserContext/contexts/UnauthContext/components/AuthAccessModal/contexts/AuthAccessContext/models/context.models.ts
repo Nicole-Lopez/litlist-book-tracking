@@ -1,12 +1,9 @@
 import type { Dispatch, SetStateAction } from 'react'
-import type { AUTH_ERROR_TYPES } from '@services/user/auth/auth.constants'
-import type { PANELS } from '../../../constants/panels.constants'
-import type { Prettify, ValueOf } from '@customTypes/customUtilityTypes'
+import type { PANELS, SERVER_ERROR_TYPES } from '../../../constants/panels.constants'
+import type { ArrayElement, ValueOf } from '@customTypes/customUtilityTypes'
 
-export type ServerError = Prettify<Exclude<
-	ValueOf<typeof AUTH_ERROR_TYPES>,
-	typeof AUTH_ERROR_TYPES.popupError
-> | null>
+export type ServerErrorType = ArrayElement<typeof SERVER_ERROR_TYPES>
+export type ServerError = ServerErrorType | null
 
 export type Panels = ValueOf<typeof PANELS>
 
@@ -16,5 +13,5 @@ export type AuthAccessContextValue = {
 	isLoading: boolean
 	serverError: ServerError
 	setServerError: Dispatch<SetStateAction<ServerError>>
-	handleAuthAccess: (onAuth: () => Promise<void>) => Promise<void>
+	submitAuth: (onAuth: () => Promise<void>) => Promise<void>
 }

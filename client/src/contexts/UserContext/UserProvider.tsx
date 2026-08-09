@@ -1,8 +1,7 @@
 import { useEffect, useState, lazy } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useExponentialRetry } from '@hooks/useExponentialRetry'
 import { TRANSLATIONS_NS } from '@services/internationalization/locale.constants'
-import { AUTH_SERVER_ERROR_MESSAGES_ROOT } from './constants/translationRoots.constants'
+import { USER_TRANSLATION_ROOT } from '@services/internationalization/roots/user.constants'
 import { FEEDBACK_TYPES } from '@constants/feedback.constants'
 import { AuthContext } from './userContext'
 import { observeAuth, signOutAccount } from '@services/user/auth/auth.service'
@@ -22,20 +21,21 @@ export default function UserProvider({ children }: PropsOnlyChildren): ReactNode
 	const { t } = useTranslation(TRANSLATIONS_NS.user)
 	const [isLoading, setIsLoading] = useState(true)
 	const [authInfo, setAuthInfo] = useState<AuthInfo | null>(null)
-	const [signOut] = useExponentialRetry(async () => {
+
+	const signOut = async (): Promise<void> => {
 		try {
 			setIsLoading(true)
 			await signOutAccount()
-		} catch {
+		} catch (err) {
 			showToastNotification({
 				type: FEEDBACK_TYPES.error,
 				id: 'sign-out-error',
-				content: t(AUTH_SERVER_ERROR_MESSAGES_ROOT.networkRetrying),
+				content: t(USER_TRANSLATION_ROOT.errorMessages.networkError),
 			})
 
-			throw new Error()
+			throw err
 		}
-	})
+	}
 
 	useEffect(() => {
 		const unsubscribe = observeAuth(user => {
@@ -57,10 +57,10 @@ export default function UserProvider({ children }: PropsOnlyChildren): ReactNode
 
 	return (
 		<AuthContext value={value}>
-			{authInfo === null ? (
-				<UnauthProvider>{children}</UnauthProvider>
-			) : (
+			{authInfo ? (
 				<UserSummaryProvider authInfo={authInfo}>{children}</UserSummaryProvider>
+			) : (
+				<UnauthProvider>{children}</UnauthProvider>
 			)}
 		</AuthContext>
 	)

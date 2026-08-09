@@ -1,35 +1,36 @@
 import { useState } from 'react'
-import { useUnauthContext } from '@contexts/UserContext/userContext'
+import { PANELS, SERVER_ERROR_TYPES } from '../../constants/panels.constants'
 import { AuthAccessContext } from './authAccessContext'
-import { AUTH_ERROR_TYPES } from '@services/user/auth/auth.constants'
-import { PANELS } from '../../constants/panels.constants'
 import type { ReactNode } from 'react'
 import type { PropsOnlyChildren } from '@customTypes/componentProps'
-import type { AuthAccessContextValue, Panels, ServerError } from './models/context.models'
-import type { ValueOf } from '@customTypes/customUtilityTypes'
+import type {
+	AuthAccessContextValue,
+	Panels,
+	ServerError,
+	ServerErrorType,
+} from './models/context.models'
 
 export default function AuthAccessProvider({ children }: PropsOnlyChildren): ReactNode {
-	const { toggleAuthAccessModalOpen } = useUnauthContext()
 	const [currentPanel, setCurrentPanel] = useState<Panels>(PANELS.signIn)
 	const [isLoading, setIsLoading] = useState(false)
 	const [serverError, setServerError] = useState<ServerError>(null)
 
-	const handleAuthAccess = async (onAuth: () => Promise<void>): Promise<void> => {
+	const submitAuth = async (onAuth: () => Promise<void>): Promise<void> => {
 		try {
 			setIsLoading(true)
 
-			if (serverError !== null) {
+			if (serverError) {
 				setServerError(null)
 			}
 
 			await onAuth()
-			toggleAuthAccessModalOpen()
 		} catch (err) {
-			const error = (err as Error).message as ValueOf<typeof AUTH_ERROR_TYPES>
-
-			if (error === AUTH_ERROR_TYPES.popupError) return
-
-			setServerError(error)
+			if (
+				err instanceof Error &&
+				(SERVER_ERROR_TYPES as string[]).includes(err.message)
+			) {
+				setServerError(err.message as ServerErrorType)
+			}
 		} finally {
 			setIsLoading(false)
 		}
@@ -41,7 +42,7 @@ export default function AuthAccessProvider({ children }: PropsOnlyChildren): Rea
 		isLoading,
 		setServerError,
 		serverError,
-		handleAuthAccess,
+		submitAuth,
 	}
 
 	return <AuthAccessContext value={value}>{children}</AuthAccessContext>

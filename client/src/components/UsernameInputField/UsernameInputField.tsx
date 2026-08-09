@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { USER_SETTINGS_FORM_ROOT } from '@constants/translationRoots.constants'
+import { USER_TRANSLATION_ROOT } from '@services/internationalization/roots/user.constants'
 import {
 	USERNAME_MAX_LENGTH,
 	USERNAME_MIN_LENGTH,
@@ -39,7 +39,7 @@ export default function UsernameInputField({
 	return (
 		<WritableInputField
 			classNameContainer={classNameContainer}
-			label={label ?? t(USER_SETTINGS_FORM_ROOT.fields.username.label)}
+			label={label ?? t(USER_TRANSLATION_ROOT.settingsForm.fields.username.label)}
 			idLabel={id}
 			isErrorDisplayed={isErrorDisplayed}
 		>
@@ -72,12 +72,18 @@ export default function UsernameInputField({
 					<InputRequirementList.Requirement
 						isCompleted={usernameValidity.length}
 					>
-						{t(USER_SETTINGS_FORM_ROOT.fields.username.requirements.length)}
+						{t(
+							USER_TRANSLATION_ROOT.settingsForm.fields.username
+								.requirements.length,
+						)}
 					</InputRequirementList.Requirement>
 					<InputRequirementList.Requirement
 						isCompleted={usernameValidity.content}
 					>
-						{t(USER_SETTINGS_FORM_ROOT.fields.username.requirements.content)}
+						{t(
+							USER_TRANSLATION_ROOT.settingsForm.fields.username
+								.requirements.content,
+						)}
 					</InputRequirementList.Requirement>
 				</InputRequirementList>
 			) : null}

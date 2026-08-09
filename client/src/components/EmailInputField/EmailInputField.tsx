@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { TRANSLATIONS_NS } from '@services/internationalization/locale.constants'
-import { USER_SETTINGS_FORM_ROOT } from '@constants/translationRoots.constants'
+import { USER_TRANSLATION_ROOT } from '@services/internationalization/roots/user.constants'
 import { VALID_EMAIL_REGEX } from '@constants/user.constants'
 import WritableInputField from '@components/WritableInputField/WritableInputField'
 import InputFieldHelper from '@components/InputFieldHelper/InputFieldHelper'
@@ -30,7 +30,7 @@ export default function EmailInputField({
 	return (
 		<WritableInputField
 			classNameContainer={classNameContainer}
-			label={label ?? t(USER_SETTINGS_FORM_ROOT.fields.email.label)}
+			label={label ?? t(USER_TRANSLATION_ROOT.settingsForm.fields.email.label)}
 			idLabel={id}
 			isErrorDisplayed={isErrorDisplayed}
 		>
@@ -57,7 +57,7 @@ export default function EmailInputField({
 
 			{isValidationEnabled && isErrorDisplayed ? (
 				<InputFieldHelper isErrorHelper>
-					{t(USER_SETTINGS_FORM_ROOT.fields.email.errorMessages.invalidEmail)}
+					{t(USER_TRANSLATION_ROOT.errorMessages.invalidEmail)}
 				</InputFieldHelper>
 			) : null}
 		</WritableInputField>

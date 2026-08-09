@@ -1,16 +1,10 @@
-import { useEffect, useReducer } from 'react'
-import { useTranslation } from 'react-i18next'
-import { useExponentialRetry } from '@hooks/useExponentialRetry'
-import { TRANSLATIONS_NS } from '@services/internationalization/locale.constants'
-import { FEEDBACK_TYPES } from '@constants/feedback.constants'
-import { AUTH_SERVER_ERROR_MESSAGES_ROOT } from '@contexts/UserContext/constants/translationRoots.constants'
+import { useEffect, useReducer, useState } from 'react'
 import { ACTION_TYPES } from './constants/reducer.constants'
 import {
 	UserSummaryActionsContext,
 	UserSummaryContext,
 } from '@contexts/UserContext/userContext'
-import { fetchUserSummary } from '@services/user/profile/profile.service'
-import { showToastNotification } from '@utilities/feedback.utils'
+import { fetchUserSummary, initUserSummary } from '@services/user/profile/profile.service'
 import userSummaryReducer, { initialState } from './userSummaryReducer'
 import MainLoader from '@assets/loaders/MainLoader/MainLoader'
 import type { ReactNode } from 'react'
@@ -25,35 +19,57 @@ export default function UserSummaryProvider({
 	children,
 	authInfo,
 }: UserSummaryProviderProps): ReactNode {
-	const { t } = useTranslation(TRANSLATIONS_NS.user)
 	const [userSummary, dispatch] = useReducer(userSummaryReducer, initialState)
-	const [fetchData] = useExponentialRetry(async () => {
-		try {
-			if (userSummary.uid !== initialState.uid) return
-
-			const data = await fetchUserSummary(authInfo, {
-				isCreateIfNotExistsEnabled: true,
-			})
-
-			dispatch({
-				type: ACTION_TYPES.INIT_USER_SUMMARY,
-				payload: { authInfo, userSummary: data },
-			})
-		} catch {
-			showToastNotification({
-				type: FEEDBACK_TYPES.error,
-				id: 'fetch-user-summary-error',
-				content: t(AUTH_SERVER_ERROR_MESSAGES_ROOT.networkRetrying),
-			})
-
-			throw new Error()
-		}
-	})
+	const [isError, setIsError] = useState(false)
 
 	useEffect(() => {
+		if (userSummary.uid !== initialState.uid) return
+		const controller = new AbortController()
+
+		const fetchData = async (): Promise<void> => {
+			try {
+				let data = await fetchUserSummary(authInfo, {
+					signal: controller.signal,
+				})
+
+				if (!data) {
+					await initUserSummary(
+						{ uid: authInfo.uid },
+						{ isAnonymous: authInfo.isAnonymous, signal: controller.signal },
+					)
+
+					data = await fetchUserSummary(authInfo, {
+						signal: controller.signal,
+					})
+
+					if (!data) throw new Error()
+				}
+
+				dispatch({
+					type: ACTION_TYPES.INIT_USER_SUMMARY,
+					payload: { authInfo, userSummary: data },
+				})
+			} catch (err) {
+				if (
+					(err instanceof DOMException && err.name === 'AbortError') ||
+					controller.signal.aborted
+				)
+					return
+
+				setIsError(true)
+			}
+		}
+
 		fetchData()
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [])
+
+		return () => {
+			controller.abort()
+		}
+	}, [authInfo, userSummary.uid])
+
+	if (isError) {
+		return <p>Error</p>
+	}
 
 	if (userSummary.uid === initialState.uid) {
 		return <MainLoader />

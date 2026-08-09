@@ -1,10 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { useAuthAccessContext } from '../../contexts/AuthAccessContext/authAccessContext'
 import { TRANSLATIONS_NS } from '@services/internationalization/locale.constants'
-import {
-	SIGN_IN_PANEL_ROOT,
-	PANEL_ROOT,
-} from '../../constants/translationRoots.constants'
+import { USER_TRANSLATION_ROOT } from '@services/internationalization/roots/user.constants'
 import { PANELS } from '../../constants/panels.constants'
 import UserIcon from '@assets/icons/UserIcon'
 import Form from './components/Form/Form'
@@ -16,9 +13,9 @@ export default function SignInPanel(): ReactNode {
 	const { setCurrentPanel } = useAuthAccessContext()
 
 	return (
-		<Panel title={t(SIGN_IN_PANEL_ROOT.title)}>
+		<Panel title={t(USER_TRANSLATION_ROOT.authAccess.signIn.title)}>
 			<Panel.GoogleAuthButton>
-				{t(SIGN_IN_PANEL_ROOT.authProviderLabel.google)}
+				{t(USER_TRANSLATION_ROOT.authAccess.signIn.authProvider.google)}
 			</Panel.GoogleAuthButton>
 
 			<Panel.AuthProviderButton
@@ -27,7 +24,7 @@ export default function SignInPanel(): ReactNode {
 				}}
 			>
 				<UserIcon />
-				{t(SIGN_IN_PANEL_ROOT.authProviderLabel.anonymous)}
+				{t(USER_TRANSLATION_ROOT.authAccess.signIn.authProvider.anonymous)}
 			</Panel.AuthProviderButton>
 
 			<Panel.Divider />
@@ -38,8 +35,8 @@ export default function SignInPanel(): ReactNode {
 				onClick={() => {
 					setCurrentPanel(PANELS.signUp)
 				}}
-				label={t(SIGN_IN_PANEL_ROOT.changePanel)}
-				actionLabel={t(PANEL_ROOT.actions.signUp)}
+				label={t(USER_TRANSLATION_ROOT.authAccess.signIn.changePanel)}
+				actionLabel={t(USER_TRANSLATION_ROOT.authAccess.actions.signUp)}
 			/>
 		</Panel>
 	)

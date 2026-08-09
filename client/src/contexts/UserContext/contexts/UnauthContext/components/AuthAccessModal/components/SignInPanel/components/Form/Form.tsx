@@ -4,7 +4,7 @@ import { useHandleFormErrors } from '@hooks/useHandleFormErrors'
 import { useAuthAccessContext } from '../../../../contexts/AuthAccessContext/authAccessContext'
 import { TRANSLATIONS_NS } from '@services/internationalization/locale.constants'
 import { AUTH_ERROR_TYPES } from '@services/user/auth/auth.constants'
-import { PANEL_ROOT } from '../../../../constants/translationRoots.constants'
+import { USER_TRANSLATION_ROOT } from '@services/internationalization/roots/user.constants'
 import { signInAccount } from '@services/user/auth/auth.service'
 import { generateKeyMirror, mapValues } from '@utilities/object.utils'
 import EmailInputField from '@components/EmailInputField/EmailInputField'
@@ -22,19 +22,18 @@ const FORM_KEYS = generateKeyMirror(INITIAL_FORM_DATA)
 
 export default function Form(): ReactNode {
 	const { t } = useTranslation(TRANSLATIONS_NS.user)
-	const { handleAuthAccess, isLoading } = useAuthAccessContext()
+	const { submitAuth, isLoading } = useAuthAccessContext()
 	const { formData, onChangeFormValue, isSomeFieldEmpty } =
 		useHandleFormData(INITIAL_FORM_DATA)
 	const { onFormValidation, isSomeFieldError } =
 		useHandleFormErrors(INITIAL_FORM_ERRORS)
 
 	const onSubmit = (): void => {
-		handleAuthAccess(async () => {
-			if (isSomeFieldEmpty || isSomeFieldError) {
+		submitAuth(async () => {
+			if (isSomeFieldEmpty || isSomeFieldError)
 				throw new Error(AUTH_ERROR_TYPES.invalidCredentials)
-			}
 
-			await signInAccount(formData.email, formData.password)
+			await signInAccount(formData)
 		})
 	}
 
@@ -62,7 +61,7 @@ export default function Form(): ReactNode {
 			/>
 
 			<Panel.SubmitButton type='submit'>
-				{t(PANEL_ROOT.actions.signIn)}
+				{t(USER_TRANSLATION_ROOT.authAccess.actions.signIn)}
 			</Panel.SubmitButton>
 		</form>
 	)

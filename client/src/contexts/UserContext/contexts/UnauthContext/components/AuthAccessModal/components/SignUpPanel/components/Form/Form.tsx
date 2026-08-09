@@ -3,8 +3,7 @@ import { useHandleFormData } from '@hooks/useHandleFormData'
 import { useHandleFormErrors } from '@hooks/useHandleFormErrors'
 import { useAuthAccessContext } from '../../../../contexts/AuthAccessContext/authAccessContext'
 import { TRANSLATIONS_NS } from '@services/internationalization/locale.constants'
-import { USER_SETTINGS_FORM_ROOT } from '@constants/translationRoots.constants'
-import { PANEL_ROOT } from '../../../../constants/translationRoots.constants'
+import { USER_TRANSLATION_ROOT } from '@services/internationalization/roots/user.constants'
 import { createAccount } from '@services/user/auth/auth.service'
 import { generateKeyMirror, mapValues } from '@utilities/object.utils'
 import EmailInputField from '@components/EmailInputField/EmailInputField'
@@ -25,7 +24,7 @@ const FORM_KEYS = generateKeyMirror(INITIAL_FORM_DATA)
 
 export default function Form(): ReactNode {
 	const { t } = useTranslation(TRANSLATIONS_NS.user)
-	const { handleAuthAccess, isLoading } = useAuthAccessContext()
+	const { submitAuth, isLoading } = useAuthAccessContext()
 	const { formData, onChangeFormValue, isSomeFieldEmpty } =
 		useHandleFormData(INITIAL_FORM_DATA)
 
@@ -33,8 +32,12 @@ export default function Form(): ReactNode {
 		useHandleFormErrors(INITIAL_FORM_ERRORS)
 
 	const onSubmit = (): void => {
-		handleAuthAccess(async () => {
-			await createAccount(formData.email, formData.password, formData.username)
+		submitAuth(async () => {
+			await createAccount({
+				email: formData.email,
+				password: formData.password,
+				username: formData.username,
+			})
 		})
 	}
 
@@ -82,7 +85,7 @@ export default function Form(): ReactNode {
 			/>
 
 			<UserPasswordInputField
-				label={t(USER_SETTINGS_FORM_ROOT.fields.confirmPassword.label)}
+				label={t(USER_TRANSLATION_ROOT.settingsForm.fields.confirmPassword.label)}
 				id={`${FORM_KEYS.confirmPassword}-sign-up`}
 				name={FORM_KEYS.confirmPassword}
 				autoComplete='new-password'
@@ -98,10 +101,7 @@ export default function Form(): ReactNode {
 			>
 				{formErrors.confirmPassword ? (
 					<InputFieldHelper isErrorHelper>
-						{t(
-							USER_SETTINGS_FORM_ROOT.fields.confirmPassword.errorMessages
-								.notMatch,
-						)}
+						{t(USER_TRANSLATION_ROOT.errorMessages.confirmPasswordNotMatch)}
 					</InputFieldHelper>
 				) : null}
 			</UserPasswordInputField>
@@ -110,7 +110,7 @@ export default function Form(): ReactNode {
 				type='submit'
 				disabled={isSomeFieldEmpty || isSomeFieldError}
 			>
-				{t(PANEL_ROOT.actions.signUp)}
+				{t(USER_TRANSLATION_ROOT.authAccess.actions.signUp)}
 			</Panel.SubmitButton>
 		</form>
 	)

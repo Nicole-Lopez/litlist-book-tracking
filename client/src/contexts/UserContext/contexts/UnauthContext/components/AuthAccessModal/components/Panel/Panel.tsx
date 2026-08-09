@@ -3,8 +3,8 @@ import { useUnauthContext } from '@contexts/UserContext/userContext'
 import { useAuthAccessContext } from '../../contexts/AuthAccessContext/authAccessContext'
 import { TRANSLATIONS_NS } from '@services/internationalization/locale.constants'
 import { FEEDBACK_TYPES } from '@constants/feedback.constants'
-import { PANEL_ROOT } from '../../constants/translationRoots.constants'
-import { AUTH_SERVER_ERROR_MESSAGES_ROOT } from '@contexts/UserContext/constants/translationRoots.constants'
+import { USER_TRANSLATION_ROOT } from '@services/internationalization/roots/user.constants'
+import { AUTH_ERROR_TYPES } from '@services/user/auth/auth.constants'
 import { authWithGoogle } from '@services/user/auth/auth.service'
 import GoogleIcon from '@assets/icons/GoogleIcon'
 import Modal from '@components/Modal/Modal'
@@ -38,9 +38,15 @@ export default function Panel({
 
 			<Modal.Title>{title}</Modal.Title>
 
-			{serverError !== null ? (
+			{serverError ? (
 				<AlertInline type={FEEDBACK_TYPES.error}>
-					{t(AUTH_SERVER_ERROR_MESSAGES_ROOT[serverError])}
+					{t(
+						serverError === AUTH_ERROR_TYPES.emailAlreadyInUse
+							? USER_TRANSLATION_ROOT.errorMessages.emailAlreadyInUse
+							: serverError === AUTH_ERROR_TYPES.invalidCredentials
+								? USER_TRANSLATION_ROOT.errorMessages.invalidCredentials
+								: USER_TRANSLATION_ROOT.errorMessages.networkError,
+					)}
 				</AlertInline>
 			) : null}
 
@@ -70,10 +76,10 @@ function AuthProviderButton({
 export type GoogleAuthButtonProps = Omit<AuthProviderButtonProps, 'onClick'>
 
 function GoogleAuthButton({ children, ...props }: GoogleAuthButtonProps): ReactNode {
-	const { handleAuthAccess } = useAuthAccessContext()
+	const { submitAuth } = useAuthAccessContext()
 
 	const onAuth = (): void => {
-		handleAuthAccess(authWithGoogle)
+		submitAuth(authWithGoogle)
 	}
 
 	return (
@@ -87,7 +93,11 @@ function GoogleAuthButton({ children, ...props }: GoogleAuthButtonProps): ReactN
 function Divider(): ReactNode {
 	const { t } = useTranslation(TRANSLATIONS_NS.user)
 
-	return <p className='auth-access-modal-panel__divider'>{t(PANEL_ROOT.divider)}</p>
+	return (
+		<p className='auth-access-modal-panel__divider'>
+			{t(USER_TRANSLATION_ROOT.authAccess.divider)}
+		</p>
+	)
 }
 
 export type ChangePanelButtonProps = {
