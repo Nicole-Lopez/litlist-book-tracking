@@ -2,7 +2,7 @@
 	"auth_access": {
 		"sign_in": {
 			"title": "Bienvenido de vuelta",
-			"auth_provider_label": {
+			"auth_provider": {
 				"google": "Iniciar sesión con Google",
 				"anonymous": "Entrar como invitado"
 			},
@@ -10,14 +10,21 @@
 		},
 		"sign_up": {
 			"title": "Únete a LitList",
-			"auth_provider_label": {
+			"auth_provider": {
 				"google": "Regístrate con Google"
 			},
 			"change_panel": "Si ya tienes una cuenta,"
 		},
 		"anonymous_account": {
 			"title": "¡Explora LitList sin compromisos!",
-			"description": "<p>Como invitado, tendrás acceso a nuestras increíbles funciones para descubrir y organizar tus libros favoritos.</p><div><h2>Sin embargo, vas a tener algunas limitaciones:</h2><ul><li><strong>Biblioteca Quiero Leer:</strong> máximo 10 libros</li><li><strong>Biblioteca Leyendo Actualmente:</strong> máximo 10 libros</li><li><strong>Biblioteca Libros Leídos:</strong> máximo 10 libros</li><li><strong>Listas de Lectura:</strong> máximo 3 listas de lectura, cada una con espacio para 5 libros.</li></ul></div><p>Ten en cuenta que al ser una cuenta de invitado, tus datos pueden ser eliminados en cualquier momento.</p><p>Siempre vas a tener la posibilidad de pasar a una cuenta regular registrándote desde la <strong>página Perfil</strong> y podrás conservar tus datos y acceder a LitList sin límites.</p>",
+			"introduce": "Como invitado, tendrás acceso a nuestras increíbles funciones para descubrir y organizar tus libros favoritos.",
+			"limitations": {
+				"title": "Sin embargo, vas a tener algunas limitaciones:",
+				"library": "<strong>Biblioteca {{library}}:</strong> máximo {{count}} libros.",
+				"list": "<strong>{{list}}:</strong> máximo {{count}} listas de lectura, cada una con espacio para {{maxBooksPerList}} libros."
+			},
+			"warning": "Ten en cuenta que al ser una cuenta de invitado, tus datos pueden ser eliminados en cualquier momento.",
+			"upgrade_account": "Siempre vas a tener la posibilidad de pasar a una cuenta regular registrándote desde la <strong>página Perfil</strong> y podrás conservar tus datos y acceder a LitList sin límites.",
 			"change_panel": "Crea una cuenta sin limites,"
 		},
 		"divider": "O",
@@ -25,13 +32,14 @@
 			"sign_in": "Inicia sesión",
 			"sign_up": "Registrate",
 			"anonymous": "Entrar como invitado"
-		},
-		"server_error_messages": {
-			"network_error": "Hubo un error de red. Por favor, vuelve a intentarlo más tarde",
-			"network_retrying": "Hubo un error de red. Por favor, espere un momento",
-			"invalid_credentials": "Email o contraseña incorrectos",
-			"email_already_in_use": "Este email ya está en uso. Por favor, utilize otro email"
 		}
+	},
+	"error_messages": {
+		"network_error": "Hubo un error de red. Por favor, vuelve a intentarlo más tarde",
+		"invalid_credentials": "Email o contraseña incorrectos",
+		"email_already_in_use": "Este email ya está en uso. Por favor, utilize otro email",
+		"invalid_email": "Correo electrónico inválido",
+		"confirm_password_not_match": "Las contraseñas no coinciden"
 	},
 	"settings_form": {
 		"fields": {
@@ -43,10 +51,7 @@
 				}
 			},
 			"email": {
-				"label": "Correo electrónico",
-				"error_messages": {
-					"invalid_email": "Correo electrónico inválido"
-				}
+				"label": "Correo electrónico"
 			},
 			"password": {
 				"label": "Contraseña",
@@ -54,13 +59,10 @@
 					"length": "Debe tener un mínimo de 8 caracteres",
 					"content": "Debe contener un número, un carácter especial y letras mayúsculas y minúsculas"
 				},
-				"reset_password_label": "¿Has olvidado tu contraseña?"
+				"reset_password": "¿Has olvidado tu contraseña?"
 			},
 			"confirm_password": {
-				"label": "Confirmar contraseña",
-				"error_messages": {
-					"not_match": "Las contraseñas no coinciden"
-				}
+				"label": "Confirmar contraseña"
 			}
 		}
 	}
